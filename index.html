@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>鎵窞鍏徃鎯呮姤缃?| Intelligence Analysis Platform</title>
+<title>扬州公司情报�?| Intelligence Analysis Platform</title>
 <style>
   :root {
     --bg-dark: #0a0e27;
@@ -34,7 +34,7 @@
     overflow-x: hidden;
   }
 
-  /* ===== 鑳屾櫙鍔ㄧ敾 ===== */
+  /* ===== 背景动画 ===== */
   body::before {
     content: '';
     position: fixed;
@@ -47,7 +47,7 @@
     z-index: 0;
   }
 
-  /* 缃戞牸绾胯儗鏅?*/
+  /* 网格线背�?*/
   .grid-bg {
     position: fixed;
     inset: 0;
@@ -60,7 +60,7 @@
   }
 
 
-  /* ===== 璇︽儏寮圭獥 ===== */
+  /* ===== 详情弹窗 ===== */
   #detailModal .modal-box {
     max-width: 680px;
     max-height: 85vh;
@@ -199,7 +199,7 @@
   .result-item.clickable:hover { border-color: var(--accent); }
   .result-title-text { color: var(--accent); font-size: 15px; font-weight: 600; line-height: 1.4; }
 
-  /* 鍘嗗彶璁板綍鏌ョ湅缁撴灉鎸夐挳 */
+  /* 历史记录查看结果按钮 */
   .history-view-btn {
     background: rgba(59,130,246,0.1);
     border: 1px solid rgba(59,130,246,0.25);
@@ -232,7 +232,7 @@
     filter: brightness(1.1);
   }
   .yq-analysis-btn:hover { filter: brightness(1.1); }
-  /* 鍘嗗彶鑸嗘儏 */
+  /* 历史舆情 */
   .yuqing-history-list { display: flex; flex-direction: column; gap: 16px; }
   .yuqing-history-card {
     background: var(--bg-card);
@@ -255,7 +255,7 @@
   .yh-report { margin-top: 12px; padding: 12px 14px; background: rgba(239,68,68,0.04); border: 1px solid rgba(239,68,68,0.18); border-radius: 10px; font-size: 13px; line-height: 1.85; color: var(--text-dim); max-height: 320px; overflow-y: auto; }
   .yh-report-label { font-size: 12px; color: var(--red); margin-bottom: 8px; font-weight: 600; }
 
-  /* ===== 鐧诲綍椤?===== */
+  /* ===== 登录�?===== */
 
   #loginPage {
     position: relative;
@@ -459,7 +459,7 @@
     font-size: 12px;
   }
 
-  /* ===== 涓荤晫闈?===== */
+  /* ===== 主界�?===== */
   #mainApp {
     display: none;
     position: relative;
@@ -467,7 +467,7 @@
     min-height: 100vh;
   }
 
-  /* 椤堕儴鏍?*/
+  /* 顶部�?*/
   .topbar {
     position: fixed;
     top: 0;
@@ -558,7 +558,7 @@
     background: rgba(239,68,68,0.2);
   }
 
-  /* 渚ц竟鏍?*/
+  /* 侧边�?*/
   .sidebar {
     position: fixed;
     top: 60px;
@@ -628,7 +628,7 @@
     color: #fff;
   }
 
-  /* 涓诲唴瀹瑰尯 */
+  /* 主内容区 */
   .main-content {
     margin-left: var(--sidebar-w);
     margin-top: 60px;
@@ -636,7 +636,7 @@
     min-height: calc(100vh - 60px);
   }
 
-  /* 椤甸潰鍒囨崲 */
+  /* 页面切换 */
   .page {
     display: none;
     animation: fadeInUp 0.4s ease;
@@ -662,7 +662,7 @@
     margin-top: 4px;
   }
 
-  /* 缁熻鍗＄墖 */
+  /* 统计卡片 */
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -707,7 +707,7 @@
   .stat-card.green { border-left: 3px solid var(--green); }
   .stat-card.yellow { border-left: 3px solid var(--yellow); }
 
-  /* 鎼滅储妯″潡 */
+  /* 搜索模块 */
   .module-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -759,7 +759,7 @@
     padding: 24px;
   }
 
-  /* 鎼滅储妗?*/
+  /* 搜索�?*/
   .search-box {
     display: flex;
     gap: 12px;
@@ -865,7 +865,7 @@
     box-shadow: 0 6px 20px rgba(34,211,238,0.4);
   }
 
-  /* 鍒嗘瀽閫夐」 */
+  /* 分析选项 */
   .analysis-options {
     display: flex;
     gap: 12px;
@@ -902,7 +902,7 @@
     border-color: var(--accent);
   }
 
-  /* 缁撴灉鍖哄煙 */
+  /* 结果区域 */
   .results-section {
     margin-top: 24px;
   }
@@ -995,7 +995,7 @@
     gap: 4px;
   }
 
-  /* 鎶ュ憡鍖?*/
+  /* 报告�?*/
   .report-section {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -1123,7 +1123,7 @@
     color: var(--cyan);
   }
 
-  /* 鍒嗘瀽鐘舵€?*/
+  /* 分析状�?*/
   .analysis-status {
     display: flex;
     align-items: center;
@@ -1150,7 +1150,7 @@
     color: var(--text-dim);
   }
 
-  /* 杩涘害鏉?*/
+  /* 进度�?*/
   .progress-bar-wrap {
     margin: 12px 0;
   }
@@ -1194,7 +1194,7 @@
     100% { transform: translateX(100%); }
   }
 
-  /* 蹇嵎鍒嗘瀽 */
+  /* 快捷分析 */
   .quick-analysis {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -1234,7 +1234,7 @@
     line-height: 1.5;
   }
 
-  /* 鍘嗗彶璁板綍 */
+  /* 历史记录 */
   .history-list {
     display: flex;
     flex-direction: column;
@@ -1290,7 +1290,7 @@
     flex-shrink: 0;
   }
 
-  /* 绌虹姸鎬?*/
+  /* 空状�?*/
   .empty-state {
     text-align: center;
     padding: 60px 20px;
@@ -1313,7 +1313,7 @@
     font-size: 14px;
   }
 
-  /* API閰嶇疆 */
+  /* API配置 */
   .api-config-section {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -1420,12 +1420,12 @@
   .toast.error .toast-icon { color: var(--red); }
   .toast.info .toast-icon { color: var(--accent); }
 
-  /* 婊氬姩鏉?*/
+  /* 滚动�?*/
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
-  /* 璁剧疆椤?*/
+  /* 设置�?*/
   .settings-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1480,7 +1480,7 @@
     box-shadow: 0 0 0 2px var(--accent-glow);
   }
 
-  /* 鍒嗘瀽杩涘害 */
+  /* 分析进度 */
   .analysis-flow {
     display: flex;
     align-items: center;
@@ -1549,7 +1549,7 @@
     background: linear-gradient(90deg, var(--green), var(--accent));
   }
 
-  /* 鑸嗘儏鎼滅储 */
+  /* 舆情搜索 */
   .yuqing-section {
     background: var(--bg-card);
     border: 1px solid rgba(245,158,11,0.3);
@@ -1622,7 +1622,7 @@
     color: var(--cyan);
   }
 
-  /* 鐢ㄦ埛绠＄悊 */
+  /* 用户管理 */
   .user-card {
     background: rgba(255,255,255,0.03);
     border: 1px solid var(--border);
@@ -1886,14 +1886,14 @@
     justify-content: center;
   }
 
-  /* 鍒嗛殧绾?*/
+  /* 分隔�?*/
   .divider {
     height: 1px;
     background: var(--border);
     margin: 20px 0;
   }
 
-  /* 鏅鸿兘鍒嗘瀽鎻愮ず */
+  /* 智能分析提示 */
   .smart-tips {
     background: rgba(99,102,241,0.05);
     border: 1px solid rgba(99,102,241,0.2);
@@ -1934,7 +1934,7 @@
     color: var(--accent2);
   }
 
-  /* 鍒嗘瀽妯″紡閫夋嫨 */
+  /* 分析模式选择 */
   .mode-tabs {
     display: flex;
     gap: 4px;
@@ -2022,187 +2022,188 @@
 
 <div class="grid-bg"></div>
 
-<!-- ========== 鐧诲綍椤?========== -->
+<!-- ========== 登录�?========== -->
 <div id="loginPage" style="display:flex">
   <div class="login-wrapper">
     <div class="login-logo">
-      <div class="logo-icon">馃攳</div>
-      <h1>鎵窞鍏徃鎯呮姤缃?/h1>
+      <div class="logo-icon">🔍</div>
+      <h1>扬州公司情报�?/h1>
       <p>Intelligence Analysis Platform</p>
     </div>
 
     <div class="login-card">
-      <h2><span class="shield">馃洝锔?/span> 韬唤楠岃瘉</h2>
+      <h2><span class="shield">🛡�?/span> 身份验证</h2>
       <form id="loginForm" onsubmit="handleLogin(event)">
         <div class="form-group">
-          <label>璐﹀彿</label>
+          <label>账号</label>
           <div class="input-wrap">
-            <span class="input-icon">馃懁</span>
-            <input type="text" id="loginUser" placeholder="璇疯緭鍏ヨ处鍙? autocomplete="username" required>
+            <span class="input-icon">👤</span>
+            <input type="text" id="loginUser" placeholder="请输入账�? autocomplete="username" required>
           </div>
         </div>
         <div class="form-group">
-          <label>瀵嗙爜</label>
+          <label>密码</label>
           <div class="input-wrap">
-            <span class="input-icon">馃攽</span>
-            <input type="password" id="loginPass" placeholder="璇疯緭鍏ュ瘑鐮? autocomplete="current-password" required>
+            <span class="input-icon">🔑</span>
+            <input type="password" id="loginPass" placeholder="请输入密�? autocomplete="current-password" required>
           </div>
         </div>
         <button type="submit" class="login-btn" id="loginBtn">
-          <span id="loginBtnText">鐧?褰?/span>
+          <span id="loginBtnText">�?�?/span>
         </button>
         <div class="login-error" id="loginError"></div>
       </form>
     </div>
 
     <div class="login-footer">
-      <p>Intelligence Analysis Platform v1.0 &nbsp;|&nbsp; 瀹夊叏鍔犲瘑浼犺緭</p>
+      <p>Intelligence Analysis Platform v1.0 &nbsp;|&nbsp; 安全加密传输</p>
     </div>
   </div>
 </div>
 
-<!-- ========== 涓诲簲鐢?========== -->
+<!-- ========== 主应�?========== -->
 
     <div class="api-error-modal" id="apiErrorModal">
       <div class="api-error-box">
         <div class="api-error-icon">&#9888;</div>
-        <div class="api-error-title" id="apiErrorTitle">绉樺鎼滅储 API 璋冪敤澶辫触</div>
+        <div class="api-error-title" id="apiErrorTitle">秘塔搜索 API 调用失败</div>
         <div class="api-error-reason" id="apiErrorReason"></div>
         <ul class="api-error-causes">
-          <li>&#9702; API Key 鏃犳晥鎴栧凡杩囨湡</li>
-          <li>&#9702; 缃戠粶杩炴帴寮傚父锛堝叕鍙稿唴缃?闃茬伀澧欐嫤鎴級</li>
-          <li>&#9702; 璺ㄥ煙(CORS)闄愬埗锛堟湰宸ュ叿涓嶆敮鎸佹湰鍦?file:// 鎵撳紑锛?/li>
-          <li>&#9702; 绉樺鏈嶅姟鏆傛椂涓嶅彲鐢?/li>
+          <li>&#9702; API Key 无效或已过期</li>
+          <li>&#9702; 网络连接异常（公司内�?防火墙拦截）</li>
+          <li>&#9702; 跨域(CORS)限制（本工具不支持本�?file:// 打开�?/li>
+          <li>&#9702; 秘塔服务暂时不可�?/li>
         </ul>
         <div class="api-error-actions">
-          <button class="api-error-btn mock" id="apiErrorMockBtn" onclick="apiErrorUseMock()">&#9889; 浣跨敤妯℃嫙鏁版嵁</button>
-          <button class="api-error-btn retry" onclick="apiErrorRetryWithProxy()" id="apiErrorProxyBtn" style="display:none;">&#127760; 浣跨敤CORS浠ｇ悊</button>
-          <button class="api-error-btn retry" onclick="apiErrorRetry()">&#8635; 閲嶈瘯</button>
+          <button class="api-error-btn mock" id="apiErrorMockBtn" onclick="apiErrorUseMock()">&#9889; 使用模拟数据</button>
+          <button class="api-error-btn retry" onclick="apiErrorRetryDirect()" id="apiErrorDirectBtn" style="display:none;background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;">&#128640; 直接连接</button>
+          <button class="api-error-btn retry" onclick="apiErrorRetryWithProxy()" id="apiErrorProxyBtn" style="display:none;">&#127760; 使用CORS代理</button>
+          <button class="api-error-btn retry" onclick="apiErrorRetry()">&#8635; 重试</button>
         </div>
   <div style="margin-top:16px;padding:12px;background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.2);border-radius:10px;font-size:12px;color:var(--text-dim);">
-    <b>💡 解决方案：</b><br>
-    1. 安装浏览器 CORS 插件（如 "CORS Unblock" 或 "Allow CORS"）<br>
-    2. 点击「直接连接」按钮尝试直连<br>
-    3. 或使用「模拟数据」进行功能演示
+    <b>?? ���������?/b><br>
+    1. ��װ�����?CORS �������?"CORS Unblock" �� "Allow CORS"��<br>
+    2. �����ֱ�����ӡ���ť����ֱ��?br>
+    3. ��ʹ�á�ģ�����ݡ����й�����ʾ
   </div>
       </div>
     </div>
 
     <div id="mainApp">
 
-  <!-- 椤堕儴鏍?-->
+  <!-- 顶部�?-->
   <div class="topbar">
     <div class="topbar-left">
-      <div class="topbar-logo">馃攳</div>
-      <span class="topbar-title">鎵窞鍏徃鎯呮姤缃?/span>
+      <div class="topbar-logo">🔍</div>
+      <span class="topbar-title">扬州公司情报�?/span>
     </div>
     <div class="topbar-right">
       <div class="status-badge">
         <span class="dot"></span>
-        鍦ㄧ嚎
+        在线
       </div>
-      <button class="logout-btn" onclick="handleLogout()">閫€鍑虹櫥褰?/button>
+      <button class="logout-btn" onclick="handleLogout()">退出登�?/button>
     </div>
   </div>
 
-  <!-- 渚ц竟鏍?-->
+  <!-- 侧边�?-->
   <div class="sidebar">
-    <div class="nav-label">涓昏彍鍗?/div>
+    <div class="nav-label">主菜�?/div>
 
     <div class="nav-item active" onclick="switchPage('dashboard')" data-page="dashboard">
-      <span class="icon">馃搳</span>
-      <span>浠〃鐩?/span>
+      <span class="icon">📊</span>
+      <span>仪表�?/span>
     </div>
 
     <div class="nav-item" onclick="switchPage('search')" data-page="search">
-      <span class="icon">馃攳</span>
-      <span>鎯呮姤鎼滅储</span>
-      <span class="badge">绉樺</span>
+      <span class="icon">🔍</span>
+      <span>情报搜索</span>
+      <span class="badge">秘塔</span>
     </div>
 
     <div class="nav-item" onclick="switchPage('analysis')" data-page="analysis">
-      <span class="icon">馃</span>
-      <span>鏅鸿兘鍒嗘瀽</span>
+      <span class="icon">🤖</span>
+      <span>智能分析</span>
       <span class="badge" style="background: var(--cyan);">DeepSeek</span>
     </div>
 
     <div class="nav-item" onclick="switchPage('report')" data-page="report">
-      <span class="icon">馃搵</span>
-      <span>鎶ュ憡绠＄悊</span>
+      <span class="icon">📋</span>
+      <span>报告管理</span>
     </div>
 
     <div class="nav-item" onclick="switchPage('history')" data-page="history">
-      <span class="icon">馃摐</span>
-      <span>鎼滅储鍘嗗彶</span>
+      <span class="icon">📜</span>
+      <span>搜索历史</span>
     </div>
 
     <div class="nav-item" onclick="switchPage('settings')" data-page="settings">
-      <span class="icon">鈿欙笍</span>
-      <span>绯荤粺璁剧疆</span>
+      <span class="icon">⚙️</span>
+      <span>系统设置</span>
     </div>
   </div>
 
-  <!-- 涓诲唴瀹?-->
+  <!-- 主内�?-->
   <div class="main-content">
 
-    <!-- ===== 浠〃鐩?===== -->
+    <!-- ===== 仪表�?===== -->
     <div id="page-dashboard" class="page active">
       <div class="page-header">
-        <h2>馃搳 宸ヤ綔鍙?/h2>
-        <p>鎯呮姤鍒嗘瀽绯荤粺鎬昏锛屾杩庡洖鏉ワ紝绠＄悊鍛?/p>
+        <h2>📊 工作�?/h2>
+        <p>情报分析系统总览，欢迎回来，管理�?/p>
       </div>
 
       <div class="stats-grid">
         <div class="stat-card accent">
-          <div class="stat-icon">馃攳</div>
+          <div class="stat-icon">🔍</div>
           <div class="stat-value" id="stat-searches">0</div>
-          <div class="stat-label">鎯呮姤鎼滅储娆℃暟</div>
+          <div class="stat-label">情报搜索次数</div>
         </div>
         <div class="stat-card cyan">
-          <div class="stat-icon">馃搫</div>
+          <div class="stat-icon">📄</div>
           <div class="stat-value" id="stat-reports">0</div>
-          <div class="stat-label">鐢熸垚鎶ュ憡鏁伴噺</div>
+          <div class="stat-label">生成报告数量</div>
         </div>
         <div class="stat-card green">
-          <div class="stat-icon">鉁?/div>
+          <div class="stat-icon">�?/div>
           <div class="stat-value" id="stat-sources">0</div>
-          <div class="stat-label">鎯呮姤鏉ユ簮鏁伴噺</div>
+          <div class="stat-label">情报来源数量</div>
         </div>
         <div class="stat-card yellow">
-          <div class="stat-icon">鈴憋笍</div>
+          <div class="stat-icon">⏱️</div>
           <div class="stat-value" id="stat-time">0s</div>
-          <div class="stat-label">骞冲潎鍒嗘瀽鑰楁椂</div>
+          <div class="stat-label">平均分析耗时</div>
         </div>
       </div>
 
       <div class="module-card">
         <div class="module-header">
           <div class="module-header-left">
-            <span class="module-icon">鈿?/span>
-            <h3>蹇€熷紑濮?/h3>
+            <span class="module-icon">�?/span>
+            <h3>快速开�?/h3>
           </div>
         </div>
         <div class="module-body">
           <div class="quick-analysis">
-            <div class="quick-card" onclick="quickSearch('浠婃棩绉戞妧鏂伴椈')">
-              <div class="quick-icon">馃摪</div>
-              <h4>绉戞妧鎯呮姤</h4>
-              <p>鎼滅储鏈€鏂扮鎶€鍔ㄦ€佷笌琛屼笟瓒嬪娍</p>
+            <div class="quick-card" onclick="quickSearch('今日科技新闻')">
+              <div class="quick-icon">📰</div>
+              <h4>科技情报</h4>
+              <p>搜索最新科技动态与行业趋势</p>
             </div>
-            <div class="quick-card" onclick="quickSearch('甯傚満绔炰簤鍒嗘瀽')">
-              <div class="quick-icon">馃搱</div>
-              <h4>甯傚満鍒嗘瀽</h4>
-              <p>鑾峰彇甯傚満绔炰簤鎯呮姤涓庡晢涓氭礊瀵?/p>
+            <div class="quick-card" onclick="quickSearch('市场竞争分析')">
+              <div class="quick-icon">📈</div>
+              <h4>市场分析</h4>
+              <p>获取市场竞争情报与商业洞�?/p>
             </div>
-            <div class="quick-card" onclick="quickSearch('鏀跨瓥娉曡 鏈€鏂?)">
-              <div class="quick-icon">鈿栵笍</div>
-              <h4>鏀跨瓥鍔ㄦ€?/h4>
-              <p>杩借釜鏈€鏂版斂绛栨硶瑙勫彉鍖?/p>
+            <div class="quick-card" onclick="quickSearch('政策法规 最�?)">
+              <div class="quick-icon">⚖️</div>
+              <h4>政策动�?/h4>
+              <p>追踪最新政策法规变�?/p>
             </div>
-            <div class="quick-card" onclick="quickSearch('AI浜哄伐鏅鸿兘 鏈€鏂拌繘灞?)">
-              <div class="quick-icon">馃</div>
-              <h4>AI鍓嶆部</h4>
-              <p>浜哄伐鏅鸿兘棰嗗煙鏈€鏂扮爺绌惰繘灞?/p>
+            <div class="quick-card" onclick="quickSearch('AI人工智能 最新进�?)">
+              <div class="quick-icon">🤖</div>
+              <h4>AI前沿</h4>
+              <p>人工智能领域最新研究进�?/p>
             </div>
           </div>
         </div>
@@ -2211,92 +2212,92 @@
       <div class="module-card">
         <div class="module-header">
           <div class="module-header-left">
-            <span class="module-icon">馃攧</span>
-            <h3>鎯呮姤鍒嗘瀽宸ヤ綔娴?/h3>
+            <span class="module-icon">🔄</span>
+            <h3>情报分析工作�?/h3>
           </div>
         </div>
         <div class="module-body">
           <div class="analysis-flow">
             <div class="flow-step done">
-              <div class="flow-step-icon">1锔忊儯</div>
-              <div class="flow-step-label">杈撳叆鎯呮姤涓婚</div>
+              <div class="flow-step-icon">1️⃣</div>
+              <div class="flow-step-label">输入情报主题</div>
             </div>
             <div class="flow-line done"></div>
             <div class="flow-step active">
-              <div class="flow-step-icon">2锔忊儯</div>
-              <div class="flow-step-label">绉樺鎼滅储閲囬泦</div>
+              <div class="flow-step-icon">2️⃣</div>
+              <div class="flow-step-label">秘塔搜索采集</div>
             </div>
             <div class="flow-line"></div>
             <div class="flow-step">
-              <div class="flow-step-icon">3锔忊儯</div>
-              <div class="flow-step-label">DeepSeek鍒嗘瀽</div>
+              <div class="flow-step-icon">3️⃣</div>
+              <div class="flow-step-label">DeepSeek分析</div>
             </div>
             <div class="flow-line"></div>
             <div class="flow-step">
-              <div class="flow-step-icon">4锔忊儯</div>
-              <div class="flow-step-label">鐢熸垚鏍煎紡鎶ュ憡</div>
+              <div class="flow-step-icon">4️⃣</div>
+              <div class="flow-step-label">生成格式报告</div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ===== 鎯呮姤鎼滅储 ===== -->
+    <!-- ===== 情报搜索 ===== -->
     <div id="page-search" class="page">
       <div class="page-header">
-        <h2>馃攳 鎯呮姤鎼滅储</h2>
-        <p>浣跨敤绉樺鎼滅储閲囬泦鍏ㄧ綉鎯呮姤淇℃伅</p>
+        <h2>🔍 情报搜索</h2>
+        <p>使用秘塔搜索采集全网情报信息</p>
       </div>
 
       <div class="module-card">
         <div class="module-header">
           <div class="module-header-left">
-            <span class="module-icon">馃攳</span>
-            <h3>绉樺AI鎼滅储</h3>
+            <span class="module-icon">🔍</span>
+            <h3>秘塔AI搜索</h3>
           </div>
           <div class="module-status">
             <span class="dot"></span>
-            API宸茶繛鎺?          </div>
+            API已连�?          </div>
         </div>
         <div class="module-body">
           <div class="search-box">
             <div class="search-input-wrap">
-              <span class="search-icon">馃攳</span>
-              <input type="text" id="searchQuery" placeholder="杈撳叆鎯呮姤鍏抽敭璇嶏紝渚嬪锛氫汉宸ユ櫤鑳芥渶鏂拌繘灞? onkeydown="if(event.key==='Enter')startSearch()">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="searchQuery" placeholder="输入情报关键词，例如：人工智能最新进�? onkeydown="if(event.key==='Enter')startSearch()">
             </div>
             <select class="search-type-select" id="searchType">
-              <option value="all">鍏ㄧ綉鎼滅储</option>
-              <option value="news">鏂伴椈璧勮</option>
-              <option value="academic">瀛︽湳鏂囩尞</option>
-              <option value="image">鍥剧墖璧勬簮</option>
+              <option value="all">全网搜索</option>
+              <option value="news">新闻资讯</option>
+              <option value="academic">学术文献</option>
+              <option value="image">图片资源</option>
             </select>
             <button class="action-btn" id="searchBtn" onclick="startSearch()">
-              <span>馃殌</span> 寮€濮嬫悳绱?            </button>
+              <span>🚀</span> 开始搜�?            </button>
             <button class="action-btn" style="background:linear-gradient(135deg,#f59e0b,#d97706);" id="yulanBtn" onclick="startYuqingSearch()">
-              <span>馃摗</span> 鑸嗘儏鎼滅储
+              <span>📡</span> 舆情搜索
             </button>
           </div>
 
           <div class="smart-tips">
-            <h4>馃挕 鐑棬鎼滅储鎻愮ず</h4>
+            <h4>💡 热门搜索提示</h4>
             <ul>
-              <li onclick="quickSearch('閲忓瓙璁＄畻 鏈€鏂?)">閲忓瓙璁＄畻 鏈€鏂?/li>
-              <li onclick="quickSearch('鏂拌兘婧?鏀跨瓥')">鏂拌兘婧?鏀跨瓥</li>
-              <li onclick="quickSearch('鍗婂浣?琛屼笟鍔ㄦ€?)">鍗婂浣?琛屼笟鍔ㄦ€?/li>
-              <li onclick="quickSearch('鐢熺墿鍖昏嵂 鐮斿彂杩涘睍')">鐢熺墿鍖昏嵂 鐮斿彂杩涘睍</li>
-              <li onclick="quickSearch('缃戠粶瀹夊叏 濞佽儊')">缃戠粶瀹夊叏 濞佽儊</li>
-              <li onclick="quickSearch('鏁板瓧缁忔祹 瓒嬪娍')">鏁板瓧缁忔祹 瓒嬪娍</li>
+              <li onclick="quickSearch('量子计算 最�?)">量子计算 最�?/li>
+              <li onclick="quickSearch('新能�?政策')">新能�?政策</li>
+              <li onclick="quickSearch('半导�?行业动�?)">半导�?行业动�?/li>
+              <li onclick="quickSearch('生物医药 研发进展')">生物医药 研发进展</li>
+              <li onclick="quickSearch('网络安全 威胁')">网络安全 威胁</li>
+              <li onclick="quickSearch('数字经济 趋势')">数字经济 趋势</li>
             </ul>
           </div>
 
           <div id="searchStatus" style="display:none;" class="analysis-status">
             <div class="spinner"></div>
-            <span class="status-text" id="searchStatusText">姝ｅ湪鎼滅储鎯呮姤锛岃绋嶅€?..</span>
+            <span class="status-text" id="searchStatusText">正在搜索情报，请稍�?..</span>
           </div>
 
           <div class="progress-bar-wrap" id="searchProgressWrap" style="display:none;">
             <div class="progress-bar-label">
-              <span>鎼滅储杩涘害</span>
+              <span>搜索进度</span>
               <span id="searchProgressText">0%</span>
             </div>
             <div class="progress-bar">
@@ -2307,95 +2308,95 @@
           <div class="results-section" id="searchResultsSection" style="display:none;">
             <div class="results-header">
               <h4>
-                鎼滅储缁撴灉
+                搜索结果
                 <span class="results-count" id="resultsCount">0</span>
               </h4>
-              <button class="icon-btn" onclick="selectAllResults()">鈽戯笍 鍏ㄩ€?/button>
+              <button class="icon-btn" onclick="selectAllResults()">☑️ 全�?/button>
             </div>
             <div id="searchResults"></div>
           </div>
 
-          <!-- 鑸嗘儏鎼滅储缁撴灉 -->
+          <!-- 舆情搜索结果 -->
           <div class="yuqing-section" id="yuqingSection" style="display:none; margin-top:24px;">
             <div class="results-header" style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
               <h4 style="color:var(--yellow);">
-                馃摗 鎵窞鍏徃鑸嗘儏鎼滅储缁撴灉
+                📡 扬州公司舆情搜索结果
                 <span class="results-count" style="background:var(--yellow);" id="yuqingCount">0</span>
               </h4>
-              <button class="action-btn yq-analysis-btn" id="yuqingAnalyzeBtn" style="display:none;" onclick="analyzeYuqing()">&#128293; 鑸嗘儏鍒嗘瀽</button>
+              <button class="action-btn yq-analysis-btn" id="yuqingAnalyzeBtn" style="display:none;" onclick="analyzeYuqing()">&#128293; 舆情分析</button>
             </div>
             <div id="yuqingResults"></div>
           </div>
 
           <div class="yuqing-no-result" id="yuqingNoResult" style="display:none;">
             <div class="empty-state" style="padding:30px 20px;">
-              <div class="empty-icon">馃尶</div>
-              <h3>娌℃湁鑸嗘儏鍙戠敓</h3>
-              <p>缁忓叏缃戝尮閰嶏紝鏆傛湭鍙戠幇涓?鎵窞鍏徃"鐩稿叧鐨勮垎鎯呬俊鎭?/p>
+              <div class="empty-icon">🌿</div>
+              <h3>没有舆情发生</h3>
+              <p>经全网匹配，暂未发现�?扬州公司"相关的舆情信�?/p>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ===== 鏅鸿兘鍒嗘瀽 ===== -->
+    <!-- ===== 智能分析 ===== -->
     <div id="page-analysis" class="page">
       <div class="page-header">
-        <h2>馃 鏅鸿兘鍒嗘瀽</h2>
-        <p>DeepSeek澶фā鍨嬫繁搴﹀垎鏋愭儏鎶ワ紝褰㈡垚缁撴瀯鍖栨姤鍛?/p>
+        <h2>🤖 智能分析</h2>
+        <p>DeepSeek大模型深度分析情报，形成结构化报�?/p>
       </div>
 
       <div class="module-card">
         <div class="module-header">
           <div class="module-header-left">
-            <span class="module-icon">馃</span>
-            <h3>DeepSeek 鏅鸿兘鍒嗘瀽寮曟搸</h3>
+            <span class="module-icon">🤖</span>
+            <h3>DeepSeek 智能分析引擎</h3>
           </div>
           <div class="module-status">
             <span class="dot"></span>
-            API宸茶繛鎺?          </div>
+            API已连�?          </div>
         </div>
         <div class="module-body">
           <div class="mode-tabs">
-            <button class="mode-tab active" onclick="setAnalysisMode('standard')" id="mode-standard">馃搵 鏍囧噯鍒嗘瀽</button>
-            <button class="mode-tab" onclick="setAnalysisMode('deep')" id="mode-deep">馃敩 娣卞害鐮旂┒</button>
-            <button class="mode-tab" onclick="setAnalysisMode('risk')" id="mode-risk">鈿狅笍 椋庨櫓璇勪及</button>
+            <button class="mode-tab active" onclick="setAnalysisMode('standard')" id="mode-standard">📋 标准分析</button>
+            <button class="mode-tab" onclick="setAnalysisMode('deep')" id="mode-deep">🔬 深度研究</button>
+            <button class="mode-tab" onclick="setAnalysisMode('risk')" id="mode-risk">⚠️ 风险评估</button>
           </div>
 
           <div class="search-box">
             <div class="search-input-wrap">
-              <span class="search-icon">馃攳</span>
-              <input type="text" id="analysisTopic" placeholder="杈撳叆鍒嗘瀽涓婚锛屼緥濡傦細鍒嗘瀽2024骞碅I澶фā鍨嬪彂灞曡秼鍔?>
+              <span class="search-icon">🔍</span>
+              <input type="text" id="analysisTopic" placeholder="输入分析主题，例如：分析2024年AI大模型发展趋�?>
             </div>
             <button class="action-btn green" onclick="startAnalysis()">
-              <span>馃</span> 寮€濮嬫櫤鑳藉垎鏋?            </button>
+              <span>🧠</span> 开始智能分�?            </button>
           </div>
 
           <div class="analysis-options">
             <label class="option-chip selected" onclick="toggleOption(this)">
-              <input type="checkbox" checked> 馃摪 鏁村悎鎼滅储缁撴灉
+              <input type="checkbox" checked> 📰 整合搜索结果
             </label>
             <label class="option-chip selected" onclick="toggleOption(this)">
-              <input type="checkbox" checked> 馃攳 瀹炴椂琛ュ厖鎼滅储
+              <input type="checkbox" checked> 🔍 实时补充搜索
             </label>
             <label class="option-chip selected" onclick="toggleOption(this)">
-              <input type="checkbox" checked> 馃搳 SWOT鍒嗘瀽
+              <input type="checkbox" checked> 📊 SWOT分析
             </label>
             <label class="option-chip selected" onclick="toggleOption(this)">
-              <input type="checkbox" checked> 馃挕 瓒嬪娍棰勬祴
+              <input type="checkbox" checked> 💡 趋势预测
             </label>
             <label class="option-chip" onclick="toggleOption(this)">
-              <input type="checkbox"> 馃搱 鏁版嵁鍙鍖栧缓璁?            </label>
+              <input type="checkbox"> 📈 数据可视化建�?            </label>
           </div>
 
           <div id="analysisStatus" style="display:none;" class="analysis-status">
             <div class="spinner"></div>
-            <span class="status-text" id="analysisStatusText">姝ｅ湪鍒嗘瀽涓紝璇风◢鍊?..</span>
+            <span class="status-text" id="analysisStatusText">正在分析中，请稍�?..</span>
           </div>
 
           <div class="progress-bar-wrap" id="analysisProgressWrap" style="display:none;">
             <div class="progress-bar-label">
-              <span>鍒嗘瀽杩涘害</span>
+              <span>分析进度</span>
               <span id="analysisProgressText">0%</span>
             </div>
             <div class="progress-bar">
@@ -2407,38 +2408,38 @@
             <div class="report-section">
               <div class="report-header">
                 <h3>
-                  <span>馃搵</span>
-                  <span id="reportTitle">鏅鸿兘鍒嗘瀽鎶ュ憡</span>
+                  <span>📋</span>
+                  <span id="reportTitle">智能分析报告</span>
                 </h3>
                 <div class="report-actions">
-                  <button class="icon-btn" onclick="copyReport()">馃搵 澶嶅埗</button>
-                  <button class="icon-btn" onclick="exportReport()">馃捑 瀵煎嚭</button>
-                  <button class="icon-btn" onclick="saveToHistory()">猸?鏀惰棌</button>
+                  <button class="icon-btn" onclick="copyReport()">📋 复制</button>
+                  <button class="icon-btn" onclick="exportReport()">💾 导出</button>
+                  <button class="icon-btn" onclick="saveToHistory()">�?收藏</button>
                 </div>
               </div>
               <div class="report-meta-info" id="reportMetaInfo">
                 <div class="report-meta-item">
-                  <div class="label">鍒嗘瀽涓婚</div>
+                  <div class="label">分析主题</div>
                   <div class="value" id="metaTopic">-</div>
                 </div>
                 <div class="report-meta-item">
-                  <div class="label">鍒嗘瀽妯″紡</div>
-                  <div class="value" id="metaMode">鏍囧噯鍒嗘瀽</div>
+                  <div class="label">分析模式</div>
+                  <div class="value" id="metaMode">标准分析</div>
                 </div>
                 <div class="report-meta-item">
-                  <div class="label">鎯呮姤鏉ユ簮</div>
+                  <div class="label">情报来源</div>
                   <div class="value" id="metaSources">0</div>
                 </div>
                 <div class="report-meta-item">
-                  <div class="label">鐢熸垚鏃堕棿</div>
+                  <div class="label">生成时间</div>
                   <div class="value" id="metaTime">-</div>
                 </div>
               </div>
               <div class="report-body" id="reportBody">
                 <div class="empty-state">
-                  <div class="empty-icon">馃搫</div>
-                  <h3>绛夊緟鐢熸垚鎶ュ憡</h3>
-                  <p>璇疯緭鍏ュ垎鏋愪富棰樺紑濮嬫櫤鑳藉垎鏋?/p>
+                  <div class="empty-icon">📄</div>
+                  <h3>等待生成报告</h3>
+                  <p>请输入分析主题开始智能分�?/p>
                 </div>
               </div>
             </div>
@@ -2447,68 +2448,68 @@
       </div>
     </div>
 
-    <!-- ===== 鎶ュ憡绠＄悊 ===== -->
+    <!-- ===== 报告管理 ===== -->
     <div id="page-report" class="page">
       <div class="page-header">
-        <h2>馃搵 鎶ュ憡绠＄悊</h2>
-        <p>鏌ョ湅銆佺紪杈戝拰绠＄悊宸茬敓鎴愮殑鎯呮姤鍒嗘瀽鎶ュ憡</p>
+        <h2>📋 报告管理</h2>
+        <p>查看、编辑和管理已生成的情报分析报告</p>
       </div>
 
       <div id="reportListSection">
         <div class="empty-state" id="noReports">
-          <div class="empty-icon">馃搵</div>
-          <h3>鏆傛棤鎶ュ憡</h3>
-          <p>瀹屾垚鎯呮姤鍒嗘瀽鍚庡皢鑷姩鐢熸垚鎶ュ憡锛屽彲鍦ㄦ鏌ョ湅鍜岀鐞?/p>
+          <div class="empty-icon">📋</div>
+          <h3>暂无报告</h3>
+          <p>完成情报分析后将自动生成报告，可在此查看和管�?/p>
         </div>
         <div class="history-list" id="reportList"></div>
       </div>
     </div>
 
-    <!-- ===== 鎼滅储鍘嗗彶 ===== -->
+    <!-- ===== 搜索历史 ===== -->
     <div id="page-history" class="page">
       <div class="page-header">
-        <h2>馃摐 鎼滅储鍘嗗彶</h2>
-        <p>鏌ョ湅鍜岀鐞嗗巻鍙叉悳绱㈣褰?/p>
+        <h2>📜 搜索历史</h2>
+        <p>查看和管理历史搜索记�?/p>
       </div>
 
       <div id="historyListSection">
         <div class="empty-state" id="noHistory">
-          <div class="empty-icon">馃摐</div>
-          <h3>鏆傛棤鍘嗗彶璁板綍</h3>
-          <p>鎮ㄧ殑鎼滅储璁板綍灏嗘樉绀哄湪杩欓噷</p>
+          <div class="empty-icon">📜</div>
+          <h3>暂无历史记录</h3>
+          <p>您的搜索记录将显示在这里</p>
         </div>
         <div class="history-list" id="historyList"></div>
       </div>
 
-      <!-- 鍘嗗彶鑸嗘儏 -->
+      <!-- 历史舆情 -->
       <div id="yuqingHistorySection" style="margin-top:36px;">
         <div class="page-header">
-          <h2>&#128202; 鍘嗗彶鑸嗘儏</h2>
-          <p>璁板綍姣忎竴娆¤垎鎯呮悳绱㈢殑缁撴灉鍙婂搴斿垎鏋愭姤鍛?/p>
+          <h2>&#128202; 历史舆情</h2>
+          <p>记录每一次舆情搜索的结果及对应分析报�?/p>
         </div>
         <div class="empty-state" id="noYuqingHistory">
           <div class="empty-icon">&#128225;</div>
-          <h3>鏆傛棤鑸嗘儏璁板綍</h3>
-          <p>鑸嗘儏鎼滅储鐨勭粨鏋滃強鍒嗘瀽鎶ュ憡灏嗘樉绀哄湪杩欓噷</p>
+          <h3>暂无舆情记录</h3>
+          <p>舆情搜索的结果及分析报告将显示在这里</p>
         </div>
         <div class="yuqing-history-list" id="yuqingHistoryList"></div>
       </div>
     </div>
 
-    <!-- ===== 绯荤粺璁剧疆 ===== -->
+    <!-- ===== 系统设置 ===== -->
     <div id="page-settings" class="page">
       <div class="page-header">
-        <h2>鈿欙笍 绯荤粺璁剧疆</h2>
-        <p>閰嶇疆API瀵嗛挜鍜屽垎鏋愬弬鏁?/p>
+        <h2>⚙️ 系统设置</h2>
+        <p>配置API密钥和分析参�?/p>
       </div>
 
       <div class="settings-grid">
         <div class="setting-card">
-          <h3>馃攽 API 閰嶇疆</h3>
-          <div class="desc">閰嶇疆绉樺鎼滅储鍜孌eepSeek鍒嗘瀽鏈嶅姟鐨凙PI瀵嗛挜</div>
+          <h3>🔑 API 配置</h3>
+          <div class="desc">配置秘塔搜索和DeepSeek分析服务的API密钥</div>
 
           <div class="config-item">
-            <label>绉樺鎼滅储 API Key</label>
+            <label>秘塔搜索 API Key</label>
             <input type="password" id="metascoutKey" value="mk-9E7DB49B3163F3A59A6E7814055EBD7D" readonly>
           </div>
 
@@ -2518,29 +2519,29 @@
           </div>
 
           <div class="config-status connected">
-            <span>鈼?/span> 涓ら」API鍧囧凡閰嶇疆
+            <span>�?/span> 两项API均已配置
           </div>
         </div>
 
         <div class="setting-card">
-          <h3>馃 鍒嗘瀽鍙傛暟</h3>
-          <div class="desc">璋冩暣AI鍒嗘瀽妯″瀷鐨勮涓哄弬鏁?/div>
+          <h3>🤖 分析参数</h3>
+          <div class="desc">调整AI分析模型的行为参�?/div>
 
           <div class="config-item">
-            <label>DeepSeek 妯″瀷</label>
+            <label>DeepSeek 模型</label>
             <select class="setting-input" id="modelSelect" style="font-family:inherit;">
-              <option value="deepseek-chat">deepseek-chat (鎺ㄨ崘)</option>
+              <option value="deepseek-chat">deepseek-chat (推荐)</option>
               <option value="deepseek-coder">deepseek-coder</option>
             </select>
           </div>
 
           <div class="config-item">
-            <label>Temperature (鍒涢€犳€?</label>
+            <label>Temperature (创造�?</label>
             <input type="range" min="0" max="100" value="70" id="tempRange" style="width:100%;margin:8px 0;">
             <div style="font-size:12px;color:var(--text-dim);display:flex;justify-content:space-between;">
-              <span>绮剧‘</span>
+              <span>精确</span>
               <span id="tempValue">0.7</span>
-              <span>鍒涢€?/span>
+              <span>创�?/span>
             </div>
           </div>
 
@@ -2552,120 +2553,120 @@
       </div>
 
       <div class="setting-card" style="margin-top:20px;">
-        <h3>馃搳 绯荤粺淇℃伅</h3>
+        <h3>📊 系统信息</h3>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:12px;">
           <div style="padding:12px;background:rgba(255,255,255,0.03);border-radius:8px;border:1px solid var(--border);">
-            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">绯荤粺鐗堟湰</div>
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">系统版本</div>
             <div style="font-size:14px;font-weight:600;margin-top:4px;">v1.0.0</div>
           </div>
           <div style="padding:12px;background:rgba(255,255,255,0.03);border-radius:8px;border:1px solid var(--border);">
-            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">鍓嶇妗嗘灦</div>
-            <div style="font-size:14px;font-weight:600;margin-top:4px;">绾師鐢烰avaScript</div>
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">前端框架</div>
+            <div style="font-size:14px;font-weight:600;margin-top:4px;">纯原生JavaScript</div>
           </div>
           <div style="padding:12px;background:rgba(255,255,255,0.03);border-radius:8px;border:1px solid var(--border);">
-            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">API鏈嶅姟</div>
-            <div style="font-size:14px;font-weight:600;margin-top:4px;">绉樺AI + DeepSeek</div>
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">API服务</div>
+            <div style="font-size:14px;font-weight:600;margin-top:4px;">秘塔AI + DeepSeek</div>
           </div>
           <div style="padding:12px;background:rgba(255,255,255,0.03);border-radius:8px;border:1px solid var(--border);">
-            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">杩愯鐜</div>
-            <div style="font-size:14px;font-weight:600;margin-top:4px;">鐜颁唬娴忚鍣?/div>
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">运行环境</div>
+            <div style="font-size:14px;font-weight:600;margin-top:4px;">现代浏览�?/div>
           </div>
         </div>
       </div>
 
-      <!-- ===== 鐢ㄦ埛淇℃伅閰嶇疆 ===== -->
+      <!-- ===== 用户信息配置 ===== -->
       <div class="setting-card" style="margin-top:20px;" id="userManagementSection">
-        <h3>馃懃 鐢ㄦ埛淇℃伅閰嶇疆</h3>
-        <div class="desc">绠＄悊绯荤粺鐢ㄦ埛璐﹀彿锛屽彲娣诲姞銆佺紪杈戞櫘閫氱敤鎴峰強鍏惰闂潈闄?/div>
+        <h3>👥 用户信息配置</h3>
+        <div class="desc">管理系统用户账号，可添加、编辑普通用户及其访问权�?/div>
 
-        <!-- 鏂板鐢ㄦ埛琛ㄥ崟 -->
+        <!-- 新增用户表单 -->
         <div class="add-user-form" id="addUserForm">
-          <h3>鉃?鏂板鐢ㄦ埛</h3>
+          <h3>�?新增用户</h3>
           <div class="form-row">
             <div class="form-field">
-              <label>鐢ㄦ埛鍚?/label>
-              <input type="text" id="newUsername" placeholder="杈撳叆鐢ㄦ埛鍚? autocomplete="off">
+              <label>用户�?/label>
+              <input type="text" id="newUsername" placeholder="输入用户�? autocomplete="off">
             </div>
             <div class="form-field">
-              <label>鐧诲綍瀵嗙爜</label>
-              <input type="password" id="newPassword" placeholder="杈撳叆瀵嗙爜">
+              <label>登录密码</label>
+              <input type="password" id="newPassword" placeholder="输入密码">
             </div>
             <div class="form-field">
-              <label>鐢ㄦ埛瑙掕壊</label>
+              <label>用户角色</label>
               <select id="newUserRole">
-                <option value="鏅€氱敤鎴?>鏅€氱敤鎴?/option>
-                <option value="绠＄悊鍛?>绠＄悊鍛?/option>
+                <option value="普通用�?>普通用�?/option>
+                <option value="管理�?>管理�?/option>
               </select>
             </div>
           </div>
           <div class="form-field" style="margin-bottom:12px;">
-            <label>璁块棶鏉冮檺閰嶇疆</label>
+            <label>访问权限配置</label>
             <div class="perm-checkboxes" id="permCheckboxes">
               <label class="perm-checkbox-item">
-                <input type="checkbox" value="dashboard" checked> 馃搳 浠〃鐩?              </label>
+                <input type="checkbox" value="dashboard" checked> 📊 仪表�?              </label>
               <label class="perm-checkbox-item">
-                <input type="checkbox" value="search" checked> 馃攳 鎯呮姤鎼滅储
+                <input type="checkbox" value="search" checked> 🔍 情报搜索
               </label>
               <label class="perm-checkbox-item">
-                <input type="checkbox" value="analysis" checked> 馃 鏅鸿兘鍒嗘瀽
+                <input type="checkbox" value="analysis" checked> 🤖 智能分析
               </label>
               <label class="perm-checkbox-item">
-                <input type="checkbox" value="report" checked> 馃搵 鎶ュ憡绠＄悊
+                <input type="checkbox" value="report" checked> 📋 报告管理
               </label>
               <label class="perm-checkbox-item">
-                <input type="checkbox" value="history" checked> 馃摐 鎼滅储鍘嗗彶
+                <input type="checkbox" value="history" checked> 📜 搜索历史
               </label>
               <label class="perm-checkbox-item">
-                <input type="checkbox" value="settings" checked> 鈿欙笍 绯荤粺璁剧疆
+                <input type="checkbox" value="settings" checked> ⚙️ 系统设置
               </label>
             </div>
           </div>
           <button class="action-btn" style="width:100%;justify-content:center;" onclick="addNewUser()">
-            <span>馃懁</span> 娣诲姞鐢ㄦ埛
+            <span>👤</span> 添加用户
           </button>
         </div>
 
-        <!-- 缂栬緫鐢ㄦ埛琛ㄥ崟 -->
+        <!-- 编辑用户表单 -->
         <div class="edit-user-form" id="editUserForm">
-          <h3>鉁忥笍 缂栬緫鐢ㄦ埛 鈥?<span id="editUserName"></span></h3>
+          <h3>✏️ 编辑用户 �?<span id="editUserName"></span></h3>
           <div class="form-row">
             <div class="form-field">
-              <label>鐢ㄦ埛鍚?/label>
+              <label>用户�?/label>
               <input type="text" id="editUsername" readonly style="opacity:0.6;cursor:not-allowed;">
             </div>
             <div class="form-field">
-              <label>鏂板瘑鐮侊紙鐣欑┖淇濇寔涓嶅彉锛?/label>
-              <input type="password" id="editPassword" placeholder="鐣欑┖鍒欎笉淇敼">
+              <label>新密码（留空保持不变�?/label>
+              <input type="password" id="editPassword" placeholder="留空则不修改">
             </div>
             <div class="form-field">
-              <label>鐢ㄦ埛瑙掕壊</label>
+              <label>用户角色</label>
               <select id="editUserRole">
-                <option value="鏅€氱敤鎴?>鏅€氱敤鎴?/option>
-                <option value="绠＄悊鍛?>绠＄悊鍛?/option>
+                <option value="普通用�?>普通用�?/option>
+                <option value="管理�?>管理�?/option>
               </select>
             </div>
           </div>
           <div class="form-field" style="margin-bottom:12px;">
-            <label>璁块棶鏉冮檺閰嶇疆</label>
+            <label>访问权限配置</label>
             <div class="perm-checkboxes" id="editPermCheckboxes"></div>
           </div>
           <div style="display:flex;gap:10px;">
-            <button class="action-btn" style="flex:1;justify-content:center;" onclick="saveUserEdit()">馃捑 淇濆瓨淇敼</button>
-            <button class="action-btn" style="flex:1;justify-content:center;background:linear-gradient(135deg,#475569,#334155);" onclick="cancelUserEdit()">鍙栨秷缂栬緫</button>
+            <button class="action-btn" style="flex:1;justify-content:center;" onclick="saveUserEdit()">💾 保存修改</button>
+            <button class="action-btn" style="flex:1;justify-content:center;background:linear-gradient(135deg,#475569,#334155);" onclick="cancelUserEdit()">取消编辑</button>
           </div>
         </div>
 
-        <!-- 鐢ㄦ埛鍒楄〃鏍囬 -->
+        <!-- 用户列表标题 -->
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;margin-top:20px;">
-          <h3 style="font-size:14px;color:var(--text-dim);">馃搵 鐢ㄦ埛鍒楄〃锛?span id="userCount">0</span>浜猴級</h3>
+          <h3 style="font-size:14px;color:var(--text-dim);">📋 用户列表�?span id="userCount">0</span>人）</h3>
         </div>
 
-        <!-- 鐢ㄦ埛鍒楄〃 -->
+        <!-- 用户列表 -->
         <div id="userListContainer">
           <div class="empty-state" id="noUsers" style="padding:30px 20px;">
-            <div class="empty-icon">馃懃</div>
-            <h3>鏆傛棤鍏朵粬鐢ㄦ埛</h3>
-            <p>涓婃柟琛ㄥ崟鍙坊鍔犳柊鐨勭郴缁熺敤鎴?/p>
+            <div class="empty-icon">👥</div>
+            <h3>暂无其他用户</h3>
+            <p>上方表单可添加新的系统用�?/p>
           </div>
           <div id="userList"></div>
         </div>
@@ -2675,30 +2676,30 @@
   </div><!-- end main-content -->
 </div><!-- end mainApp -->
 
-<!-- 纭瀵硅瘽妗?-->
+<!-- 确认对话�?-->
 <div class="modal-overlay" id="confirmModal">
   <div class="modal-box">
-    <h3 id="modalTitle">鈿狅笍 纭鎿嶄綔</h3>
+    <h3 id="modalTitle">⚠️ 确认操作</h3>
     <div class="modal-msg" id="modalMsg"></div>
     <div class="modal-buttons">
-      <button class="action-btn" style="background:linear-gradient(135deg,#475569,#334155);" onclick="closeModal()">鍙栨秷</button>
-      <button class="action-btn" id="modalConfirmBtn" onclick="modalConfirmAction()">纭</button>
+      <button class="action-btn" style="background:linear-gradient(135deg,#475569,#334155);" onclick="closeModal()">取消</button>
+      <button class="action-btn" id="modalConfirmBtn" onclick="modalConfirmAction()">确认</button>
     </div>
   </div>
 </div>
 
-<!-- 鎻愮ず瀵硅瘽妗?-->
+<!-- 提示对话�?-->
 <div class="modal-overlay" id="alertModal">
   <div class="modal-box">
-    <h3 id="alertTitle">鈩癸笍 鎻愮ず</h3>
+    <h3 id="alertTitle">ℹ️ 提示</h3>
     <div class="modal-msg" id="alertMsg"></div>
     <div style="text-align:center;">
-      <button class="action-btn" onclick="closeAlert()">鐭ラ亾浜?/button>
+      <button class="action-btn" onclick="closeAlert()">知道�?/button>
     </div>
   </div>
 </div>
 
-<!-- 鎼滅储缁撴灉璇︽儏寮圭獥 -->
+<!-- 搜索结果详情弹窗 -->
 <div class="modal-overlay" id="detailModal">
   <div class="modal-box">
     <div class="detail-modal-body">
@@ -2708,48 +2709,48 @@
       </div>
       <div class="detail-meta" id="detailMeta"></div>
       <div class="detail-url-box">
-        <span class="detail-url-label">&#128279; 鍘熸枃閾炬帴</span>
+        <span class="detail-url-label">&#128279; 原文链接</span>
         <div class="detail-url-text" id="detailUrl"></div>
       </div>
-      <div class="detail-content-label">璇︾粏鍐呭</div>
+      <div class="detail-content-label">详细内容</div>
       <div class="detail-content" id="detailContent"></div>
     </div>
     <div class="detail-footer">
-      <span class="detail-idx" id="detailIdx">绗?1 / 1 鏉?/span>
+      <span class="detail-idx" id="detailIdx">�?1 / 1 �?/span>
       <div class="detail-nav">
-        <button class="detail-nav-btn" id="detailPrevBtn" onclick="navigateDetail(-1)">&#9664; 涓婁竴鏉?/button>
-        <button class="detail-nav-btn" id="detailNextBtn" onclick="navigateDetail(1)">涓嬩竴鏉?&#9654;</button>
+        <button class="detail-nav-btn" id="detailPrevBtn" onclick="navigateDetail(-1)">&#9664; 上一�?/button>
+        <button class="detail-nav-btn" id="detailNextBtn" onclick="navigateDetail(1)">下一�?&#9654;</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- 璐熼潰鑸嗘儏鍒嗘瀽寮圭獥 -->
+<!-- 负面舆情分析弹窗 -->
 <div class="modal-overlay" id="yuqingAnalysisModal">
   <div class="modal-box" style="max-width:720px; max-height:88vh; display:flex; flex-direction:column;">
     <div class="detail-modal-body" style="overflow-y:auto; flex:1;">
       <div class="detail-header">
-        <div class="detail-title" id="yqAnalysisTitle">&#128293; 鎵窞鍏徃璐熼潰鑸嗘儏鍒嗘瀽鎶ュ憡</div>
+        <div class="detail-title" id="yqAnalysisTitle">&#128293; 扬州公司负面舆情分析报告</div>
         <button class="detail-close" onclick="closeYuqingAnalysis()">&times;</button>
       </div>
       <div id="yqAnalysisLoading" style="text-align:center; padding:48px 16px; color:var(--text-muted);">
         <div class="spinner"></div>
-        <p style="margin-top:14px;">DeepSeek 姝ｅ湪鍒嗘瀽璐熼潰鑸嗘儏锛岃绋嶅€?..</p>
+        <p style="margin-top:14px;">DeepSeek 正在分析负面舆情，请稍�?..</p>
       </div>
       <div id="yqAnalysisContent" style="display:none; line-height:1.9;"></div>
     </div>
     <div class="detail-footer">
       <span class="detail-idx" id="yqAnalysisMeta"></span>
       <div class="detail-nav">
-        <button class="detail-nav-btn" onclick="copyYuqingAnalysis()">&#128203; 澶嶅埗鍏ㄦ枃</button>
-        <button class="detail-nav-btn" onclick="closeYuqingAnalysis()">鍏抽棴</button>
+        <button class="detail-nav-btn" onclick="copyYuqingAnalysis()">&#128203; 复制全文</button>
+        <button class="detail-nav-btn" onclick="closeYuqingAnalysis()">关闭</button>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-// ===== 鍏ㄥ眬閰嶇疆 =====
+// ===== 全局配置 =====
 const CREDENTIALS = {
   username: 'admin',
   password: 'Aa112233*-'
@@ -2759,7 +2760,7 @@ const API_CONFIG = {
   metascout: {
     key: 'mk-9E7DB49B3163F3A59A6E7814055EBD7D',
     endpoint: 'https://api.metasearch.cloud/search',
-    // 澶氫釜CORS浠ｇ悊澶囬€?    proxyEndpoints: [
+    // 多个CORS代理备�?    proxyEndpoints: [
       'https://api.allorigins.win/raw?url=https://api.metasearch.cloud/search',
       'https://corsproxy.io/?https://api.metasearch.cloud/search'
     ]
@@ -2774,7 +2775,7 @@ const API_CONFIG = {
   }
 };
 
-// ===== 鍏ㄥ眬鐘舵€?=====
+// ===== 全局状�?=====
 let currentSearchResults = [];
 let selectedResults = new Set();
 let searchHistory = [];
@@ -2785,7 +2786,7 @@ let analysisMode = 'standard';
 let currentReportContent = '';
 let analysisStartTime = null;
 
-// ===== 鐧诲綍/鐧诲嚭 =====
+// ===== 登录/登出 =====
 function handleLogin(e) {
   e.preventDefault();
   const user = document.getElementById('loginUser').value.trim();
@@ -2798,48 +2799,48 @@ function handleLogin(e) {
 
   if (matchedUser) {
     btn.disabled = true;
-    btnText.innerHTML = '<span class="spinner"></span> 楠岃瘉涓?..';
+    btnText.innerHTML = '<span class="spinner"></span> 验证�?..';
     errorEl.style.display = 'none';
 
     setTimeout(() => {
-      btnText.innerHTML = '鉁?鐧诲綍鎴愬姛';
+      btnText.innerHTML = '�?登录成功';
       setTimeout(() => {
-        // 淇濆瓨浼氳瘽浠ょ墝锛堝埛鏂伴〉闈笉涓㈠け锛?        localStorage.setItem('intel_session', 'active');
+        // 保存会话令牌（刷新页面不丢失�?        localStorage.setItem('intel_session', 'active');
         localStorage.setItem('intel_current_user', JSON.stringify(matchedUser));
-        // 鐧诲綍鏃惰嚜鍔ㄦ竻鐞嗚繃鏈熺紦瀛樻暟鎹?        autoCleanCache();
+        // 登录时自动清理过期缓存数�?        autoCleanCache();
         document.getElementById('loginPage').style.display = 'none';
         document.getElementById('mainApp').style.display = 'block';
         loadStorageData();
         updateStats();
         applyUserPermissions();
-        showToast(`馃帀 鐧诲綍鎴愬姛锛屾杩?${matchedUser.username}锛乣, 'success');
+        showToast(`🎉 登录成功，欢�?${matchedUser.username}！`, 'success');
       }, 600);
     }, 800);
   } else {
-    errorEl.textContent = '鉂?璐﹀彿鎴栧瘑鐮侀敊璇紝璇烽噸璇?;
+    errorEl.textContent = '�?账号或密码错误，请重�?;
     errorEl.style.display = 'block';
     document.getElementById('loginPass').value = '';
   }
 }
 
 function handleLogout() {
-  showConfirmModal('馃敀 纭娉ㄩ攢', '纭畾瑕佹敞閿€褰撳墠鐧诲綍鍚楋紵娉ㄩ攢鍚庡皢杩斿洖鐧诲綍椤甸潰銆?, function() {
-    // 娓呴櫎浼氳瘽
+  showConfirmModal('🔒 确认注销', '确定要注销当前登录吗？注销后将返回登录页面�?, function() {
+    // 清除会话
     localStorage.removeItem('intel_session');
     localStorage.removeItem('intel_current_user');
-    // 閲嶇疆鐣岄潰
+    // 重置界面
     document.getElementById('mainApp').style.display = 'none';
     document.getElementById('loginPage').style.display = 'flex';
     document.getElementById('loginUser').value = '';
     document.getElementById('loginPass').value = '';
     document.getElementById('loginBtn').disabled = false;
-    document.getElementById('loginBtnText').textContent = '鐧?褰?;
+    document.getElementById('loginBtnText').textContent = '�?�?;
     document.getElementById('loginError').style.display = 'none';
-    showToast('馃憢 宸插畨鍏ㄦ敞閿€锛屾杩庝笅娆′娇鐢?, 'info');
+    showToast('👋 已安全注销，欢迎下次使�?, 'info');
   });
 }
 
-// ===== 椤甸潰鍒囨崲 =====
+// ===== 页面切换 =====
 function switchPage(page) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
@@ -2847,20 +2848,20 @@ function switchPage(page) {
   document.querySelector(`[data-page="${page}"]`)?.classList.add('active');
 }
 
-// ===== Toast閫氱煡 =====
+// ===== Toast通知 =====
 function showToast(msg, type = 'info') {
   const existing = document.querySelector('.toast');
   if (existing) existing.remove();
 
-  const icons = { success: '鉁?, error: '鉂?, info: '鈩癸笍' };
+  const icons = { success: '�?, error: '�?, info: 'ℹ️' };
   const toast = document.createElement('div');
   toast.className = `toast ${type}`;
-  toast.innerHTML = `<span class="toast-icon">${icons[type] || '鈩癸笍'}</span><span>${msg}</span>`;
+  toast.innerHTML = `<span class="toast-icon">${icons[type] || 'ℹ️'}</span><span>${msg}</span>`;
   document.body.appendChild(toast);
   setTimeout(() => toast.remove(), 3500);
 }
 
-// ===== 瀛樺偍绠＄悊 =====
+// ===== 存储管理 =====
 function loadStorageData() {
   try {
     searchHistory = JSON.parse(localStorage.getItem('intel_history') || '[]');
@@ -2880,7 +2881,7 @@ function saveStorageData() {
   } catch(e) {}
 }
 
-// ===== 缁熻鏁版嵁 =====
+// ===== 统计数据 =====
 function updateStats() {
   document.getElementById('stat-searches').textContent = searchHistory.length;
   document.getElementById('stat-reports').textContent = savedReports.length;
@@ -2891,11 +2892,11 @@ function updateStats() {
   document.getElementById('stat-searches').textContent = searches;
 }
 
-// ===== 绉樺鎼滅储 =====
+// ===== 秘塔搜索 =====
 async function startSearch() {
   const query = document.getElementById('searchQuery').value.trim();
   if (!query) {
-    showToast('璇疯緭鍏ユ悳绱㈠叧閿瘝', 'error');
+    showToast('请输入搜索关键词', 'error');
     return;
   }
 
@@ -2905,12 +2906,12 @@ async function startSearch() {
   const resultsSection = document.getElementById('searchResultsSection');
 
   btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span> 鎼滅储涓?..';
+  btn.innerHTML = '<span class="spinner"></span> 搜索�?..';
   statusEl.style.display = 'flex';
-  document.getElementById('searchStatusText').textContent = '姝ｅ湪閫氳繃绉樺鎼滅储鍏ㄧ綉鎯呮姤...';
+  document.getElementById('searchStatusText').textContent = '正在通过秘塔搜索全网情报...';
   resultsSection.style.display = 'none';
 
-  // 妯℃嫙杩涘害
+  // 模拟进度
   let progress = 0;
   const progressInterval = setInterval(() => {
     progress += Math.random() * 15;
@@ -2922,7 +2923,7 @@ async function startSearch() {
   try {
     let endpoint;
     if (_tryDirectConnection) {
-      endpoint = API_CONFIG.metascout.endpoint; // 直接连接，需要浏览器CORS插件
+      endpoint = API_CONFIG.metascout.endpoint; // ֱ�����ӣ���Ҫ�����CORS���?
     } else if (_useCorsProxy) {
       endpoint = API_CONFIG.metascout.proxyEndpoints[_currentProxyIndex];
     } else {
@@ -2941,27 +2942,27 @@ async function startSearch() {
       })
     });
 
-    if (!response.ok) throw new Error('API璇锋眰澶辫触');
+    if (!response.ok) throw new Error('API请求失败');
 
     const data = await response.json();
     processSearchResults(data, query, false);
   } catch(e) {
     clearInterval(progressInterval);
     btn.disabled = false;
-    btn.innerHTML = '<span>馃殌</span> 寮€濮嬫悳绱?;
+    btn.innerHTML = '<span>🚀</span> 开始搜�?;
     progressWrap.style.display = 'none';
     statusEl.style.display = 'none';
     resultsSection.style.display = 'none';
 
     const isNetworkError = e.message && (e.message.includes('CORS') || e.message.includes('Failed to fetch') || e.message.includes('NetworkError'));
-    const isCorsError = isNetworkError || _useCorsProxy; // 濡傛灉浣跨敤浜嗕唬鐞嗕粛鐒跺け璐ワ紝涔熸樉绀轰唬鐞嗛€夐」
-    const proxyHint = _useCorsProxy ? '<br><b>鎻愮ず锛?/b>褰撳墠浠ｇ悊鍙兘涓嶅彲鐢紝鍙皾璇曞垏鎹唬鐞? : (isNetworkError ? '<br><b>鎻愮ず锛?/b>鍙兘鏄法鍩?CORS)闄愬埗锛屽彲灏濊瘯浣跨敤浠ｇ悊' : '');
-    const reason = '<b>閿欒淇℃伅锛?/b>' + (e.message || '鏈煡閿欒') + '<br><b>鐘舵€侊細</b>缃戠粶璇锋眰鏈垚鍔熷埌杈剧濉旀湇鍔″櫒' + proxyHint;
-    showApiErrorModal('绉樺鎼滅储 API 璋冪敤澶辫触', reason,
+    const isCorsError = isNetworkError || _useCorsProxy; // 如果使用了代理仍然失败，也显示代理选项
+    const proxyHint = _useCorsProxy ? '<br><b>提示�?/b>当前代理可能不可用，可尝试切换代�? : (isNetworkError ? '<br><b>提示�?/b>可能是跨�?CORS)限制，可尝试使用代理' : '');
+    const reason = '<b>错误信息�?/b>' + (e.message || '未知错误') + '<br><b>状态：</b>网络请求未成功到达秘塔服务器' + proxyHint;
+    showApiErrorModal('秘塔搜索 API 调用失败', reason,
       () => {
         processSearchResults(generateMockResults(query), query, true);
         resultsSection.style.display = 'block';
-        showToast('褰撳墠鏄剧ず鐨勬槸妯℃嫙鏁版嵁锛岄潪鐪熷疄鎼滅储缁撴灉', 'warning');
+        showToast('当前显示的是模拟数据，非真实搜索结果', 'warning');
       },
       () => startSearch(),
       isCorsError
@@ -2977,26 +2978,31 @@ async function startSearch() {
     statusEl.style.display = 'none';
     progressWrap.style.display = 'none';
     btn.disabled = false;
-    btn.innerHTML = '<span>馃殌</span> 寮€濮嬫悳绱?;
+    btn.innerHTML = '<span>🚀</span> 开始搜�?;
   }, 800);
 }
 
 let _apiErrorContext = null; // {query, type, resultsSection, yqSection, isCorsError}
-let _useCorsProxy = false; // 鍏ㄥ眬浠ｇ悊寮€鍏?let _currentProxyIndex = 0; // 褰撳墠浣跨敤鐨勪唬鐞嗙储寮?function showApiErrorModal(title, reason, mockCallback, retryCallback, isCorsError) {
+let _useCorsProxy = false; // 全局代理开�?let _currentProxyIndex = 0; // 当前使用的代理索�?function showApiErrorModal(title, reason, mockCallback, retryCallback, isCorsError) {
   _apiErrorContext = { mockCallback, retryCallback, isCorsError };
   document.getElementById('apiErrorTitle').textContent = title;
   document.getElementById('apiErrorReason').innerHTML = reason;
-  // 鏄剧ず/闅愯棌浠ｇ悊鎸夐挳锛堝鏋滃凡缁忓皾璇曡繃浠ｇ悊锛岀户缁樉绀猴紱濡傛灉鏄疌ORS閿欒锛屾樉绀猴級
+  // 显示/隐藏代理按钮和直接连接按钮
   const proxyBtn = document.getElementById('apiErrorProxyBtn');
+  const directBtn = document.getElementById('apiErrorDirectBtn');
   if (proxyBtn) {
     const shouldShowProxy = isCorsError || _useCorsProxy;
     proxyBtn.style.display = shouldShowProxy ? 'inline-block' : 'none';
-    // 鏇存柊鎸夐挳鏂囧瓧
+    // 更新按钮文字
     if (_useCorsProxy && _currentProxyIndex < API_CONFIG.metascout.proxyEndpoints.length - 1) {
-      proxyBtn.innerHTML = '馃寪 鍒囨崲浠ｇ悊鏈嶅姟鍣?;
+      proxyBtn.innerHTML = '🌐 切换代理服务器';
     } else {
-      proxyBtn.innerHTML = '馃寪 浣跨敤CORS浠ｇ悊';
+      proxyBtn.innerHTML = '🌐 使用CORS代理';
     }
+  }
+  // 显示直接连接按钮（CORS错误时显示）
+  if (directBtn) {
+    directBtn.style.display = isCorsError ? 'inline-block' : 'none';
   }
   document.getElementById('apiErrorModal').classList.add('active');
 }
@@ -3012,7 +3018,7 @@ function apiErrorRetry() {
 }
 function apiErrorRetryWithProxy() {
   _useCorsProxy = true;
-  // 濡傛灉褰撳墠浠ｇ悊澶辫触锛屽皾璇曚笅涓€涓唬鐞?  if (_currentProxyIndex < API_CONFIG.metascout.proxyEndpoints.length - 1) {
+  // 如果当前代理失败，尝试下一个代�?  if (_currentProxyIndex < API_CONFIG.metascout.proxyEndpoints.length - 1) {
     _currentProxyIndex++;
     console.log('Switching to proxy', _currentProxyIndex);
   }
@@ -3042,7 +3048,7 @@ function processSearchResults(data, query, isMock) {
     results: currentSearchResults.map(r => ({
       title: r.title,
       snippet: r.snippet || r.content || '',
-      source: r.source || '缃戠粶',
+      source: r.source || '网络',
       url: r.url || '#',
       date: r.date || new Date().toLocaleDateString('zh-CN'),
       author: r.author || ''
@@ -3053,7 +3059,7 @@ function processSearchResults(data, query, isMock) {
   saveStorageData();
   renderHistoryList();
 
-  // 鏇存柊鎼滅储娆℃暟
+  // 更新搜索次数
   const searches = (parseInt(localStorage.getItem('intel_searches') || '0') || 0) + 1;
   localStorage.setItem('intel_searches', searches);
   document.getElementById('stat-searches').textContent = searches;
@@ -3061,19 +3067,19 @@ function processSearchResults(data, query, isMock) {
   renderSearchResults(isMockData);
   document.getElementById('searchResultsSection').style.display = 'block';
   document.getElementById('resultsCount').textContent = currentSearchResults.length;
-  showToast(`鉁?鎵惧埌 ${currentSearchResults.length} 鏉℃儏鎶, 'success');
+  showToast(`�?找到 ${currentSearchResults.length} 条情报`, 'success');
 }
 
 function generateMockResults(query) {
   const bases = [
-    { title: `${query} - 鏈€鏂扮爺绌惰繘灞曟姤鍛奰, snippet: `鍏充簬${query}鐨勬渶鏂扮爺绌惰〃鏄庯紝璇ラ鍩熸鍦ㄥ揩閫熷彂灞曪紝澶氶」鍏抽敭鎶€鏈彇寰楃獊鐮存€ц繘灞曘€傜浉鍏虫暟鎹樉绀猴紝2024骞磋棰嗗煙甯傚満瑙勬ā宸茶揪鏁板崈浜跨編鍏冿紝棰勮鏈潵鍑犲勾灏嗕繚鎸侀珮閫熷闀挎€佸娍銆俙, source: '鐮旂┒鎶ュ憡', url: '#' },
-    { title: `${query}琛屼笟娣卞害鍒嗘瀽锛?024鐗堬級`, snippet: `鏈姤鍛婃繁鍏ュ垎鏋愪簡${query}鐨勪骇涓氶摼缁撴瀯銆佸競鍦虹珵浜夋牸灞€鍙婂彂灞曡秼鍔裤€傜患鍚堟潵鐪嬶紝璇ヨ涓氭澶勪簬蹇€熸垚闀挎湡锛屾妧鏈垱鏂版椿璺冿紝璧勬湰鎸佺画娑屽叆锛岀珵浜夋棩瓒嬫縺鐑堛€俙, source: '琛屼笟鍒嗘瀽', url: '#' },
-    { title: `涓撳瑙ｈ锛?{query}鐨勬湭鏉ヨ蛋鍚慲, snippet: `澶氫綅琛屼笟涓撳琛ㄧず锛?{query}灏嗘垚涓烘湭鏉ョ鎶€鍙戝睍鐨勯噸瑕佹柟鍚戙€傚綋鍓嶉潰涓寸殑鎸戞垬鍖呮嫭鎶€鏈摱棰堛€佷汉鎵嶇煭缂哄拰璧勯噾鍘嬪姏绛夛紝浣嗘€讳綋鍓嶆櫙涔愯銆傚缓璁浉鍏充紒涓氬姞澶х爺鍙戞姇鍏ワ紝鎶撲綇鍘嗗彶鎬ф満閬囥€俙, source: '涓撳瑙傜偣', url: '#' },
-    { title: `${query}鏀跨瓥鍔ㄦ€佷笌鐩戠瓒嬪娍`, snippet: `闅忕潃${query}鐨勫揩閫熷彂灞曪紝鐩戠鏈烘瀯姝ｅ湪鍔犲揩鍒跺畾鐩稿叧鏀跨瓥娉曡銆傛渶鏂版斂绛栧姩鍚戞樉绀猴紝鏀垮簻灏嗗姞寮哄璇ラ鍩熺殑瑙勮寖绠＄悊锛屽悓鏃剁粰浜堜竴瀹氱殑鎵舵寔鏀跨瓥锛屼互淇冭繘鍋ュ悍鍙戝睍銆俙, source: '鏀跨瓥娉曡', url: '#' },
-    { title: `鍏ㄧ悆瑙嗛噹涓嬬殑${query}绔炰簤鎬佸娍鍒嗘瀽`, snippet: `浠庡叏鐞冭瑙掓潵鐪嬶紝${query}宸叉垚涓哄悇鍥界鎶€绔炰簤鐨勯噸瑕佹垬鍦恒€傜編鍥姐€佷腑鍥姐€佹娲茬瓑涓昏缁忔祹浣撻兘鍦ㄥ姞澶у鐩稿叧棰嗗煙鐨勬姇鍏ワ紝浜烘墠浜夊ず鍜屾妧鏈珵浜夋棩瓒嬬櫧鐑寲銆俙, source: '鍥介檯瑙傚療', url: '#' },
-    { title: `${query}鎶€鏈櫧鐨功锛堝畬鏁寸増锛塦, snippet: `鏈櫧鐨功绯荤粺浠嬬粛浜?{query}鐨勬牳蹇冩妧鏈師鐞嗐€佷富瑕佸簲鐢ㄥ満鏅拰鏈潵鍙戝睍鏂瑰悜銆傛妧鏈眰闈紝娣卞害瀛︿範銆佽嚜鐒惰瑷€澶勭悊銆佽绠楁満瑙嗚绛夊叧閿妧鏈彇寰楁樉钁楄繘灞曪紝搴旂敤鍦烘櫙涓嶆柇鎷撳睍銆俙, source: '鎶€鏈櫧鐨功', url: '#' },
-    { title: `${query}鎶曡祫鏈轰細涓庨闄╄瘎浼癭, snippet: `鎶曡祫鏈烘瀯鏅亶鐪嬪ソ${query}鐨勪腑闀挎湡鍙戝睍鍓嶆櫙銆備粠鎶曡祫瑙掑害鐪嬶紝璇ラ鍩熷瓨鍦ㄦ樉钁楃殑缁撴瀯鎬ф満浼氾紝浣嗗悓鏃朵篃闈复鎶€鏈矾绾夸笉纭畾銆佸晢涓氭ā寮忓緟楠岃瘉绛夐闄╁洜绱犮€俙, source: '鎶曡祫鍒嗘瀽', url: '#' },
-    { title: `${query}妗堜緥鐮旂┒涓庡疄璺电粡楠宍, snippet: `閫氳繃瀵瑰涓吀鍨嬫渚嬬殑娣卞叆鍒嗘瀽锛屾€荤粨鍑?{query}鐨勬垚鍔熺粡楠屽拰澶辫触鏁欒銆傛牳蹇冨彂鐜板寘鎷細鎶€鏈惤鍦伴渶瑕佷笌涓氬姟鍦烘櫙绱у瘑缁撳悎锛屽洟闃熻兘鍔涙槸鍏抽敭鍥犵礌锛岀敓鎬佸缓璁捐嚦鍏抽噸瑕併€俙, source: '妗堜緥鐮旂┒', url: '#' }
+    { title: `${query} - 最新研究进展报告`, snippet: `关于${query}的最新研究表明，该领域正在快速发展，多项关键技术取得突破性进展。相关数据显示，2024年该领域市场规模已达数千亿美元，预计未来几年将保持高速增长态势。`, source: '研究报告', url: '#' },
+    { title: `${query}行业深度分析�?024版）`, snippet: `本报告深入分析了${query}的产业链结构、市场竞争格局及发展趋势。综合来看，该行业正处于快速成长期，技术创新活跃，资本持续涌入，竞争日趋激烈。`, source: '行业分析', url: '#' },
+    { title: `专家解读�?{query}的未来走向`, snippet: `多位行业专家表示�?{query}将成为未来科技发展的重要方向。当前面临的挑战包括技术瓶颈、人才短缺和资金压力等，但总体前景乐观。建议相关企业加大研发投入，抓住历史性机遇。`, source: '专家观点', url: '#' },
+    { title: `${query}政策动态与监管趋势`, snippet: `随着${query}的快速发展，监管机构正在加快制定相关政策法规。最新政策动向显示，政府将加强对该领域的规范管理，同时给予一定的扶持政策，以促进健康发展。`, source: '政策法规', url: '#' },
+    { title: `全球视野下的${query}竞争态势分析`, snippet: `从全球视角来看，${query}已成为各国科技竞争的重要战场。美国、中国、欧洲等主要经济体都在加大对相关领域的投入，人才争夺和技术竞争日趋白热化。`, source: '国际观察', url: '#' },
+    { title: `${query}技术白皮书（完整版）`, snippet: `本白皮书系统介绍�?{query}的核心技术原理、主要应用场景和未来发展方向。技术层面，深度学习、自然语言处理、计算机视觉等关键技术取得显著进展，应用场景不断拓展。`, source: '技术白皮书', url: '#' },
+    { title: `${query}投资机会与风险评估`, snippet: `投资机构普遍看好${query}的中长期发展前景。从投资角度看，该领域存在显著的结构性机会，但同时也面临技术路线不确定、商业模式待验证等风险因素。`, source: '投资分析', url: '#' },
+    { title: `${query}案例研究与实践经验`, snippet: `通过对多个典型案例的深入分析，总结�?{query}的成功经验和失败教训。核心发现包括：技术落地需要与业务场景紧密结合，团队能力是关键因素，生态建设至关重要。`, source: '案例研究', url: '#' }
   ];
 
   return { results: bases };
@@ -3082,14 +3088,14 @@ function generateMockResults(query) {
 function renderSearchResults(isMockData) {
   const container = document.getElementById('searchResults');
   if (!currentSearchResults.length) {
-    container.innerHTML = '<div class="empty-state"><div class="empty-icon">馃攳</div><h3>鏈壘鍒扮浉鍏虫儏鎶?/h3><p>灏濊瘯鏇存崲鍏抽敭璇嶆垨浣跨敤鏇村娉涚殑鎼滅储璇?/p></div>';
+    container.innerHTML = '<div class="empty-state"><div class="empty-icon">🔍</div><h3>未找到相关情�?/h3><p>尝试更换关键词或使用更宽泛的搜索�?/p></div>';
     return;
   }
   
-  // 鏄剧ず妯℃嫙鏁版嵁璀﹀憡
+  // 显示模拟数据警告
   let warningHtml = '';
   if (isMockData) {
-    warningHtml = '<div class="mock-warning">鈿狅笍 褰撳墠鏄剧ず鐨勬槸<strong>妯℃嫙鏁版嵁</strong>锛岄潪鐪熷疄鎼滅储缁撴灉銆傝妫€鏌?API 閰嶇疆鎴栫綉缁滆繛鎺ャ€?/div>';
+    warningHtml = '<div class="mock-warning">⚠️ 当前显示的是<strong>模拟数据</strong>，非真实搜索结果。请检�?API 配置或网络连接�?/div>';
   }
 
   container.innerHTML = warningHtml + currentSearchResults.map((r, i) => `
@@ -3099,10 +3105,10 @@ function renderSearchResults(isMockData) {
       </div>
       <div class="result-snippet">${r.snippet || r.content || ''}</div>
       <div class="result-meta">
-        ${r.source ? `<span>馃搨 ${r.source}</span>` : ''}
-        ${r.date ? `<span>馃搮 ${r.date}</span>` : `<span>馃搮 ${new Date().toLocaleDateString('zh-CN')}</span>`}
-        ${r.author ? `<span>馃懁 ${r.author}</span>` : ''}
-        <span>馃啍 #${String(i + 1).padStart(3, '0')}</span>
+        ${r.source ? `<span>📂 ${r.source}</span>` : ''}
+        ${r.date ? `<span>📅 ${r.date}</span>` : `<span>📅 ${new Date().toLocaleDateString('zh-CN')}</span>`}
+        ${r.author ? `<span>👤 ${r.author}</span>` : ''}
+        <span>🆔 #${String(i + 1).padStart(3, '0')}</span>
       </div>
     </div>
   `).join('');
@@ -3128,7 +3134,7 @@ function selectAllResults() {
   }
 }
 
-// ===== DeepSeek鍒嗘瀽 =====
+// ===== DeepSeek分析 =====
 function setAnalysisMode(mode) {
   analysisMode = mode;
   document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
@@ -3144,7 +3150,7 @@ function toggleOption(chip) {
 async function startAnalysis() {
   const topic = document.getElementById('analysisTopic').value.trim();
   if (!topic) {
-    showToast('璇疯緭鍏ュ垎鏋愪富棰?, 'error');
+    showToast('请输入分析主�?, 'error');
     return;
   }
 
@@ -3154,10 +3160,10 @@ async function startAnalysis() {
   const reportBody = document.getElementById('reportBody');
 
   statusEl.style.display = 'flex';
-  document.getElementById('analysisStatusText').textContent = '姝ｅ湪閫氳繃绉樺鎼滅储鎯呮姤...';
+  document.getElementById('analysisStatusText').textContent = '正在通过秘塔搜索情报...';
   resultsEl.style.display = 'none';
 
-  // 闃舵1锛氭悳绱?  let progress = 0;
+  // 阶段1：搜�?  let progress = 0;
   const progressInterval = setInterval(() => {
     progress += Math.random() * 10;
     if (progress > 85) progress = 85;
@@ -3165,7 +3171,7 @@ async function startAnalysis() {
     document.getElementById('analysisProgressText').textContent = Math.round(progress) + '%';
   }, 200);
 
-  // 鑾峰彇鎼滅储缁撴灉
+  // 获取搜索结果
   let searchData = [];
   const useSearch = document.querySelector('.option-chip:nth-child(2).selected') !== null;
   const analysisEndpoint = _useCorsProxy ? API_CONFIG.metascout.proxyEndpoints[_currentProxyIndex] : API_CONFIG.metascout.endpoint;
@@ -3189,51 +3195,51 @@ async function startAnalysis() {
     searchData = generateMockResults(topic).results;
   }
 
-  document.getElementById('analysisStatusText').textContent = '绉樺鎼滅储瀹屾垚锛屾鍦ㄨ皟鐢―eepSeek娣卞害鍒嗘瀽...';
+  document.getElementById('analysisStatusText').textContent = '秘塔搜索完成，正在调用DeepSeek深度分析...';
 
-  // 闃舵2锛欴eepSeek鍒嗘瀽
+  // 阶段2：DeepSeek分析
   analysisStartTime = Date.now();
-  const contextInfo = searchData.map((r, i) => `[鎯呮姤${i+1}] ${r.title}\n鏉ユ簮: ${r.source || '缃戠粶'}\n鎽樿: ${r.snippet || ''}`).join('\n\n');
+  const contextInfo = searchData.map((r, i) => `[情报${i+1}] ${r.title}\n来源: ${r.source || '网络'}\n摘要: ${r.snippet || ''}`).join('\n\n');
 
   const modeInstructions = {
-    standard: '璇风敓鎴愪竴浠芥爣鍑嗘牸寮忕殑鎯呮姤鍒嗘瀽鎶ュ憡锛屽寘鍚墽琛屾憳瑕併€佸叧閿彂鐜般€佽缁嗗垎鏋愬拰缁撹寤鸿銆?,
-    deep: '璇疯繘琛屾繁搴︾爺绌跺垎鏋愶紝闄や簡鏍囧噯鍐呭澶栵紝澧炲姞鑳屾櫙鐮旂┒銆佸鏂硅鐐瑰姣斻€佹湭鏉ヨ秼鍔块娴嬪拰椋庨櫓璇勪及銆?,
-    risk: '璇疯繘琛屽叏闈㈢殑椋庨櫓璇勪及鍒嗘瀽锛岄噸鐐硅瘎浼版満閬囥€佸▉鑳併€佷紭鍔裤€佸姡鍔匡紝缁欏嚭椋庨櫓绛夌骇鍜屽缓璁€?
+    standard: '请生成一份标准格式的情报分析报告，包含执行摘要、关键发现、详细分析和结论建议�?,
+    deep: '请进行深度研究分析，除了标准内容外，增加背景研究、多方观点对比、未来趋势预测和风险评估�?,
+    risk: '请进行全面的风险评估分析，重点评估机遇、威胁、优势、劣势，给出风险等级和建议�?
   };
 
-  const systemPrompt = `浣犳槸涓€浣嶄笓涓氱殑鎯呮姤鍒嗘瀽涓撳銆傝鍩轰簬浠ヤ笅鎼滈泦鐨勬儏鎶ヤ俊鎭紝鐢熸垚涓€浠戒笓涓氥€佸瑙傘€佺粨鏋勬竻鏅扮殑鎯呮姤鍒嗘瀽鎶ュ憡銆?
-鍒嗘瀽瑕佹眰锛?1. 璇█锛氫娇鐢ㄤ腑鏂?2. 鏍煎紡锛歁arkdown鏍煎紡
+  const systemPrompt = `你是一位专业的情报分析专家。请基于以下搜集的情报信息，生成一份专业、客观、结构清晰的情报分析报告�?
+分析要求�?1. 语言：使用中�?2. 格式：Markdown格式
 3. ${modeInstructions[analysisMode] || modeInstructions.standard}
-4. 椋庢牸锛氫笓涓氥€佸瑙傘€佹湁娣卞害
+4. 风格：专业、客观、有深度
 
-璇蜂弗鏍兼寜鐓т互涓婱arkdown鏍煎紡杈撳嚭鎶ュ憡锛堜笉瑕佸湪鏍煎紡璇存槑涔嬪娣诲姞棰濆璇存槑锛夛細
+请严格按照以下Markdown格式输出报告（不要在格式说明之外添加额外说明）：
 
-# 銆愭儏鎶ュ垎鏋愭姤鍛娿€?## 涓€銆佹墽琛屾憳瑕?锛堢畝瑕佹鎷姤鍛婃牳蹇冨唴瀹癸紝2-3娈碉級
+# 【情报分析报告�?## 一、执行摘�?（简要概括报告核心内容，2-3段）
 
-## 浜屻€佹儏鎶ユ潵婧愭瑙?锛堝叡N鏉℃儏鎶ユ潵婧愶級
-- 鏉ユ簮绫诲瀷鍒嗗竷
-- 淇℃伅鍙俊搴﹁瘎浼?
-## 涓夈€佸叧閿彂鐜?### 3.1 涓昏鍙戠幇涓€
-### 3.2 涓昏鍙戠幇浜?### 3.3 涓昏鍙戠幇涓?
-## 鍥涖€佹繁搴﹀垎鏋?### 4.1 鑳屾櫙涓庣幇鐘?### 4.2 鍏抽敭椹卞姩鍥犵礌
-### 4.3 鍒╃泭鐩稿叧鏂瑰垎鏋?
-## 浜斻€佽秼鍔块娴?锛堝熀浜庣幇鏈夋儏鎶ヨ繘琛屾湭鏉ヨ秼鍔跨爺鍒わ級
+## 二、情报来源概�?（共N条情报来源）
+- 来源类型分布
+- 信息可信度评�?
+## 三、关键发�?### 3.1 主要发现一
+### 3.2 主要发现�?### 3.3 主要发现�?
+## 四、深度分�?### 4.1 背景与现�?### 4.2 关键驱动因素
+### 4.3 利益相关方分�?
+## 五、趋势预�?（基于现有情报进行未来趋势研判）
 
-## 鍏€侀闄╀笌鏈洪亣璇勪及
-| 绫诲埆 | 鍐呭 | 璇勭骇 |
+## 六、风险与机遇评估
+| 类别 | 内容 | 评级 |
 |------|------|------|
-| 鏈洪亣 | | 猸愨瓙猸?|
-| 椋庨櫓 | | 猸愨瓙 |
+| 机遇 | | ⭐⭐�?|
+| 风险 | | ⭐⭐ |
 
-## 涓冦€佺粨璁轰笌寤鸿
-### 7.1 鏍稿績缁撹
-### 7.2 琛屽姩寤鸿
+## 七、结论与建议
+### 7.1 核心结论
+### 7.2 行动建议
 1.
 2.
 3.
 
 ---
-*鏈姤鍛婄敱DeepSeek AI鍒嗘瀽寮曟搸鐢熸垚 | 鎯呮姤鏉ユ簮锛氱濉旀悳绱?| 鐢熸垚鏃堕棿锛?{new Date().toLocaleString('zh-CN')}*`;
+*本报告由DeepSeek AI分析引擎生成 | 情报来源：秘塔搜�?| 生成时间�?{new Date().toLocaleString('zh-CN')}*`;
 
   let reportContent = '';
   try {
@@ -3247,7 +3253,7 @@ async function startAnalysis() {
         model: document.getElementById('modelSelect').value,
         messages: [
           { role: 'system', content: systemPrompt },
-          { role: 'user', content: `璇峰垎鏋愪互涓嬫儏鎶ワ細\n\n${contextInfo}` }
+          { role: 'user', content: `请分析以下情报：\n\n${contextInfo}` }
         ],
         temperature: parseFloat(document.getElementById('tempValue').textContent),
         max_tokens: parseInt(document.getElementById('maxTokens').value) || 4096
@@ -3260,7 +3266,7 @@ async function startAnalysis() {
     }
   } catch(e) {}
 
-  // 闄嶇骇锛氱敓鎴愭ā鎷熸姤鍛?  if (!reportContent) {
+  // 降级：生成模拟报�?  if (!reportContent) {
     reportContent = generateMockReport(topic, searchData.length, analysisMode);
   }
 
@@ -3274,16 +3280,16 @@ async function startAnalysis() {
     resultsEl.style.display = 'block';
     currentReportContent = reportContent;
 
-    // 娓叉煋鎶ュ憡
+    // 渲染报告
     reportBody.innerHTML = renderMarkdown(reportContent);
 
-    // 鏇存柊鍏冩暟鎹?    document.getElementById('reportTitle').textContent = `鍏充簬"${topic}"鐨勬儏鎶ュ垎鏋愭姤鍛奰;
+    // 更新元数�?    document.getElementById('reportTitle').textContent = `关于"${topic}"的情报分析报告`;
     document.getElementById('metaTopic').textContent = topic;
-    document.getElementById('metaMode').textContent = { standard: '鏍囧噯鍒嗘瀽', deep: '娣卞害鐮旂┒', risk: '椋庨櫓璇勪及' }[analysisMode];
+    document.getElementById('metaMode').textContent = { standard: '标准分析', deep: '深度研究', risk: '风险评估' }[analysisMode];
     document.getElementById('metaSources').textContent = searchData.length;
     document.getElementById('metaTime').textContent = new Date().toLocaleString('zh-CN');
 
-    // 淇濆瓨鎶ュ憡
+    // 保存报告
     const reportEntry = {
       id: Date.now(),
       topic: topic,
@@ -3298,167 +3304,167 @@ async function startAnalysis() {
     saveStorageData();
     renderReportList();
 
-    // 鏇存柊缁熻
+    // 更新统计
     document.getElementById('stat-reports').textContent = savedReports.length;
     const avgTime = savedReports.reduce((acc, r) => acc + parseInt(r.duration), 0) / savedReports.length;
     document.getElementById('stat-time').textContent = Math.round(avgTime) + 's';
 
-    showToast('鉁?鎶ュ憡鐢熸垚瀹屾垚锛?, 'success');
+    showToast('�?报告生成完成�?, 'success');
   }, 600);
 }
 
 function generateMockReport(topic, sourceCount, mode) {
-  const modeTitle = { standard: '鏍囧噯鍒嗘瀽鎶ュ憡', deep: '娣卞害鐮旂┒鎶ュ憡', risk: '椋庨櫓璇勪及鎶ュ憡' };
-  const baseContent = `鏈姤鍛婂熀浜庣濉旀悳绱㈤噰闆嗙殑${sourceCount}鏉℃儏鎶ヤ俊鎭紝瀵?${topic}"杩涜鍏ㄦ柟浣嶆儏鎶ュ垎鏋愩€?
-**鍏抽敭鍙戠幇锛?*
-鈥?璇ラ鍩熸澶勪簬蹇€熷彂灞曟湡锛屾妧鏈垱鏂版椿璺?鈥?甯傚満瑙勬ā鎸佺画鎵╁ぇ锛岃祫鏈儹搴︿笉鍑?鈥?鏀跨瓥鐜閫愭瀹屽杽锛岀洃绠℃鏋舵棩瓒嬫竻鏅?鈥?绔炰簤鏍煎眬姝ｅ湪閲嶅锛屾柊鐨勫競鍦烘満閬囨秾鐜?
-**鏍稿績缁撹锛?*
-寤鸿鐩稿叧鏂瑰瘑鍒囧叧娉ㄦ妧鏈紨杩涜矾绾匡紝鎶婃彙鏀跨瓥绐楀彛鏈燂紝绉瀬甯冨眬鎴樼暐鎬ц禌閬撱€傚悓鏃堕渶瑕佸鎱庤瘎浼版綔鍦ㄩ闄╋紝鍒跺畾瀹屽杽鐨勫簲瀵归妗堛€?
-**琛屽姩寤鸿锛?*
-1. 鍔犲ぇ鏍稿績鎶€鏈爺鍙戞姇鍏?2. 寤虹珛鍋ュ叏鏁版嵁瀹夊叏浣撶郴
-3. 娣卞寲浜у鐮斿崗鍚屽悎浣?4. 绉瀬鍙備笌琛屼笟鏍囧噯鍒跺畾`;
+  const modeTitle = { standard: '标准分析报告', deep: '深度研究报告', risk: '风险评估报告' };
+  const baseContent = `本报告基于秘塔搜索采集的${sourceCount}条情报信息，�?${topic}"进行全方位情报分析�?
+**关键发现�?*
+�?该领域正处于快速发展期，技术创新活�?�?市场规模持续扩大，资本热度不�?�?政策环境逐步完善，监管框架日趋清�?�?竞争格局正在重塑，新的市场机遇涌�?
+**核心结论�?*
+建议相关方密切关注技术演进路线，把握政策窗口期，积极布局战略性赛道。同时需要审慎评估潜在风险，制定完善的应对预案�?
+**行动建议�?*
+1. 加大核心技术研发投�?2. 建立健全数据安全体系
+3. 深化产学研协同合�?4. 积极参与行业标准制定`;
 
-  return `# 銆愭儏鎶ュ垎鏋愭姤鍛娿€?
-## 涓€銆佹墽琛屾憳瑕?
-鏈姤鍛婂熀浜庣濉擜I鎼滅储绯荤粺閲囬泦鐨?{sourceCount}鏉℃渶鏂版儏鎶ワ紝瀵?**${topic}**"杩涜绯荤粺姊崇悊涓庢繁搴﹀垎鏋愩€傞€氳繃瀵瑰鏂规潵婧愮殑浜ゅ弶楠岃瘉锛屾姤鍛婁粠鐜扮姸璇勪及銆佽秼鍔跨爺鍒ゃ€侀闄╄瘑鍒拰绛栫暐寤鸿鍥涗釜缁村害灞曞紑璁鸿堪锛屽姏姹備负鍐崇瓥鑰呮彁渚涘瑙傘€佷笓涓氥€佹湁浠峰€肩殑鎯呮姤鍙傝€冦€?
-鎯呮姤鏉ユ簮娑电洊琛屼笟鐮旂┒鎶ュ憡銆佹斂绛栨枃浠躲€佷笓瀹惰璋堛€佹柊闂昏祫璁強鎶€鏈枃鐚瓑澶氱绫诲瀷锛屼俊鎭鐩栧浗鍐呭鐨勬渶鏂板姩鎬併€傚垎鏋愯繃绋嬮噰鐢ㄥ畾閲忎笌瀹氭€х浉缁撳悎鐨勬柟娉曪紝纭繚缁撹鐨勫彲闈犳€у拰鍙搷浣滄€с€?
-## 浜屻€佹儏鎶ユ潵婧愭瑙?
-鏈鎯呮姤閲囬泦鍏辫幏鍙?**${sourceCount}鏉?* 鐩稿叧鎯呮姤锛屼富瑕佹潵婧愬垎甯冨涓嬶細
+  return `# 【情报分析报告�?
+## 一、执行摘�?
+本报告基于秘塔AI搜索系统采集�?{sourceCount}条最新情报，�?**${topic}**"进行系统梳理与深度分析。通过对多方来源的交叉验证，报告从现状评估、趋势研判、风险识别和策略建议四个维度展开论述，力求为决策者提供客观、专业、有价值的情报参考�?
+情报来源涵盖行业研究报告、政策文件、专家访谈、新闻资讯及技术文献等多种类型，信息覆盖国内外的最新动态。分析过程采用定量与定性相结合的方法，确保结论的可靠性和可操作性�?
+## 二、情报来源概�?
+本次情报采集共获�?**${sourceCount}�?* 相关情报，主要来源分布如下：
 
-| 鏉ユ簮绫诲瀷 | 鏁伴噺 | 鍙俊搴﹁瘎浼?|
+| 来源类型 | 数量 | 可信度评�?|
 |----------|------|------------|
-| 琛屼笟鐮旂┒鎶ュ憡 | ${Math.ceil(sourceCount * 0.35)} | 猸愨瓙猸愨瓙 |
-| 鏂伴椈濯掍綋鎶ラ亾 | ${Math.ceil(sourceCount * 0.25)} | 猸愨瓙猸?|
-| 鏀跨瓥瀹樻柟鏂囦欢 | ${Math.ceil(sourceCount * 0.15)} | 猸愨瓙猸愨瓙猸?|
-| 涓撳瀛︽湳瑙傜偣 | ${Math.ceil(sourceCount * 0.15)} | 猸愨瓙猸愨瓙 |
-| 鎶€鏈枃妗?鐧界毊涔?| ${Math.ceil(sourceCount * 0.1)} | 猸愨瓙猸愨瓙 |
+| 行业研究报告 | ${Math.ceil(sourceCount * 0.35)} | ⭐⭐⭐⭐ |
+| 新闻媒体报道 | ${Math.ceil(sourceCount * 0.25)} | ⭐⭐�?|
+| 政策官方文件 | ${Math.ceil(sourceCount * 0.15)} | ⭐⭐⭐⭐�?|
+| 专家学术观点 | ${Math.ceil(sourceCount * 0.15)} | ⭐⭐⭐⭐ |
+| 技术文�?白皮�?| ${Math.ceil(sourceCount * 0.1)} | ⭐⭐⭐⭐ |
 
-**淇℃伅鏃舵晥鎬э細** 涓昏鎯呮姤闆嗕腑鍦ㄦ渶杩?涓湀鍐咃紝鍏锋湁杈冨己鐨勬椂鏁堟€у拰鍙傝€冧环鍊笺€?
-## 涓夈€佸叧閿彂鐜?
-### 3.1 鎶€鏈垱鏂版寔缁姞閫?
-浠庨噰闆嗙殑鎯呮姤鏉ョ湅锛?*${topic}** 鐩稿叧鎶€鏈缁忓巻蹇€熻凯浠ｃ€傚涓爺绌舵満鏋勫拰棰嗗啗浼佷笟鍦ㄦ牳蹇冪畻娉曘€佸伐绋嬪疄鐜扮瓑鏂归潰鍙栧緱绐佺牬鎬ц繘灞曘€傛妧鏈矾绾垮憟鐜板鍏冨寲鍙戝睍鎬佸娍锛屽憟鐜板嚭"鐧捐姳榻愭斁"鐨勫垱鏂版牸灞€銆?
-### 3.2 甯傚満瑙勬ā绋虫鎵╁ぇ
+**信息时效性：** 主要情报集中在最�?个月内，具有较强的时效性和参考价值�?
+## 三、关键发�?
+### 3.1 技术创新持续加�?
+从采集的情报来看�?*${topic}** 相关技术正经历快速迭代。多个研究机构和领军企业在核心算法、工程实现等方面取得突破性进展。技术路线呈现多元化发展态势，呈现出"百花齐放"的创新格局�?
+### 3.2 市场规模稳步扩大
 
-缁煎悎鍚勬柟鏁版嵁锛岃棰嗗煙甯傚満瑙勬ā鍛堢幇涓や綅鏁板闀挎€佸娍銆傝祫鏈寔缁秾鍏ワ紝鍒濆垱浼佷笟铻嶈祫娲昏穬銆傚€煎緱鍏虫敞鐨勬槸锛屽ご閮ㄤ紒涓氱殑甯傚満浠介閫愭绋冲畾锛屾柊杩涘叆鑰呴潰涓存洿楂樼殑鎶€鏈拰璧勯噾闂ㄦ銆?
-### 3.3 鏀跨瓥鐜鏃ヨ秼瀹屽杽
+综合各方数据，该领域市场规模呈现两位数增长态势。资本持续涌入，初创企业融资活跃。值得关注的是，头部企业的市场份额逐步稳定，新进入者面临更高的技术和资金门槛�?
+### 3.3 政策环境日趋完善
 
-鐩戠灞傞潰鏄庢樉鍔犲揩浜嗙浉鍏虫斂绛栨硶瑙勭殑鍒跺畾姝ヤ紣銆傛渶鏂版斂绛栧姩鍚戞樉绀猴紝鐩戠鎬濊矾鍏奸【"淇冨彂灞?涓?闃查闄?鐨勫弻閲嶇洰鏍囷紝鏃负琛屼笟棰勭暀鍙戝睍绌洪棿锛屼篃寮鸿皟瑙勮寖杩愯惀鐨勯噸瑕佹€с€?
-### 3.4 绔炰簤鏍煎眬娣卞害璋冩暣
+监管层面明显加快了相关政策法规的制定步伐。最新政策动向显示，监管思路兼顾"促发�?�?防风�?的双重目标，既为行业预留发展空间，也强调规范运营的重要性�?
+### 3.4 竞争格局深度调整
 
-甯傚満绔炰簤浠?鎶€鏈┍鍔?鍚?鐢熸€佺珵浜?杞彉銆備骇涓氶摼涓婁笅娓稿崗鍚屻€佽法鐣岃瀺鍚堟垚涓烘柊瓒嬪娍銆備紒涓氬湪鎶€鏈爺鍙戙€佷骇鍝佽惤鍦板拰鐢熸€佸缓璁剧瓑鏂归潰鐨勭患鍚堝疄鍔涳紝鎴愪负鍐冲畾绔炰簤鏍煎眬鐨勫叧閿洜绱犮€?
-## 鍥涖€佹繁搴﹀垎鏋?
-### 4.1 鑳屾櫙涓庣幇鐘?
-**${topic}** 宸叉垚涓哄綋鍓嶆渶鍙楀叧娉ㄧ殑绉戞妧棰嗗煙涔嬩竴銆備粠鍙戝睍鍘嗙▼鏉ョ湅锛岃棰嗗煙缁忓巻浜嗕粠姒傚康楠岃瘉鍒拌妯″寲搴旂敤鐨勬紨杩涜繃绋嬨€傚綋鍓嶏紝鏁翠綋浜т笟鐢熸€佸垵姝ュ舰鎴愶紝浣嗚窛绂绘垚鐔熸湡浠嶆湁杈冨ぇ鍙戝睍绌洪棿銆?
-### 4.2 鍏抽敭椹卞姩鍥犵礌
+市场竞争�?技术驱�?�?生态竞�?转变。产业链上下游协同、跨界融合成为新趋势。企业在技术研发、产品落地和生态建设等方面的综合实力，成为决定竞争格局的关键因素�?
+## 四、深度分�?
+### 4.1 背景与现�?
+**${topic}** 已成为当前最受关注的科技领域之一。从发展历程来看，该领域经历了从概念验证到规模化应用的演进过程。当前，整体产业生态初步形成，但距离成熟期仍有较大发展空间�?
+### 4.2 关键驱动因素
 
-1. **鎶€鏈獊鐮?*锛氭牳蹇冪畻娉曞拰宸ョ▼鑳藉姏鎸佺画鎻愬崌锛屼负搴旂敤钀藉湴濂犲畾鍩虹
-2. **闇€姹傚崌绾?*锛氬競鍦哄鏅鸿兘鍖栬В鍐虫柟妗堢殑闇€姹傛棩鐩婂己鐑?3. **璧勬湰鏀寔**锛?VC/PE鍙婁骇涓氳祫鏈寔缁姞澶ф姇鍏ュ姏搴?4. **鏀跨瓥寮曞**锛氶《灞傝璁￠€愭娓呮櫚锛屼骇涓氭敮鎸佹斂绛栫浉缁у嚭鍙?5. **浜烘墠绉疮**锛氫笓涓氫汉鎵嶅偍澶囨寔缁墿澶э紝鐮斿彂鍥㈤槦鑳藉姏澧炲己
+1. **技术突�?*：核心算法和工程能力持续提升，为应用落地奠定基础
+2. **需求升�?*：市场对智能化解决方案的需求日益强�?3. **资本支持**�?VC/PE及产业资本持续加大投入力�?4. **政策引导**：顶层设计逐步清晰，产业支持政策相继出�?5. **人才积累**：专业人才储备持续扩大，研发团队能力增强
 
-### 4.3 鍒╃泭鐩稿叧鏂瑰垎鏋?
-| 鍒╃泭鏂?| 绔嬪満 | 涓昏璇夋眰 | 褰卞搷绋嬪害 |
+### 4.3 利益相关方分�?
+| 利益�?| 立场 | 主要诉求 | 影响程度 |
 |--------|------|----------|----------|
-| 鏀垮簻閮ㄩ棬 | 鐩戠+鎵舵寔 | 瑙勮寖鍙戝睍銆佸浗瀹跺畨鍏?| 猸愨瓙猸愨瓙猸?|
-| 琛屼笟棰嗗啗浼佷笟 | 甯傚満鍖栫珵浜?| 鎵╁ぇ浠介銆佹妧鏈鍏?| 猸愨瓙猸愨瓙 |
-| 涓皬浼佷笟 | 宸紓鍖栫珵浜?| 瀵绘壘缁嗗垎甯傚満 | 猸愨瓙猸?|
-| 鎶曡祫鏈烘瀯 | 璐㈠姟鍥炴姤 | 浠峰€煎彂鐜颁笌澧炲€?| 猸愨瓙猸愨瓙 |
-| 鏅€氱敤鎴?| 浣跨敤鑰?| 渚挎嵎銆佸畨鍏ㄣ€佷綆鎴愭湰 | 猸愨瓙猸愨瓙 |
+| 政府部门 | 监管+扶持 | 规范发展、国家安�?| ⭐⭐⭐⭐�?|
+| 行业领军企业 | 市场化竞�?| 扩大份额、技术领�?| ⭐⭐⭐⭐ |
+| 中小企业 | 差异化竞�?| 寻找细分市场 | ⭐⭐�?|
+| 投资机构 | 财务回报 | 价值发现与增�?| ⭐⭐⭐⭐ |
+| 普通用�?| 使用�?| 便捷、安全、低成本 | ⭐⭐⭐⭐ |
 
-## 浜斻€佽秼鍔块娴?
-鍩轰簬瀵圭幇鏈夋儏鎶ョ殑缁煎悎鐮斿垽锛屾湭鏉?-3骞?*${topic}** 棰嗗煙棰勮灏嗗憟鐜颁互涓嬪彂灞曡秼鍔匡細
+## 五、趋势预�?
+基于对现有情报的综合研判，未�?-3�?*${topic}** 领域预计将呈现以下发展趋势：
 
-- **鎶€鏈眰闈?*锛氬妯℃€佽瀺鍚堛€佺浜戝崗鍚屽皢鎴愪负涓绘祦鎶€鏈矾绾匡紱鎺ㄧ悊鏁堢巼灏嗘寔缁紭鍖?- **甯傚満灞傞潰**锛氬簲鐢ㄥ満鏅繘涓€姝ユ嫇灞曪紝浠嶣绔悜C绔笚閫忥紱鍨傜洿棰嗗煙灏嗘秾鐜扮粏鍒嗘満浼?- **绔炰簤灞傞潰**锛氳涓氭暣鍚堝姞閫燂紝椹お鏁堝簲鍑告樉锛涚敓鎬佺珵浜夋垚涓轰富鏃嬪緥
-- **鏀跨瓥灞傞潰**锛氬垎绫荤洃绠°€佸垎绾х鐞嗗皢鎴愪负涓昏鐩戠鎬濊矾锛涜涓氭爣鍑嗗姞閫熷埗瀹?- **浜烘墠灞傞潰**锛氶珮绔汉鎵嶄簤澶虹櫧鐑寲锛涗骇瀛︾爺鍗忓悓鍩瑰吇妯″紡娣卞寲
+- **技术层�?*：多模态融合、端云协同将成为主流技术路线；推理效率将持续优�?- **市场层面**：应用场景进一步拓展，从B端向C端渗透；垂直领域将涌现细分机�?- **竞争层面**：行业整合加速，马太效应凸显；生态竞争成为主旋律
+- **政策层面**：分类监管、分级管理将成为主要监管思路；行业标准加速制�?- **人才层面**：高端人才争夺白热化；产学研协同培养模式深化
 
-> 鈿狅笍 **涓嶇‘瀹氭€ф彁绀猴細** 鎶€鏈矾绾垮瓨鍦ㄤ笉纭畾鎬э紱鍥介檯鐜鍙樺寲鍙兘甯︽潵鎵板姩锛涘晢涓氭ā寮忕殑楠岃瘉浠嶉渶鏃堕棿銆?
-## 鍏€侀闄╀笌鏈洪亣璇勪及
+> ⚠️ **不确定性提示：** 技术路线存在不确定性；国际环境变化可能带来扰动；商业模式的验证仍需时间�?
+## 六、风险与机遇评估
 
-| 绫诲埆 | 鍏蜂綋鍐呭 | 椋庨櫓/鏈洪亣绛夌骇 |
+| 类别 | 具体内容 | 风险/机遇等级 |
 |------|----------|--------------|
-| 鏈洪亣 | 甯傚満闇€姹傛寔缁噴鏀?| 猸愨瓙猸愨瓙猸?|
-| 鏈洪亣 | 鏀跨瓥鏀寔鍔涘害鍔犲ぇ | 猸愨瓙猸愨瓙 |
-| 鏈洪亣 | 鎶€鏈垚鐔熷害鎻愬崌 | 猸愨瓙猸愨瓙 |
-| 鏈洪亣 | 浜т笟鐢熸€侀€愭瀹屽杽 | 猸愨瓙猸?|
-| 椋庨櫓 | 鎶€鏈矾绾夸笉纭畾鎬?| 猸愨瓙猸?|
-| 椋庨櫓 | 浜烘墠渚涚粰涓嶈冻 | 猸愨瓙猸?|
-| 椋庨櫓 | 鐩戠鏀跨瓥鏀剁揣 | 猸愨瓙 |
-| 椋庨櫓 | 璧勬湰娉℃搏椋庨櫓 | 猸愨瓙猸?|
+| 机遇 | 市场需求持续释�?| ⭐⭐⭐⭐�?|
+| 机遇 | 政策支持力度加大 | ⭐⭐⭐⭐ |
+| 机遇 | 技术成熟度提升 | ⭐⭐⭐⭐ |
+| 机遇 | 产业生态逐步完善 | ⭐⭐�?|
+| 风险 | 技术路线不确定�?| ⭐⭐�?|
+| 风险 | 人才供给不足 | ⭐⭐�?|
+| 风险 | 监管政策收紧 | ⭐⭐ |
+| 风险 | 资本泡沫风险 | ⭐⭐�?|
 
-### SWOT鐭╅樀
+### SWOT矩阵
 
-| | **鏈夊府鍔?* | **鏈夊鐨?* |
+| | **有帮�?* | **有害�?* |
 |---|---|---|
-| **鍐呴儴** | **浼樺娍(S)**锛氭妧鏈Н绱€佷汉鎵嶅偍澶囥€佸厛鍙戜紭鍔?| **鍔ｅ娍(W)**锛氳祫閲戝帇鍔涖€佺粡楠屼笉瓒炽€佸搧鐗岃鐭?|
-| **澶栭儴** | **鏈洪亣(O)**锛氬競鍦洪渶姹傘€佹斂绛栨敮鎸併€佽祫鏈潚鐫?| **濞佽儊(T)**锛氱珵浜夊姞鍓с€佹妧鏈皝閿併€佺洃绠￠闄?|
+| **内部** | **优势(S)**：技术积累、人才储备、先发优�?| **劣势(W)**：资金压力、经验不足、品牌认�?|
+| **外部** | **机遇(O)**：市场需求、政策支持、资本青�?| **威胁(T)**：竞争加剧、技术封锁、监管风�?|
 
-## 涓冦€佺粨璁轰笌寤鸿
+## 七、结论与建议
 
-### 7.1 鏍稿績缁撹
+### 7.1 核心结论
 
-缁忚繃绯荤粺鍒嗘瀽锛?*${topic}** 棰嗗煙鍛堢幇鍑?鏈洪亣涓庢寫鎴樺苟瀛樸€侀暱鏈熷悜濂?鐨勬€讳綋鎬佸娍锛?
-1. **鍙戝睍纭畾鎬ц緝楂?*锛氭妧鏈紨杩涘拰搴旂敤钀藉湴鐨勬柟鍚戞竻鏅帮紝浜т笟瓒嬪娍鏄庣‘
-2. **绔炰簤灏嗗姞鍓?*锛氶殢鐫€甯傚満瑙勬ā鎵╁ぇ鍜岄棬妲涙彁鍗囷紝绔炰簤灏嗘洿鍔犳縺鐑?3. **宸紓鍖栨槸鍏抽敭**锛氬湪鍚岃川鍖栫珵浜変腑锛屽樊寮傚寲鑳藉姏灏嗘垚涓烘牳蹇冪珵浜夊姏
-4. **鐢熸€佹槸澹佸瀿**锛氬洿缁曟牳蹇冧骇鍝佹瀯寤哄畬鏁寸敓鎬侊紝灏嗗舰鎴愭寔涔呮姢鍩庢渤
+经过系统分析�?*${topic}** 领域呈现�?机遇与挑战并存、长期向�?的总体态势�?
+1. **发展确定性较�?*：技术演进和应用落地的方向清晰，产业趋势明确
+2. **竞争将加�?*：随着市场规模扩大和门槛提升，竞争将更加激�?3. **差异化是关键**：在同质化竞争中，差异化能力将成为核心竞争力
+4. **生态是壁垒**：围绕核心产品构建完整生态，将形成持久护城河
 
-### 7.2 琛屽姩寤鸿
+### 7.2 行动建议
 
-1. **馃敩 鎶€鏈爺鍙?*锛氭寔缁姞澶ф牳蹇冩妧鏈殑鐮斿彂鎶曞叆锛屽缓绔嬫妧鏈鍨掞紱鍏虫敞鍓嶆部鎶€鏈姩鎬侊紝淇濇寔鎶€鏈晱鎰熷害
+1. **🔬 技术研�?*：持续加大核心技术的研发投入，建立技术壁垒；关注前沿技术动态，保持技术敏感度
 
-2. **馃搳 甯傚満鎷撳睍**锛氳仛鐒﹂珮浠峰€煎満鏅紝鎵撻€犳爣鏉嗘渚嬶紱寤虹珛瀹屽杽鐨勬笭閬撲綋绯伙紝蹇€熻Е杈剧洰鏍囧鎴?
-3. **馃 鐢熸€佸缓璁?*锛氱Н鏋佷笌浜т笟閾句笂涓嬫父寤虹珛鍚堜綔锛涙瀯寤哄紑鍙戣€呯敓鎬佸拰鍚堜綔浼欎即缃戠粶
+2. **📊 市场拓展**：聚焦高价值场景，打造标杆案例；建立完善的渠道体系，快速触达目标客�?
+3. **🤝 生态建�?*：积极与产业链上下游建立合作；构建开发者生态和合作伙伴网络
 
-4. **馃洝锔?椋庨櫓绠℃帶**锛氬缓绔嬪仴鍏ㄥ悎瑙勪綋绯伙紝瀵嗗垏璺熻釜鏀跨瓥鍔ㄥ悜锛涘仛濂藉簲鎬ラ妗堬紝鎻愬崌鎶楅闄╄兘鍔?
-5. **馃懃 浜烘墠鎴樼暐**锛氬疄鏂戒汉鎵嶄紭鍏堟垬鐣ワ紝鏋勫缓鏈夌珵浜夊姏鐨勮柂閰拰婵€鍔辨満鍒讹紱鍔犲己浜烘墠姊槦寤鸿
+4. **🛡�?风险管控**：建立健全合规体系，密切跟踪政策动向；做好应急预案，提升抗风险能�?
+5. **👥 人才战略**：实施人才优先战略，构建有竞争力的薪酬和激励机制；加强人才梯队建设
 
 ---
-*馃搳 鏈姤鍛婄敱 **DeepSeek AI鍒嗘瀽寮曟搸** 鏅鸿兘鐢熸垚 | 馃攳 鎯呮姤鏉ユ簮锛?*绉樺AI鎼滅储** | 馃搮 鐢熸垚鏃堕棿锛?{new Date().toLocaleString('zh-CN')}*`;
+*📊 本报告由 **DeepSeek AI分析引擎** 智能生成 | 🔍 情报来源�?*秘塔AI搜索** | 📅 生成时间�?{new Date().toLocaleString('zh-CN')}*`;
 }
 
 function renderMarkdown(text) {
-  if (!text) return '<p>鎶ュ憡鍐呭涓虹┖</p>';
+  if (!text) return '<p>报告内容为空</p>';
 
-  // 绠€鍗曠殑Markdown瑙ｆ瀽
+  // 简单的Markdown解析
   let html = text
-    // 杞箟HTML
+    // 转义HTML
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
-    // 浠ｇ爜鍧?    .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
-    // 琛屽唴浠ｇ爜
+    // 代码�?    .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
+    // 行内代码
     .replace(/`([^`]+)`/g, '<code>$1</code>')
-    // 鏍囬
+    // 标题
     .replace(/^###### (.+)$/gm, '<h3>$1</h3>')
     .replace(/^##### (.+)$/gm, '<h3>$1</h3>')
     .replace(/^#### (.+)$/gm, '<h4>$1</h4>')
     .replace(/^### (.+)$/gm, '<h3>$1</h3>')
     .replace(/^## (.+)$/gm, '<h2>$1</h2>')
     .replace(/^# (.+)$/gm, '<h1>$1</h1>')
-    // 绮椾綋
+    // 粗体
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    // 鏂滀綋
+    // 斜体
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    // 寮曠敤
+    // 引用
     .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
-    // 琛ㄦ牸锛堢畝鍖栧鐞嗭級
+    // 表格（简化处理）
     .replace(/\|(.+)\|/g, (match) => {
       const cells = match.split('|').filter(c => c.trim());
       if (cells.some(c => c.trim().match(/^-+$/))) return '';
-      const isHeader = cells.every(c => c.trim().match(/^[*猸怽w]+$/));
+      const isHeader = cells.every(c => c.trim().match(/^[*⭐\w]+$/));
       const tag = isHeader ? 'th' : 'td';
       return '<tr>' + cells.map(c => `<${tag}>${c.trim()}</${tag}>`).join('') + '</tr>';
     })
-    // 鍒楄〃
+    // 列表
     .replace(/^[\-\*] (.+)$/gm, '<li>$1</li>')
     .replace(/^(\d+)\. (.+)$/gm, '<li>$2</li>')
-    // 鍒嗛殧绾?    .replace(/^---$/gm, '<hr>')
-    // 娈佃惤
+    // 分隔�?    .replace(/^---$/gm, '<hr>')
+    // 段落
     .replace(/\n\n/g, '</p><p>')
-    // 鎹㈣
+    // 换行
     .replace(/\n/g, '<br>');
 
-  // 鍖呰９娈佃惤
+  // 包裹段落
   html = '<p>' + html + '</p>';
 
-  // 娓呯悊绌烘钀?  html = html.replace(/<p>\s*<\/p>/g, '');
+  // 清理空段�?  html = html.replace(/<p>\s*<\/p>/g, '');
   html = html.replace(/<p>\s*(<h[1-6]>)/g, '$1');
   html = html.replace(/(<\/h[1-6]>)\s*<\/p>/g, '$1');
   html = html.replace(/<p>\s*(<pre>)/g, '$1');
@@ -3475,7 +3481,7 @@ function renderMarkdown(text) {
   html = html.replace(/(<\/tr>)\s*<\/p>/g, '$1');
   html = html.replace(/<p>\s*(<hr>)\s*<\/p>/g, '$1');
 
-  // 淇琛ㄦ牸
+  // 修复表格
   if (html.includes('<tr>')) {
     html = html.replace(/(<tr>[\s\S]*?<\/tr>)/g, (m) => {
       if (!m.includes('<th')) return '<tbody><tr>' + m.replace(/<tr>|<\/tr>/g, '') + '</tr></tbody>';
@@ -3485,7 +3491,7 @@ function renderMarkdown(text) {
     html = '<table>' + html + '</table>';
   }
 
-  // 淇鍒楄〃
+  // 修复列表
   html = html.replace(/(<li>[\s\S]*?<\/li>)/g, (m) => {
     const content = m.replace(/<li>|<\/li>/g, '');
     if (m.includes('</li><li>')) {
@@ -3501,29 +3507,29 @@ function renderMarkdown(text) {
 function copyReport() {
   if (!currentReportContent) return;
   navigator.clipboard.writeText(currentReportContent).then(() => {
-    showToast('馃搵 鎶ュ憡宸插鍒跺埌鍓创鏉?, 'success');
+    showToast('📋 报告已复制到剪贴�?, 'success');
   }).catch(() => {
-    showToast('澶嶅埗澶辫触锛岃鎵嬪姩澶嶅埗', 'error');
+    showToast('复制失败，请手动复制', 'error');
   });
 }
 
 function exportReport() {
   if (!currentReportContent) return;
-  const blob = new Blob(['# 鎯呮姤鍒嗘瀽鎶ュ憡\n\n' + currentReportContent], { type: 'text/markdown;charset=utf-8' });
+  const blob = new Blob(['# 情报分析报告\n\n' + currentReportContent], { type: 'text/markdown;charset=utf-8' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `鎯呮姤鍒嗘瀽鎶ュ憡_${new Date().toISOString().slice(0, 10)}.md`;
+  a.download = `情报分析报告_${new Date().toISOString().slice(0, 10)}.md`;
   a.click();
   URL.revokeObjectURL(url);
-  showToast('馃捑 鎶ュ憡宸插鍑?, 'success');
+  showToast('💾 报告已导�?, 'success');
 }
 
 function saveToHistory() {
-  showToast('猸?鎶ュ憡宸叉敹钘?, 'success');
+  showToast('�?报告已收�?, 'success');
 }
 
-// ===== 鍘嗗彶璁板綍 =====
+// ===== 历史记录 =====
 function renderHistoryList() {
   const container = document.getElementById('historyList');
   const noHistory = document.getElementById('noHistory');
@@ -3535,16 +3541,16 @@ function renderHistoryList() {
   noHistory.style.display = 'none';
   container.innerHTML = searchHistory.slice(0, 20).map(h => `
     <div class="history-item" onclick="reSearch('${h.query.replace(/'/g, "\\'")}')">
-      <div class="history-icon">馃攳</div>
+      <div class="history-icon">🔍</div>
       <div class="history-info">
         <div class="history-query">${h.query}</div>
         <div class="history-meta">
-          <span>馃搮 ${new Date(h.timestamp).toLocaleString('zh-CN')}</span>
-          <span>馃搫 ${h.resultCount}鏉＄粨鏋?/span>
+          <span>📅 ${new Date(h.timestamp).toLocaleString('zh-CN')}</span>
+          <span>📄 ${h.resultCount}条结�?/span>
         </div>
       </div>
-      <button class="history-view-btn" onclick="event.stopPropagation(); viewHistoryResults(${h.id})" title="鏌ョ湅鏈鎼滅储缁撴灉">鏌ョ湅缁撴灉</button>
-      <span class="history-arrow">鈥?/span>
+      <button class="history-view-btn" onclick="event.stopPropagation(); viewHistoryResults(${h.id})" title="查看本次搜索结果">查看结果</button>
+      <span class="history-arrow">�?/span>
     </div>
   `).join('');
 }
@@ -3559,39 +3565,39 @@ function renderYuqingHistoryList() {
     return;
   }
   if (empty) empty.style.display = 'none';
-  const labelMap = { positive: '姝ｉ潰', negative: '璐熼潰', neutral: '涓€? };
-  const iconMap = { positive: '馃憤', negative: '馃憥', neutral: '馃搵' };
+  const labelMap = { positive: '正面', negative: '负面', neutral: '中�? };
+  const iconMap = { positive: '👍', negative: '👎', neutral: '📋' };
   container.innerHTML = yuqingHistory.map(entry => {
     const res = entry.results || [];
     const counts = { positive: 0, negative: 0, neutral: 0 };
     res.forEach(r => { const s = r.sentiment || 'neutral'; if (counts[s] !== undefined) counts[s]++; else counts.neutral++; });
     const itemsHtml = res.map(r => {
       const s = r.sentiment || 'neutral';
-      const lbl = labelMap[s] || '涓€?;
-      const ic = iconMap[s] || '馃搵';
+      const lbl = labelMap[s] || '中�?;
+      const ic = iconMap[s] || '📋';
       return '<div class="yh-item">'
         + '<span class="yuqing-tag ' + s + '">' + ic + ' ' + lbl + '</span>'
         + '<div>'
         + '<div class="yh-item-title">' + r.title + '</div>'
-        + '<div class="yh-item-meta">' + (r.yuqingkw ? '馃彿锔?' + r.yuqingkw + ' 路 ' : '') + '鏉ユ簮锛? + (r.source || '缃戠粶') + ' 路 ' + (r.date || '') + '</div>'
+        + '<div class="yh-item-meta">' + (r.yuqingkw ? '🏷�?' + r.yuqingkw + ' · ' : '') + '来源�? + (r.source || '网络') + ' · ' + (r.date || '') + '</div>'
         + '</div>'
         + '</div>';
     }).join('');
     const hasReport = !!entry.report;
     const actionBtn = hasReport
-      ? '<button class="detail-nav-btn" onclick="viewYuqingReport(' + entry.id + ')">馃搵 鏌ョ湅鍒嗘瀽鎶ュ憡</button>'
-      : '<button class="detail-nav-btn" onclick="reAnalyzeYuqing(' + entry.id + ')">馃敟 鐢熸垚鑸嗘儏鍒嗘瀽</button>';
+      ? '<button class="detail-nav-btn" onclick="viewYuqingReport(' + entry.id + ')">📋 查看分析报告</button>'
+      : '<button class="detail-nav-btn" onclick="reAnalyzeYuqing(' + entry.id + ')">🔥 生成舆情分析</button>';
     const reportHtml = hasReport
-      ? '<div class="yh-report"><div class="yh-report-label">馃敟 鑸嗘儏鍒嗘瀽鎶ュ憡锛堝洓姝ュ缃鏋讹級</div>' + renderMarkdown(entry.report) + '</div>'
+      ? '<div class="yh-report"><div class="yh-report-label">🔥 舆情分析报告（四步处置框架）</div>' + renderMarkdown(entry.report) + '</div>'
       : '';
     return '<div class="yuqing-history-card">'
       + '<div class="yh-head">'
-      + '<span class="yh-time">馃晵 ' + new Date(entry.timestamp).toLocaleString('zh-CN') + '</span>'
+      + '<span class="yh-time">🕒 ' + new Date(entry.timestamp).toLocaleString('zh-CN') + '</span>'
       + '<span class="yh-stats">'
-      + '<span class="yh-chip">鍏?' + res.length + ' 鏉?/span>'
-      + '<span class="yh-chip pos">姝ｉ潰 ' + counts.positive + '</span>'
-      + '<span class="yh-chip neg">璐熼潰 ' + counts.negative + '</span>'
-      + '<span class="yh-chip neu">涓€?' + counts.neutral + '</span>'
+      + '<span class="yh-chip">�?' + res.length + ' �?/span>'
+      + '<span class="yh-chip pos">正面 ' + counts.positive + '</span>'
+      + '<span class="yh-chip neg">负面 ' + counts.negative + '</span>'
+      + '<span class="yh-chip neu">中�?' + counts.neutral + '</span>'
       + '</span>'
       + '</div>'
       + '<div class="yh-items">' + itemsHtml + '</div>'
@@ -3603,17 +3609,17 @@ function renderYuqingHistoryList() {
 
 function viewYuqingReport(id) {
   const entry = (yuqingHistory || []).find(e => e.id === id);
-  if (!entry || !entry.report) { showToast('璇ヨ褰曟殏鏃犲垎鏋愭姤鍛?, 'info'); return; }
+  if (!entry || !entry.report) { showToast('该记录暂无分析报�?, 'info'); return; }
   document.getElementById('yuqingAnalysisModal').classList.add('active');
   document.getElementById('yqAnalysisLoading').style.display = 'none';
   document.getElementById('yqAnalysisContent').style.display = 'block';
   document.getElementById('yqAnalysisContent').innerHTML = renderMarkdown(entry.report);
-  document.getElementById('yqAnalysisMeta').textContent = '鐢熸垚浜?' + new Date(entry.timestamp).toLocaleString('zh-CN');
+  document.getElementById('yqAnalysisMeta').textContent = '生成�?' + new Date(entry.timestamp).toLocaleString('zh-CN');
 }
 
 function reAnalyzeYuqing(id) {
   const entry = (yuqingHistory || []).find(e => e.id === id);
-  if (!entry) { showToast('璇ヨ褰曚笉瀛樺湪', 'error'); return; }
+  if (!entry) { showToast('该记录不存在', 'error'); return; }
   yuqingDetailItems = (entry.results || []).map(r => Object.assign({}, r));
   currentYuqingSearchId = entry.id;
   analyzeYuqing();
@@ -3631,11 +3637,11 @@ function quickSearch(query) {
   setTimeout(() => startSearch(), 300);
 }
 
-// 浠庢悳绱㈠巻鍙插洖鐪嬫湰娆℃悳绱㈢殑缁撴灉鍐呭
+// 从搜索历史回看本次搜索的结果内容
 function viewHistoryResults(id) {
   const entry = searchHistory.find(h => h.id === id);
   if (!entry || !entry.results || !entry.results.length) {
-    showToast('璇ュ巻鍙茶褰曟殏鏃犵粨鏋滃唴瀹?, 'info');
+    showToast('该历史记录暂无结果内�?, 'info');
     return;
   }
   currentSearchResults = entry.results;
@@ -3645,10 +3651,10 @@ function viewHistoryResults(id) {
   document.getElementById('resultsCount').textContent = currentSearchResults.length;
   document.getElementById('searchQuery').value = entry.query || '';
   switchPage('search');
-  showToast('宸茶浇鍏ャ€? + (entry.query || '鎼滅储') + '銆嶇殑 ' + currentSearchResults.length + ' 鏉″巻鍙茬粨鏋?, 'info');
+  showToast('已载入�? + (entry.query || '搜索') + '」的 ' + currentSearchResults.length + ' 条历史结�?, 'info');
 }
 
-// ===== 鎶ュ憡鍒楄〃 =====
+// ===== 报告列表 =====
 function renderReportList() {
   const container = document.getElementById('reportList');
   const noReports = document.getElementById('noReports');
@@ -3660,17 +3666,17 @@ function renderReportList() {
   noReports.style.display = 'none';
   container.innerHTML = savedReports.slice(0, 20).map(r => `
     <div class="history-item" onclick="viewReport(${r.id})">
-      <div class="history-icon">馃搵</div>
+      <div class="history-icon">📋</div>
       <div class="history-info">
         <div class="history-query">${r.topic}</div>
         <div class="history-meta">
-          <span>馃搮 ${new Date(r.timestamp).toLocaleString('zh-CN')}</span>
-          <span>馃搫 ${r.sources}鏉℃潵婧?/span>
-          <span>鈴憋笍 ${r.duration}</span>
-          <span>馃彿锔?${r.mode === 'deep' ? '娣卞害鐮旂┒' : r.mode === 'risk' ? '椋庨櫓璇勪及' : '鏍囧噯鍒嗘瀽'}</span>
+          <span>📅 ${new Date(r.timestamp).toLocaleString('zh-CN')}</span>
+          <span>📄 ${r.sources}条来�?/span>
+          <span>⏱️ ${r.duration}</span>
+          <span>🏷�?${r.mode === 'deep' ? '深度研究' : r.mode === 'risk' ? '风险评估' : '标准分析'}</span>
         </div>
       </div>
-      <span class="history-arrow">鈥?/span>
+      <span class="history-arrow">�?/span>
     </div>
   `).join('');
 }
@@ -3680,32 +3686,32 @@ function viewReport(id) {
   if (!report) return;
   currentReportContent = report.content;
   document.getElementById('reportBody').innerHTML = renderMarkdown(report.content);
-  document.getElementById('reportTitle').textContent = `鍏充簬"${report.topic}"鐨勬儏鎶ュ垎鏋愭姤鍛奰;
+  document.getElementById('reportTitle').textContent = `关于"${report.topic}"的情报分析报告`;
   document.getElementById('metaTopic').textContent = report.topic;
-  document.getElementById('metaMode').textContent = { standard: '鏍囧噯鍒嗘瀽', deep: '娣卞害鐮旂┒', risk: '椋庨櫓璇勪及' }[report.mode] || '鏍囧噯鍒嗘瀽';
+  document.getElementById('metaMode').textContent = { standard: '标准分析', deep: '深度研究', risk: '风险评估' }[report.mode] || '标准分析';
   document.getElementById('metaSources').textContent = report.sources;
   document.getElementById('metaTime').textContent = new Date(report.timestamp).toLocaleString('zh-CN');
   switchPage('analysis');
   document.getElementById('analysisResults').style.display = 'block';
 }
 
-// ===== 娓╁害婊戝潡 =====
+// ===== 温度滑块 =====
 document.getElementById('tempRange')?.addEventListener('input', function() {
   document.getElementById('tempValue').textContent = (this.value / 100).toFixed(1);
 });
 
-// ===== 鑸嗘儏鎼滅储 =====
+// ===== 舆情搜索 =====
 const YUQING_KEYWORDS = [
-  '涓浗浜哄璐㈤櫓鎵窞鍏徃',
-  '涓浗浜哄璐㈤櫓鎵窞甯備腑蹇冩敮鍏徃',
-  '鎵窞璐㈤櫓鍏徃',
-  '鎵窞璐㈤櫓',
-  '鎵窞璐骇淇濋櫓鍏徃',
-  '涓浗浜哄璐骇淇濋櫓鑲′唤鏈夐檺鍏徃鎵窞甯備腑蹇冩敮鍏徃',
-  '鍥藉璐㈡壃宸炲叕鍙?,
-  '鍥藉璐㈤櫓鎵窞鍏徃',
-  '浜哄璐㈤櫓鎵窞鍏徃',
-  '浜哄璐㈤櫓鎵窞甯備腑蹇冩敮鍏徃'
+  '中国人寿财险扬州公司',
+  '中国人寿财险扬州市中心支公司',
+  '扬州财险公司',
+  '扬州财险',
+  '扬州财产保险公司',
+  '中国人寿财产保险股份有限公司扬州市中心支公司',
+  '国寿财扬州公�?,
+  '国寿财险扬州公司',
+  '人寿财险扬州公司',
+  '人寿财险扬州市中心支公司'
 ];
 
 async function startYuqingSearch() {
@@ -3716,9 +3722,9 @@ async function startYuqingSearch() {
   const noResult = document.getElementById('yuqingNoResult');
 
   btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span> 鑸嗘儏鎼滅储涓?..';
+  btn.innerHTML = '<span class="spinner"></span> 舆情搜索�?..';
   statusEl.style.display = 'flex';
-  document.getElementById('searchStatusText').textContent = '姝ｅ湪鍏ㄧ綉鍖归厤鎵窞鍏徃鑸嗘儏淇℃伅...';
+  document.getElementById('searchStatusText').textContent = '正在全网匹配扬州公司舆情信息...';
   yuqingSection.style.display = 'none';
   noResult.style.display = 'none';
 
@@ -3732,7 +3738,7 @@ async function startYuqingSearch() {
 
   let allYuqing = [];
 
-  // 閫愪釜鍏抽敭璇嶈皟鐢ㄧ濉旀悳绱?  const yqEndpoint = _useCorsProxy ? API_CONFIG.metascout.proxyEndpoints[_currentProxyIndex] : API_CONFIG.metascout.endpoint;
+  // 逐个关键词调用秘塔搜�?  const yqEndpoint = _useCorsProxy ? API_CONFIG.metascout.proxyEndpoints[_currentProxyIndex] : API_CONFIG.metascout.endpoint;
   for (let i = 0; i < YUQING_KEYWORDS.length; i++) {
     const keyword = YUQING_KEYWORDS[i];
     try {
@@ -3752,26 +3758,26 @@ async function startYuqingSearch() {
         });
         allYuqing = allYuqing.concat(results);
       }
-    } catch(e) { /* 闈欓粯缁х画涓嬩竴涓叧閿瘝 */ }
+    } catch(e) { /* 静默继续下一个关键词 */ }
   }
 
-  // 濡傛灉鍏ㄩ儴鍏抽敭璇嶉兘澶辫触锛屾樉绀洪敊璇脊绐?  if (allYuqing.length === 0) {
+  // 如果全部关键词都失败，显示错误弹�?  if (allYuqing.length === 0) {
     clearInterval(progressInterval);
     btn.disabled = false;
-    btn.innerHTML = '<span>馃摗</span> 鑸嗘儏鎼滅储';
+    btn.innerHTML = '<span>📡</span> 舆情搜索';
     statusEl.style.display = 'none';
     progressWrap.style.display = 'none';
     yuqingSection.style.display = 'none';
 
-    const reason = '<b>10涓叧閿瘝鍏ㄩ儴鏈繑鍥炴湁鏁堢粨鏋?/b><br>璇锋鏌ワ細API Key 鏄惁鏈夋晥銆佺綉缁滄槸鍚︽甯搞€佺濉旀湇鍔℃槸鍚﹀彲鐢?;
-    showApiErrorModal('鑸嗘儏鎼滅储 API 璋冪敤澶辫触', reason,
+    const reason = '<b>10个关键词全部未返回有效结�?/b><br>请检查：API Key 是否有效、网络是否正常、秘塔服务是否可�?;
+    showApiErrorModal('舆情搜索 API 调用失败', reason,
       () => {
         allYuqing = generateMockYuqing();
         yuqingDetailItems = allYuqing;
         renderYuqingResults(allYuqing);
         document.getElementById('yuqingCount').textContent = allYuqing.length;
         yuqingSection.style.display = 'block';
-        showToast('褰撳墠鏄剧ず鐨勬槸妯℃嫙鏁版嵁锛岄潪鐪熷疄鎼滅储缁撴灉', 'warning');
+        showToast('当前显示的是模拟数据，非真实搜索结果', 'warning');
       },
       () => startYuqingSearch()
     );
@@ -3786,15 +3792,15 @@ async function startYuqingSearch() {
     statusEl.style.display = 'none';
     progressWrap.style.display = 'none';
     btn.disabled = false;
-    btn.innerHTML = '<span>馃摗</span> 鑸嗘儏鎼滅储';
+    btn.innerHTML = '<span>📡</span> 舆情搜索';
 
     if (allYuqing.length === 0) {
-      // 娌℃湁鑸嗘儏锛屽脊鎻愮ず妗?      noResult.style.display = 'block';
-      showAlertModal('馃尶 娌℃湁鑸嗘儏鍙戠敓', '缁忓叏缃戝叧閿瘝鍖归厤锛屾殏鏈彂鐜颁笌"鎵窞鍏徃"鐩稿叧鐨勮垎鎯呬俊鎭紝绯荤粺杩愯姝ｅ父銆?);
+      // 没有舆情，弹提示�?      noResult.style.display = 'block';
+      showAlertModal('🌿 没有舆情发生', '经全网关键词匹配，暂未发现与"扬州公司"相关的舆情信息，系统运行正常�?);
       return;
     }
 
-    // 鍘婚噸
+    // 去重
     const unique = [];
     const seenTitles = new Set();
     allYuqing.forEach(item => {
@@ -3812,7 +3818,7 @@ async function startYuqingSearch() {
     if (yqAb) yqAb.style.display = hasNeg ? 'inline-flex' : 'none';
     yuqingSection.style.display = 'block';
 
-    // 璁板綍鍒板巻鍙茶垎鎯?    const yid = Date.now();
+    // 记录到历史舆�?    const yid = Date.now();
     currentYuqingSearchId = yid;
     yuqingHistory.unshift({
       id: yid,
@@ -3827,43 +3833,43 @@ async function startYuqingSearch() {
     if (yuqingHistory.length > 50) yuqingHistory.pop();
     saveStorageData();
     renderYuqingHistoryList();
-    showToast(`馃摗 鑸嗘儏鎼滅储瀹屾垚锛屽彂鐜?${unique.length} 鏉＄浉鍏充俊鎭痐, 'info');
+    showToast(`📡 舆情搜索完成，发�?${unique.length} 条相关信息`, 'info');
   }, 600);
 }
 
 function generateMockYuqing() {
-  // 闅忔満鍐冲畾鏄惁鏈夎垎鎯咃紙30%姒傜巼鏈夎垎鎯咃紝妯℃嫙鐪熷疄鎯呭喌锛?  if (Math.random() > 0.3) return [];
+  // 随机决定是否有舆情（30%概率有舆情，模拟真实情况�?  if (Math.random() > 0.3) return [];
 
   const templates = [
-    { title: '涓浗浜哄璐㈤櫓鎵窞甯備腑蹇冩敮鍏徃寮€灞?7.8鍏ㄥ浗淇濋櫓鍏紬瀹ｄ紶鏃?娲诲姩', snippet: '涓浗浜哄璐㈤櫓鎵窞甯備腑蹇冩敮鍏徃绉瀬鍝嶅簲鍙峰彫锛屽洿缁?淇濋櫓鍔涢噺锛屼负浣犲姞涓€搴?涓婚锛屽湪鍏ㄥ競鑼冨洿鍐呭紑灞曞舰寮忓鏍风殑淇濋櫓瀹ｄ紶娲诲姩锛屾彁鍗囧叕浼椾繚闄╂剰璇嗐€?, sentiment: 'positive', kw: '涓浗浜哄璐㈤櫓鎵窞甯備腑蹇冩敮鍏徃' },
-    { title: '鎵窞璐㈤櫓鍏徃绉瀬搴斿鏆撮洦娲稘鐏惧锛屽揩閫熷畬鎴愮悊璧?, snippet: '闈㈠鎵窞鍦板尯鏆撮洦娲稘鐏惧锛屾壃宸炶储浜т繚闄╁叕鍙哥涓€鏃堕棿鍚姩搴旀€ラ妗堬紝寮€閫氱豢鑹茬悊璧旈€氶亾锛?4灏忔椂鍐呭畬鎴愬璧疯溅闄┿€佽储浜ч櫓妗堜欢鐞嗚禂锛岃幏寰楀鎴峰ソ璇勩€?, sentiment: 'negative', kw: '鎵窞璐骇淇濋櫓鍏徃' },
-    { title: '鍥藉璐㈤櫓鎵窞鍏徃鑽ｈ幏"2024骞村害鎵窞閲戣瀺涓氭湇鍔¤川閲忓"', snippet: '鍦ㄦ壃宸炲競閲戣瀺宸ヤ綔澶т細涓婏紝鍥藉璐㈡壃宸炲叕鍙稿嚟鍊熶紭璐ㄧ殑鏈嶅姟璐ㄩ噺鍜岃壇濂界殑绀句細鍙ｇ锛岃崳鑾?2024骞村害鎵窞閲戣瀺涓氭湇鍔¤川閲忓"鑽ｈ獕绉板彿銆?, sentiment: 'positive', kw: '鍥藉璐㈡壃宸炲叕鍙? },
-    { title: '浜哄璐㈤櫓鎵窞鍏徃寮€灞曟秷闃插畨鍏ㄥ煿璁笌搴旀€ユ紨缁?, snippet: '浜哄璐㈤櫓鎵窞甯備腑蹇冩敮鍏徃缁勭粐鍏ㄤ綋鍛樺伐寮€灞曟秷闃插畨鍏ㄧ煡璇嗗煿璁拰搴旀€ョ枏鏁ｆ紨缁冿紝杩涗竴姝ュ寮哄憳宸ュ畨鍏ㄩ槻鑼冩剰璇嗗拰搴旀€ュ缃兘鍔涖€?, sentiment: 'neutral', kw: '浜哄璐㈤櫓鎵窞鍏徃' },
-    { title: '鎵窞璐㈤櫓甯傚満璋冪爺鎶ュ憡锛氬浗瀵胯储闄╁競鍦轰唤棰濅綅灞呭墠鍒?, snippet: '鏍规嵁鎵窞淇濋櫓琛屼笟鍗忎細鏈€鏂版暟鎹紝鍥藉璐㈤櫓鎵窞鍏徃鍦ㄦ壃宸炶储闄╁競鍦哄崰鏈夐噸瑕佸湴浣嶏紝淇濊垂瑙勬ā浣嶅眳鍖哄煙鍓嶅垪锛屼骇鍝佸垱鏂板拰鏈嶅姟鍗囩骇鎸佺画鎺ㄨ繘銆?, sentiment: 'positive', kw: '鎵窞璐㈤櫓鍏徃' },
-    { title: '鎵窞閾朵繚鐩戝垎灞€鍙紑璐㈤櫓鍏徃鍚堣缁忚惀涓撻浼氳', snippet: '鎵窞閾朵繚鐩戝垎灞€缁勭粐鍙紑鎵窞璐骇淇濋櫓鍏徃鍚堣缁忚惀涓撻浼氳锛屽己璋冨姞寮轰繚闄╀笟鍔″悎瑙勭鐞嗭紝瑙勮寖甯傚満绉╁簭锛屼繚鎶ゆ秷璐硅€呭悎娉曟潈鐩娿€?, sentiment: 'neutral', kw: '鎵窞璐骇淇濋櫓鍏徃' },
-    { title: '鎵窞璐㈤櫓鍏徃鎺ㄥ嚭"鎯犲啘淇?鍐滀笟淇濋櫓鏂颁骇鍝侊紝鍔╁姏涔℃潙鎸叴', snippet: '鎵窞璐㈤櫓鍏徃閽堝鏈湴鍐滀笟鐗圭偣锛屾帹鍑?鎯犲啘淇?绯诲垪鍐滀笟淇濋櫓浜у搧锛屼负鍐滄埛鎻愪緵鑷劧鐏惧銆佺梾铏绛夐闄╀繚闅滐紝绉瀬鍔╁姏涔℃潙鎸叴鎴樼暐銆?, sentiment: 'positive', kw: '鎵窞璐㈤櫓鍏徃' },
-    { title: '娑堣垂鑰呮姇璇夛細鎵窞璐㈤櫓鐞嗚禂绾犵悍妗堜欢寮曞叧娉?, snippet: '鏈夋秷璐硅€呭弽鏄犲湪鎵窞璐㈤櫓鍔炵悊鐞嗚禂杩囩▼涓伃閬囩籂绾凤紝淇濋櫓琛屼笟鍗忎細鎻愰啋娑堣垂鑰呮敞鎰忎粩缁嗛槄璇讳繚闄╂潯娆撅紝淇濆瓨濂界浉鍏冲嚟璇侊紝渚濇硶缁存姢鑷韩鏉冪泭銆?, sentiment: 'negative', kw: '鎵窞璐㈤櫓鍏徃' },
-    { title: '涓浗浜哄璐骇淇濋櫓鑲′唤鏈夐檺鍏徃鎵窞甯備腑蹇冩敮鍏徃鍏氭敮閮ㄥ紑灞曚富棰樺厷鏃ユ椿鍔?, snippet: '涓浗浜哄璐骇淇濋櫓鑲′唤鏈夐檺鍏徃鎵窞甯備腑蹇冩敮鍏徃鍏氭敮閮ㄧ粍缁囧厷鍛樺紑灞?涓嶅繕鍒濆績銆佺墷璁颁娇鍛?涓婚鍏氭棩娲诲姩锛屽弬瑙傜孩鑹叉暀鑲插熀鍦帮紝閲嶆俯鍏ュ厷瑾撹瘝銆?, sentiment: 'neutral', kw: '涓浗浜哄璐骇淇濋櫓鑲′唤鏈夐檺鍏徃鎵窞甯備腑蹇冩敮鍏徃' },
-    { title: '鎵窞璐㈤櫓琛屼笟涓婂崐骞翠繚璐规敹鍏ュ悓姣斿闀?5%', snippet: '鎵窞淇濋櫓琛屼笟鍗忎細鍏竷鏁版嵁鏄剧ず锛屼笂鍗婂勾鎵窞璐㈤櫓琛屼笟瀹炵幇淇濊垂鏀跺叆鍚屾瘮澧為暱15%锛屽浗瀵胯储銆佷汉淇濊储銆佸钩瀹夎储绛夊ご閮ㄤ紒涓氬閫熸槑鏄撅紝甯傚満淇濇寔绋冲仴鍙戝睍銆?, sentiment: 'positive', kw: '鎵窞璐㈤櫓鍏徃' }
+    { title: '中国人寿财险扬州市中心支公司开�?7.8全国保险公众宣传�?活动', snippet: '中国人寿财险扬州市中心支公司积极响应号召，围�?保险力量，为你加一�?主题，在全市范围内开展形式多样的保险宣传活动，提升公众保险意识�?, sentiment: 'positive', kw: '中国人寿财险扬州市中心支公司' },
+    { title: '扬州财险公司积极应对暴雨洪涝灾害，快速完成理�?, snippet: '面对扬州地区暴雨洪涝灾害，扬州财产保险公司第一时间启动应急预案，开通绿色理赔通道�?4小时内完成多起车险、财产险案件理赔，获得客户好评�?, sentiment: 'negative', kw: '扬州财产保险公司' },
+    { title: '国寿财险扬州公司荣获"2024年度扬州金融业服务质量奖"', snippet: '在扬州市金融工作大会上，国寿财扬州公司凭借优质的服务质量和良好的社会口碑，荣�?2024年度扬州金融业服务质量奖"荣誉称号�?, sentiment: 'positive', kw: '国寿财扬州公�? },
+    { title: '人寿财险扬州公司开展消防安全培训与应急演�?, snippet: '人寿财险扬州市中心支公司组织全体员工开展消防安全知识培训和应急疏散演练，进一步增强员工安全防范意识和应急处置能力�?, sentiment: 'neutral', kw: '人寿财险扬州公司' },
+    { title: '扬州财险市场调研报告：国寿财险市场份额位居前�?, snippet: '根据扬州保险行业协会最新数据，国寿财险扬州公司在扬州财险市场占有重要地位，保费规模位居区域前列，产品创新和服务升级持续推进�?, sentiment: 'positive', kw: '扬州财险公司' },
+    { title: '扬州银保监分局召开财险公司合规经营专题会议', snippet: '扬州银保监分局组织召开扬州财产保险公司合规经营专题会议，强调加强保险业务合规管理，规范市场秩序，保护消费者合法权益�?, sentiment: 'neutral', kw: '扬州财产保险公司' },
+    { title: '扬州财险公司推出"惠农�?农业保险新产品，助力乡村振兴', snippet: '扬州财险公司针对本地农业特点，推�?惠农�?系列农业保险产品，为农户提供自然灾害、病虫害等风险保障，积极助力乡村振兴战略�?, sentiment: 'positive', kw: '扬州财险公司' },
+    { title: '消费者投诉：扬州财险理赔纠纷案件引关�?, snippet: '有消费者反映在扬州财险办理理赔过程中遭遇纠纷，保险行业协会提醒消费者注意仔细阅读保险条款，保存好相关凭证，依法维护自身权益�?, sentiment: 'negative', kw: '扬州财险公司' },
+    { title: '中国人寿财产保险股份有限公司扬州市中心支公司党支部开展主题党日活�?, snippet: '中国人寿财产保险股份有限公司扬州市中心支公司党支部组织党员开�?不忘初心、牢记使�?主题党日活动，参观红色教育基地，重温入党誓词�?, sentiment: 'neutral', kw: '中国人寿财产保险股份有限公司扬州市中心支公司' },
+    { title: '扬州财险行业上半年保费收入同比增�?5%', snippet: '扬州保险行业协会公布数据显示，上半年扬州财险行业实现保费收入同比增长15%，国寿财、人保财、平安财等头部企业增速明显，市场保持稳健发展�?, sentiment: 'positive', kw: '扬州财险公司' }
   ];
 
-  // 闅忔満閫?-3鏉?  const count = Math.floor(Math.random() * 3) + 1;
+  // 随机�?-3�?  const count = Math.floor(Math.random() * 3) + 1;
   const shuffled = [...templates].sort(() => Math.random() - 0.5);
   return shuffled.slice(0, count).map(t => ({
     ...t,
     url: '#',
-    source: '缃戠粶',
+    source: '网络',
     date: new Date(Date.now() - Math.random() * 30 * 24 * 3600 * 1000).toLocaleDateString('zh-CN')
   }));
 }
 
-// ===== 璐熼潰鑸嗘儏鍒嗘瀽锛圖eepSeek锛?====
+// ===== 负面舆情分析（DeepSeek�?====
 let currentYuqingAnalysisContent = '';
 
 async function analyzeYuqing() {
   const negatives = (yuqingDetailItems || []).filter(r => (r.sentiment || '') === 'negative');
   if (negatives.length === 0) {
-    showToast('褰撳墠鏈彂鐜拌礋闈㈣垎鎯咃紝鏃犻渶鍒嗘瀽', 'info');
+    showToast('当前未发现负面舆情，无需分析', 'info');
     return;
   }
 
@@ -3874,15 +3880,15 @@ async function analyzeYuqing() {
   loading.style.display = 'block';
   content.style.display = 'none';
   content.innerHTML = '';
-  document.getElementById('yqAnalysisMeta').textContent = '鍏?' + negatives.length + ' 鏉¤礋闈㈣垎鎯?;
+  document.getElementById('yqAnalysisMeta').textContent = '�?' + negatives.length + ' 条负面舆�?;
 
   const context = negatives.map((r, i) =>
-    '[璐熼潰鑸嗘儏' + (i+1) + ']\n鏍囬锛? + r.title + '\n鍖归厤鍏抽敭璇嶏細' + (r.yuqingkw || r.source || '-') + '\n鏉ユ簮锛? + (r.source || '缃戠粶') + '\n鏃ユ湡锛? + (r.date || '-') + '\n鍐呭锛? + (r.snippet || r.content || '鏃?)
+    '[负面舆情' + (i+1) + ']\n标题�? + r.title + '\n匹配关键词：' + (r.yuqingkw || r.source || '-') + '\n来源�? + (r.source || '网络') + '\n日期�? + (r.date || '-') + '\n内容�? + (r.snippet || r.content || '�?)
   ).join('\n\n');
 
-  const systemPrompt = '浣犳槸涓€浣嶈祫娣辩殑浼佷笟鑸嗘儏鍗辨満绠＄悊涓撳锛屼笓娉ㄤ簬淇濋櫓/閲戣瀺琛屼笟鐨勮礋闈㈣垎鎯呭缃紝鏈嶅姟瀵硅薄涓篭"涓浗浜哄璐㈤櫓鎵窞鍏徃\"锛堝惈涓浗浜哄璐骇淇濋櫓鑲′唤鏈夐檺鍏徃鎵窞甯備腑蹇冩敮鍏徃銆佸浗瀵胯储鎵窞鍏徃銆佹壃宸炶储闄╁叕鍙哥瓑鍏宠仈涓讳綋锛夈€俓n\n璇峰熀浜庝互涓嬩粠鍏ㄧ綉妫€绱㈠埌鐨勩€佷笌鎵窞鍏徃鐩稿叧鐨勩€愯礋闈㈣垎鎯呫€戜俊鎭紝鎾板啓涓€浠戒笓涓氱殑璐熼潰鑸嗘儏鍒嗘瀽澶勭疆鎶ュ憡銆俓n\n鎶ュ憡蹇呴』涓ユ牸鎸変互涓媆"鍥涙澶勭疆妗嗘灦\"灞曞紑锛堣缁撳悎鍏蜂綋鑸嗘儏鍐呭灞曞紑璁鸿堪锛屼笉瑕佸彧缃楀垪妗嗘灦鏍囬锛岃閽堝瀹為檯鑸嗘儏缁欏嚭鍙搷浣滅殑澶勭疆寤鸿锛夛細\n\n绗竴姝ワ細绗竴鏃堕棿鍝嶅簲锛屾姠榛勯噾绐楀彛銆俓n瑕佺偣锛氭帴鍒拌礋闈㈤璀﹀悗锛屽厛鑺卞嚑鍒嗛挓鍋氫笁浠朵簨鈥斺€旂‘璁や俊鎭簮锛堝摢涓钩鍙般€佸摢涓处鍙枫€佷紶鎾噺澶氬ぇ锛夈€佸垽鏂湡瀹炴€э紙纭湁鍏朵簨銆佽瑙ｃ€佹姽榛戣繕鏄埃瑷€锛夈€佸畾鍒濇璋冩€э紙浜у搧璐ㄩ噺/鏈嶅姟鎬佸害/鑸嗚璇В锛岀被鍨嬩笉鍚岀瓥鐣ヤ笉鍚岋級銆傚己璋僜"鎬佸害鍝嶅簲\"锛堜簨浠跺彂鐢熷悗4灏忔椂鍐呭彂鍑篭"宸插叧娉ㄣ€佹鍦ㄦ牳鏌ャ€佷細璐熻矗浠诲鐞哱"鐨勭畝鐭０鏄庯級鍏堜簬\"瀹炶川鍝嶅簲\"锛堜簨瀹炴牳鏌ュ悗缁欏叿浣撴柟妗堬級銆傛寚鍑轰笁澶ц鍖猴細娌夐粯瑁呮銆佸垹甯栧帇鐑害銆佺涓€鏃堕棿鐢╅攨銆俓n\n绗簩姝ワ細鎽告竻浜嬪疄鍜屼紶鎾矾寰勩€俓n瑕佺偣锛氫簨瀹炴牳鏌ヤ笁浠朵簨鈥斺€斾簨浠舵湰韬簨瀹烇紙鍙戠敓浜嗕粈涔堛€佽矗浠诲湪璋併€佸奖鍝嶈寖鍥达級銆佷紶鎾簨瀹烇紙澶氬皯鏉°€佸摢浜涘钩鍙般€佷紶鎾渶蹇殑鑺傜偣銆佹櫘閫氱敤鎴疯繕鏄湁缁勭粐锛夈€佸巻鍙蹭簨瀹烇紙绫讳技浜嬩欢鏄惁鍙戠敓杩囷級銆傜爺鍒や紶鎾矾寰勫垽鏂紨杩涙柟鍚戯紙灏忚寖鍥磋鍧?鍙帶锛涚儹鎼?濯掍綋璺熻繘=鐖嗗彂鏈熼渶鍗囩骇锛夈€傚己璋冨悓姝ュ仛璇佹嵁鍥哄畾锛堟埅鍥俱€佸綍灞忋€佷繚瀛樺師濮嬮摼鎺ュ拰浼犳挱鏁版嵁锛夈€俓n\n绗笁姝ワ細鍒嗙骇澶勭疆锛屾寜椋庨櫓绛夌骇鍑虹墝銆俓n瑕佺偣锛氫笁绾р€斺€斾竴鑸骇锛堜釜鍒钩鍙板皯閲忚礋闈紝鐩戞祴寮曞涓轰富锛夈€佸叧娉ㄧ骇锛堟槑鏄惧澶氥€佽繘鍏ョ儹鎼滄垨濯掍綋璺熻繘锛屼富鍔ㄥ洖搴?骞冲彴鎶曡瘔+淇℃伅婧愭矡閫氾級銆佸嵄鏈虹骇锛堝ぇ闈㈢Н鐖嗗彂銆佷富娴佸獟浣撲粙鍏ャ€佸悜鍏ㄨ涓氭墿鏁ｏ紝鎴愮珛涓撻」灏忕粍+涓昏璐熻矗浜哄彂澹?蹇呰鏃朵笓涓氬姏閲?璇勪及娉曞緥鎵嬫锛夈€傚己璋冨姏搴︿笌椋庨櫓鍖归厤锛岄伩鍏嶄竴鍒€鍒囥€俓n\n绗洓姝ワ細澶嶇洏淇锛屾妸鍗辨満鍙樻垚閲嶅缓淇′换鐨勬満浼氥€俓n瑕佺偣锛氬鐩樺洓浠朵簨锛堥璀︽槸鍚﹀強鏃躲€佸搷搴旀槸鍚﹁繀閫熴€佸缃槸鍚︽湁鏁堛€佹満鍒舵槸鍚﹀畬鍠勶級锛涗慨澶嶄笁鍔ㄤ綔锛堟寔缁緭鍑烘闈㈠唴瀹广€佷富鍔ㄥ叕绀烘敼杩涙帾鏂姐€佷富瑕佹悳绱㈡笭閬撳搧鐗屼俊鎭矇娣€锛夈€俓n\n璇蜂互 Markdown 鏍煎紡杈撳嚭锛岀珷鑺傛爣棰樹娇鐢╘"## 绗竴姝モ€"\"## 绗簩姝モ€"绛夛紝璇█涓撲笟銆佸瑙傘€佸彲钀藉湴銆?;
+  const systemPrompt = '你是一位资深的企业舆情危机管理专家，专注于保险/金融行业的负面舆情处置，服务对象为\"中国人寿财险扬州公司\"（含中国人寿财产保险股份有限公司扬州市中心支公司、国寿财扬州公司、扬州财险公司等关联主体）。\n\n请基于以下从全网检索到的、与扬州公司相关的【负面舆情】信息，撰写一份专业的负面舆情分析处置报告。\n\n报告必须严格按以下\"四步处置框架\"展开（请结合具体舆情内容展开论述，不要只罗列框架标题，要针对实际舆情给出可操作的处置建议）：\n\n第一步：第一时间响应，抢黄金窗口。\n要点：接到负面预警后，先花几分钟做三件事——确认信息源（哪个平台、哪个账号、传播量多大）、判断真实性（确有其事、误解、抹黑还是谣言）、定初步调性（产品质量/服务态度/舆论误解，类型不同策略不同）。强调\"态度响应\"（事件发生后4小时内发出\"已关注、正在核查、会负责任处理\"的简短声明）先于\"实质响应\"（事实核查后给具体方案）。指出三大误区：沉默装死、删帖压热度、第一时间甩锅。\n\n第二步：摸清事实和传播路径。\n要点：事实核查三件事——事件本身事实（发生了什么、责任在谁、影响范围）、传播事实（多少条、哪些平台、传播最快的节点、普通用户还是有组织）、历史事实（类似事件是否发生过）。研判传播路径判断演进方向（小范围论�?可控；热�?媒体跟进=爆发期需升级）。强调同步做证据固定（截图、录屏、保存原始链接和传播数据）。\n\n第三步：分级处置，按风险等级出牌。\n要点：三级——一般级（个别平台少量负面，监测引导为主）、关注级（明显增多、进入热搜或媒体跟进，主动回�?平台投诉+信息源沟通）、危机级（大面积爆发、主流媒体介入、向全行业扩散，成立专项小组+主要负责人发�?必要时专业力�?评估法律手段）。强调力度与风险匹配，避免一刀切。\n\n第四步：复盘修复，把危机变成重建信任的机会。\n要点：复盘四件事（预警是否及时、响应是否迅速、处置是否有效、机制是否完善）；修复三动作（持续输出正面内容、主动公示改进措施、主要搜索渠道品牌信息沉淀）。\n\n请以 Markdown 格式输出，章节标题使用\"## 第一步…\"\"## 第二步…\"等，语言专业、客观、可落地�?;
 
-  const userPrompt = '浠ヤ笅鏄绱㈠埌鐨?' + negatives.length + ' 鏉¤礋闈㈣垎鎯呮暟鎹紝璇锋寜涓婅堪鍥涙妗嗘灦鐢熸垚鍒嗘瀽鎶ュ憡锛歕n\n' + context;
+  const userPrompt = '以下是检索到�?' + negatives.length + ' 条负面舆情数据，请按上述四步框架生成分析报告：\n\n' + context;
 
   let report = '';
   try {
@@ -3912,7 +3918,7 @@ async function analyzeYuqing() {
   content.style.display = 'block';
   content.innerHTML = renderMarkdown(report);
 
-  // 灏嗘姤鍛婂叧鑱斿埌褰撳墠鑸嗘儏鎼滅储璁板綍
+  // 将报告关联到当前舆情搜索记录
   const yEntry = yuqingHistory.find(e => e.id === currentYuqingSearchId);
   if (yEntry) {
     yEntry.report = report;
@@ -3931,22 +3937,22 @@ function copyYuqingAnalysis() {
   ta.value = currentYuqingAnalysisContent || '';
   document.body.appendChild(ta);
   ta.select();
-  try { document.execCommand('copy'); showToast('宸插鍒跺垎鏋愭姤鍛?, 'success'); }
-  catch(e) { showToast('澶嶅埗澶辫触锛岃鎵嬪姩閫夋嫨', 'error'); }
+  try { document.execCommand('copy'); showToast('已复制分析报�?, 'success'); }
+  catch(e) { showToast('复制失败，请手动选择', 'error'); }
   document.body.removeChild(ta);
 }
 
 function generateMockYuqingAnalysis(negatives) {
   const list = negatives.map((r, i) =>
-    '**璐熼潰鑸嗘儏' + (i+1) + '**锛? + r.title + '\n- 鏉ユ簮锛? + (r.source || '缃戠粶') + '锛涘尮閰嶅叧閿瘝锛? + (r.yuqingkw || '-') + '\n- 鍐呭锛? + (r.snippet || r.content || '鏃?)
+    '**负面舆情' + (i+1) + '**�? + r.title + '\n- 来源�? + (r.source || '网络') + '；匹配关键词�? + (r.yuqingkw || '-') + '\n- 内容�? + (r.snippet || r.content || '�?)
   ).join('\n\n');
-  return '鏈垎鏋愰拡瀵规绱㈠埌鐨?' + negatives.length + ' 鏉¤礋闈㈣垎鎯咃紝鎸塡"鍥涙澶勭疆妗嗘灦\"缁欏嚭澶勭疆寤鸿銆俓n\n## 绗竴姝ワ細绗竴鏃堕棿鍝嶅簲锛屾姠榛勯噾绐楀彛\n閽堝鏈妫€绱㈠埌鐨勮礋闈㈣垎鎯咃紝寤鸿绔嬪嵆鎵ц涓夐」鍓嶇疆鍔ㄤ綔锛氱涓€锛?*纭淇℃伅婧?*鈥斺€旀牳瀹炰笂杩拌礋闈俊鎭鍙戝钩鍙颁笌璐﹀彿銆佷及绠楀綋鍓嶄紶鎾噺绾э紱绗簩锛?*鍒ゆ柇鐪熷疄鎬?*鈥斺€旀帓鏌ユ槸鏈嶅姟/鐞嗚禂绾犵悍纭湁鍏朵簨锛岃繕鏄瑙ｃ€佹姽榛戞垨璋ｈ█锛涚涓夛紝**瀹氬垵姝ヨ皟鎬?*鈥斺€斿尯鍒嗕骇鍝佽川閲忋€佹湇鍔℃€佸害鎴栬垎璁鸿瑙ｇ被鍨嬶紝鍖归厤宸紓鍖栫瓥鐣ャ€俓n\n鍦ㄤ簨浠跺彂鐢熷悗 **4 灏忔椂鍐?* 鍙戝竷\"宸插叧娉ㄣ€佹鍦ㄦ牳鏌ャ€佷細璐熻矗浠诲鐞哱"鐨勭畝鐭€佸害澹版槑锛岀ǔ浣忓眬闈紱寰呬簨瀹炴竻鏅板悗鍐嶅彂甯冨疄璐ㄥ搷搴旓紝缁欏嚭鍏蜂綋澶勭悊鏂规涓庡悗缁畨鎺掋€傚姟蹇呴伩寮€涓夊ぇ璇尯锛?*娌夐粯瑁呮**锛堣璐熼潰鍦ㄧ寽娴嬩腑鍙戦叺锛夈€?*鍒犲笘鍘嬬儹搴?*锛堟槗琚埅鍥剧暀璇併€佸潗瀹炲績铏氳鎰燂級銆?*绗竴鏃堕棿鐢╅攨**锛堜簨瀹炴湭娓呮椂鎾囪矗锛屼竴鏃﹀弽杞叕淇″姏宕╁锛夈€俓n\n## 绗簩姝ワ細鎽告竻浜嬪疄鍜屼紶鎾矾寰刓n**浜嬪疄鏍告煡涓変欢浜?*锛氣憼 浜嬩欢鏈韩鈥斺€斿埌搴曞彂鐢熶簡浠€涔堛€佽矗浠诲湪璋併€佸奖鍝嶈寖鍥村澶э紱鈶?浼犳挱浜嬪疄鈥斺€旇礋闈㈡潯鏁般€佸垎甯冨钩鍙般€佷紶鎾渶蹇殑鑺傜偣銆佸弬涓庤处鍙锋槸鏅€氱敤鎴疯繕鏄湁缁勭粐锛涒憿 鍘嗗彶浜嬪疄鈥斺€旂被浼肩悊璧?鏈嶅姟绾犵悍姝ゅ墠鏄惁鍙戠敓銆佸綋鏃跺浣曞缃€俓n\n**浼犳挱璺緞鐮斿垽**锛氳嫢璐熼潰浠呭湪灏忚寖鍥磋鍧涙祦杞紝灞炲彲鎺ч樁娈碉紝浠ョ洃娴嬩负涓伙紱鑻ュ凡鐧讳笂鐑悳鎴栧瀹跺獟浣撹窡杩涳紝杩涘叆鐖嗗彂鏈燂紝澶勭疆鍔涘害绔嬪嵆鍗囩骇銆?*鍚屾璇佹嵁鍥哄畾**锛氬浠ヤ笅鑸嗘儏鎴浘銆佸綍灞忋€佷繚瀛樺師濮嬮摼鎺ヤ笌浼犳挱鏁版嵁锛屼负鍚庣画骞冲彴鐢宠瘔鎴栧徃娉曠淮鏉冪暀瀛樿瘉鎹摼锛歕n\n' + list + '\n\n## 绗笁姝ワ細鍒嗙骇澶勭疆锛屾寜椋庨櫓绛夌骇鍑虹墝\n- **涓€鑸骇**锛堜釜鍒钩鍙板皯閲忚礋闈€佸奖鍝嶆湁闄愶級锛氭寔缁洃娴嬩紶鎾蛋鍔匡紝蹇呰鏃跺湪鐩稿叧骞冲彴鍋氬悎瑙勬緞娓呮垨寮曞锛屼笉涓诲姩鏀惧ぇ銆俓n- **鍏虫敞绾?*锛堣礋闈㈡槑鏄惧澶氥€佽繘鍏ョ儹鎼滄垨濯掍綋璺熻繘锛夛細姝ｅ紡鍏紑鍥炲簲锛屽悓姝ュ惎鍔ㄥ钩鍙版姇璇夈€佷俊鎭簮娌熼€氱瓑澶勭疆鍔ㄤ綔锛屾妸褰卞搷鎺у埗鍦ㄥ眬閮ㄣ€俓n- **鍗辨満绾?*锛堝ぇ闈㈢Н鐖嗗彂銆佷富娴佸獟浣撲粙鍏ャ€佹湁鍚戝叏琛屼笟鎵╂暎瓒嬪娍锛夛細鎴愮珛涓撻」灏忕粍銆佺粺涓€鍙ｅ緞銆佷富瑕佽礋璐ｄ汉鍙戝０锛屽繀瑕佹椂鍊熷姪涓撲笟鑸嗘儏鍔涢噺骞惰瘎浼版硶寰嬫墜娈点€俓n\n鏈鑸嗘儏寤鸿鍏堟寜\"鍏虫敞绾"鍝嶅簲锛屾牴鎹紶鎾蛋鍔垮姩鎬佸崌闄嶇骇锛岄伩鍏嶄竴鍒€鍒囥€俓n\n## 绗洓姝ワ細澶嶇洏淇锛屾妸鍗辨満鍙樻垚閲嶅缓淇′换鐨勬満浼歕n**澶嶇洏鍥涗欢浜?*锛氣憼 棰勮鏄惁鍙婃椂鈥斺€旂洃娴嬬郴缁熸槸鍚︾涓€鏃堕棿鍙戠幇锛涒憽 鍝嶅簲鏄惁杩呴€熲€斺€斿彂鐜板埌鍥炲簲鑰楁椂锛涒憿 澶勭疆鏄惁鏈夋晥鈥斺€旇礋闈㈡渶缁堣鎺у埗鍦ㄤ粈涔堢▼搴︼紱鈶?鏈哄埗鏄惁瀹屽杽鈥斺€斿摢浜涚幆鑺傚崱澹炽€佷笅娆″浣曢伩鍏嶃€俓n\n**淇涓夊姩浣?*锛氣憼 鎸佺画杈撳嚭姝ｉ潰鍐呭锛堢悊璧旀渚嬨€佹湇鍔″崌绾с€佽涓氬叕鐩婏級锛屽啿娣¤礋闈㈣蹇嗭紱鈶?涓诲姩鍏ず鏀硅繘鎺柦锛岃鍏紬鐪嬪埌\"闂琚В鍐炽€佹満鍒惰瀹屽杽\"锛涒憿 鍦ㄤ富瑕佹悳绱㈡笭閬撴矇娣€鍝佺墝姝ｉ潰淇℃伅锛岃鎼滅储鍝佺墝鍚嶇殑浜虹湅鍒扮粡杩囩鐞嗙殑姝ｉ潰鍐呭銆俓n\n> 鐏伀鍙槸姝㈡崯锛屼慨澶嶆墠鏄鍊笺€傛妸鏈鍗辨満涓殑鍧﹁瘹涓庢媴褰擄紝杞寲涓哄搧鐗屽０瑾夐噸寤虹殑璧勬湰銆?;
+  return '本分析针对检索到�?' + negatives.length + ' 条负面舆情，按\"四步处置框架\"给出处置建议。\n\n## 第一步：第一时间响应，抢黄金窗口\n针对本次检索到的负面舆情，建议立即执行三项前置动作：第一�?*确认信息�?*——核实上述负面信息首发平台与账号、估算当前传播量级；第二�?*判断真实�?*——排查是服务/理赔纠纷确有其事，还是误解、抹黑或谣言；第三，**定初步调�?*——区分产品质量、服务态度或舆论误解类型，匹配差异化策略。\n\n在事件发生后 **4 小时�?* 发布\"已关注、正在核查、会负责任处理\"的简短态度声明，稳住局面；待事实清晰后再发布实质响应，给出具体处理方案与后续安排。务必避开三大误区�?*沉默装死**（让负面在猜测中发酵）�?*删帖压热�?*（易被截图留证、坐实心虚观感）�?*第一时间甩锅**（事实未清时撇责，一旦反转公信力崩塌）。\n\n## 第二步：摸清事实和传播路径\n**事实核查三件�?*：① 事件本身——到底发生了什么、责任在谁、影响范围多大；�?传播事实——负面条数、分布平台、传播最快的节点、参与账号是普通用户还是有组织；③ 历史事实——类似理�?服务纠纷此前是否发生、当时如何处置。\n\n**传播路径研判**：若负面仅在小范围论坛流转，属可控阶段，以监测为主；若已登上热搜或多家媒体跟进，进入爆发期，处置力度立即升级�?*同步证据固定**：对以下舆情截图、录屏、保存原始链接与传播数据，为后续平台申诉或司法维权留存证据链：\n\n' + list + '\n\n## 第三步：分级处置，按风险等级出牌\n- **一般级**（个别平台少量负面、影响有限）：持续监测传播走势，必要时在相关平台做合规澄清或引导，不主动放大。\n- **关注�?*（负面明显增多、进入热搜或媒体跟进）：正式公开回应，同步启动平台投诉、信息源沟通等处置动作，把影响控制在局部。\n- **危机�?*（大面积爆发、主流媒体介入、有向全行业扩散趋势）：成立专项小组、统一口径、主要负责人发声，必要时借助专业舆情力量并评估法律手段。\n\n本次舆情建议先按\"关注级\"响应，根据传播走势动态升降级，避免一刀切。\n\n## 第四步：复盘修复，把危机变成重建信任的机会\n**复盘四件�?*：① 预警是否及时——监测系统是否第一时间发现；② 响应是否迅速——发现到回应耗时；③ 处置是否有效——负面最终被控制在什么程度；�?机制是否完善——哪些环节卡壳、下次如何避免。\n\n**修复三动�?*：① 持续输出正面内容（理赔案例、服务升级、行业公益），冲淡负面记忆；�?主动公示改进措施，让公众看到\"问题被解决、机制被完善\"；③ 在主要搜索渠道沉淀品牌正面信息，让搜索品牌名的人看到经过管理的正面内容。\n\n> 灭火只是止损，修复才是增值。把本次危机中的坦诚与担当，转化为品牌声誉重建的资本�?;
 }
 
 function renderYuqingResults(items) {
   yuqingDetailItems = items;
   const container = document.getElementById('yuqingResults');
-  const sentiments = { positive: { label: '姝ｉ潰', cls: 'positive', icon: '馃憤' }, negative: { label: '璐熼潰', cls: 'negative', icon: '馃憥' }, neutral: { label: '涓€?, cls: 'neutral', icon: '馃搵' } };
+  const sentiments = { positive: { label: '正面', cls: 'positive', icon: '👍' }, negative: { label: '负面', cls: 'negative', icon: '👎' }, neutral: { label: '中�?, cls: 'neutral', icon: '📋' } };
 
   container.innerHTML = items.map((item, i) => {
     const s = sentiments[item.sentiment] || sentiments.neutral;
@@ -3956,15 +3962,15 @@ function renderYuqingResults(items) {
       <div class="result-snippet" style="-webkit-line-clamp:2;">${item.snippet}</div>
       <div class="yuqing-meta">
         <span class="yuqing-tag ${s.cls}">${s.icon} ${s.label}</span>
-        <span>馃彿锔?${item.yuqingkw || item.source}</span>
-        <span>馃搮 ${item.date}</span>
-        <span>鏉ユ簮锛?{item.source}</span>
+        <span>🏷�?${item.yuqingkw || item.source}</span>
+        <span>📅 ${item.date}</span>
+        <span>来源�?{item.source}</span>
       </div>
     </div>`;
   }).join('');
 }
 
-// ===== 瀵硅瘽妗?=====
+// ===== 对话�?=====
 let modalCallback = null;
 
 function showConfirmModal(title, msg, onConfirm) {
@@ -3994,9 +4000,9 @@ function closeAlert() {
   document.getElementById('alertModal').classList.remove('active');
 }
 
-// ===== 鐢ㄦ埛绠＄悊 =====
+// ===== 用户管理 =====
 const DEFAULT_USERS = [
-  { username: 'admin', password: 'Aa112233*-', role: '绠＄悊鍛?, perms: ['dashboard','search','analysis','report','history','settings'], created: new Date().toISOString() }
+  { username: 'admin', password: 'Aa112233*-', role: '管理�?, perms: ['dashboard','search','analysis','report','history','settings'], created: new Date().toISOString() }
 ];
 
 let userList = [];
@@ -4031,12 +4037,12 @@ function getPermsFromCheckboxes(containerId) {
 
 function buildPermCheckboxes(containerId, perms) {
   const allPerms = [
-    { value: 'dashboard', label: '馃搳 浠〃鐩? },
-    { value: 'search', label: '馃攳 鎯呮姤鎼滅储' },
-    { value: 'analysis', label: '馃 鏅鸿兘鍒嗘瀽' },
-    { value: 'report', label: '馃搵 鎶ュ憡绠＄悊' },
-    { value: 'history', label: '馃摐 鎼滅储鍘嗗彶' },
-    { value: 'settings', label: '鈿欙笍 绯荤粺璁剧疆' }
+    { value: 'dashboard', label: '📊 仪表�? },
+    { value: 'search', label: '🔍 情报搜索' },
+    { value: 'analysis', label: '🤖 智能分析' },
+    { value: 'report', label: '📋 报告管理' },
+    { value: 'history', label: '📜 搜索历史' },
+    { value: 'settings', label: '⚙️ 系统设置' }
   ];
   return allPerms.map(p => `
     <label class="perm-checkbox-item">
@@ -4050,10 +4056,10 @@ function addNewUser() {
   const role = document.getElementById('newUserRole').value;
   const perms = getPermsFromCheckboxes('permCheckboxes');
 
-  if (!username) { showAlertModal('鉂?杈撳叆閿欒', '璇疯緭鍏ョ敤鎴峰悕'); return; }
-  if (!password) { showAlertModal('鉂?杈撳叆閿欒', '璇疯緭鍏ョ櫥褰曞瘑鐮?); return; }
-  if (password.length < 6) { showAlertModal('鉂?杈撳叆閿欒', '瀵嗙爜闀垮害涓嶈兘灏戜簬6浣?); return; }
-  if (userList.some(u => u.username === username)) { showAlertModal('鉂?鐢ㄦ埛鍚嶉噸澶?, `鐢ㄦ埛鍚?${username}"宸插瓨鍦紝璇锋崲涓€涓猔); return; }
+  if (!username) { showAlertModal('�?输入错误', '请输入用户名'); return; }
+  if (!password) { showAlertModal('�?输入错误', '请输入登录密�?); return; }
+  if (password.length < 6) { showAlertModal('�?输入错误', '密码长度不能少于6�?); return; }
+  if (userList.some(u => u.username === username)) { showAlertModal('�?用户名重�?, `用户�?${username}"已存在，请换一个`); return; }
 
   userList.push({
     username, password, role,
@@ -4064,13 +4070,13 @@ function addNewUser() {
   saveUsers();
   renderUserList();
 
-  // 娓呯┖琛ㄥ崟
+  // 清空表单
   document.getElementById('newUsername').value = '';
   document.getElementById('newPassword').value = '';
-  document.getElementById('newUserRole').value = '鏅€氱敤鎴?;
+  document.getElementById('newUserRole').value = '普通用�?;
   document.querySelectorAll('#permCheckboxes input[type="checkbox"]').forEach(cb => cb.checked = true);
 
-  showToast(`馃懁 鐢ㄦ埛"${username}"娣诲姞鎴愬姛`, 'success');
+  showToast(`👤 用户"${username}"添加成功`, 'success');
 }
 
 function startEditUser(index) {
@@ -4097,7 +4103,7 @@ function saveUserEdit() {
   const perms = getPermsFromCheckboxes('editPermCheckboxes');
 
   if (newPassword && newPassword.length < 6) {
-    showAlertModal('鉂?杈撳叆閿欒', '瀵嗙爜闀垮害涓嶈兘灏戜簬6浣?); return;
+    showAlertModal('�?输入错误', '密码长度不能少于6�?); return;
   }
 
   if (newPassword) user.password = newPassword;
@@ -4107,19 +4113,19 @@ function saveUserEdit() {
   saveUsers();
   renderUserList();
   cancelUserEdit();
-  showToast(`鉁?鐢ㄦ埛"${user.username}"淇℃伅宸叉洿鏂癭, 'success');
+  showToast(`�?用户"${user.username}"信息已更新`, 'success');
 }
 
 function deleteUser(index) {
   const user = userList[index];
   showConfirmModal(
-    '馃棏锔?纭鍒犻櫎',
-    `纭畾瑕佸垹闄ょ敤鎴?"${user.username}" 鍚楋紵鍒犻櫎鍚庤鐢ㄦ埛灏嗘棤娉曠櫥褰曠郴缁熴€俙,
+    '🗑�?确认删除',
+    `确定要删除用�?"${user.username}" 吗？删除后该用户将无法登录系统。`,
     () => {
       userList.splice(index, 1);
       saveUsers();
       renderUserList();
-      showToast(`馃棏锔?鐢ㄦ埛"${user.username}"宸插垹闄, 'info');
+      showToast(`🗑�?用户"${user.username}"已删除`, 'info');
     }
   );
 }
@@ -4137,10 +4143,10 @@ function renderUserList() {
 
   noUsers.style.display = 'none';
   container.innerHTML = userList.map((u, i) => {
-    const roleCls = u.role === '绠＄悊鍛? ? 'admin' : 'normal';
+    const roleCls = u.role === '管理�? ? 'admin' : 'normal';
     const permLabels = {
-      dashboard: '浠〃鐩?, search: '鎯呮姤鎼滅储', analysis: '鏅鸿兘鍒嗘瀽',
-      report: '鎶ュ憡绠＄悊', history: '鍘嗗彶璁板綍', settings: '绯荤粺璁剧疆'
+      dashboard: '仪表�?, search: '情报搜索', analysis: '智能分析',
+      report: '报告管理', history: '历史记录', settings: '系统设置'
     };
     const permTags = (u.perms || []).map(p => `<span class="user-perm-tag">${permLabels[p] || p}</span>`).join('');
     return `
@@ -4150,21 +4156,21 @@ function renderUserList() {
         <div class="username">${u.username}</div>
         <div class="user-meta">
           <span class="user-role-badge ${roleCls}">${u.role}</span>
-          <span>娣诲姞鏃堕棿锛?{new Date(u.created).toLocaleDateString('zh-CN')}</span>
+          <span>添加时间�?{new Date(u.created).toLocaleDateString('zh-CN')}</span>
         </div>
         <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;">
           ${permTags}
         </div>
       </div>
       <div class="user-actions">
-        <button class="icon-btn" onclick="startEditUser(${i})" title="缂栬緫鐢ㄦ埛">鉁忥笍 缂栬緫</button>
-        ${i > 0 ? `<button class="icon-btn danger" onclick="deleteUser(${i})" title="鍒犻櫎鐢ㄦ埛">馃棏锔?鍒犻櫎</button>` : ''}
+        <button class="icon-btn" onclick="startEditUser(${i})" title="编辑用户">✏️ 编辑</button>
+        ${i > 0 ? `<button class="icon-btn danger" onclick="deleteUser(${i})" title="删除用户">🗑�?删除</button>` : ''}
       </div>
     </div>`;
   }).join('');
 }
 
-// 鐧诲綍鏃舵牴鎹綋鍓嶇敤鎴锋潈闄愭帶鍒朵晶杈规爮
+// 登录时根据当前用户权限控制侧边栏
 function applyUserPermissions() {
   const stored = localStorage.getItem('intel_current_user');
   if (!stored) return;
@@ -4180,14 +4186,14 @@ function applyUserPermissions() {
   } catch(e) {}
 }
 
-// 鍒濆鍖栫敤鎴峰垪琛?loadUsers();
+// 初始化用户列�?loadUsers();
 
-// ===== 鍥炶溅閿?=====
+// ===== 回车�?=====
 document.getElementById('analysisTopic')?.addEventListener('keydown', function(e) {
   if (e.key === 'Enter') startAnalysis();
 });
 
-// ===== 鎼滅储缁撴灉璇︽儏寮圭獥 =====
+// ===== 搜索结果详情弹窗 =====
 let detailSource = 'search';
 let detailCurrentIdx = 0;
 let yuqingDetailItems = [];
@@ -4208,13 +4214,13 @@ function openDetailModal(idx) {
   if (!item) return;
 
   var meta = [
-    { icon: '&#x1F4C2;', label: '鏉ユ簮', val: item.source || '缃戠粶' },
-    { icon: '&#x1F4C5;', label: '鏃ユ湡', val: item.date || new Date().toLocaleDateString('zh-CN') },
-    { icon: '&#x1F194;', label: '缂栧彿', val: '#' + String(idx + 1).padStart(3, '0') }
+    { icon: '&#x1F4C2;', label: '来源', val: item.source || '网络' },
+    { icon: '&#x1F4C5;', label: '日期', val: item.date || new Date().toLocaleDateString('zh-CN') },
+    { icon: '&#x1F194;', label: '编号', val: '#' + String(idx + 1).padStart(3, '0') }
   ];
-  if (item.yuqingkw) meta.push({ icon: '&#x1F3F7;', label: '鍖归厤鍏抽敭璇?, val: item.yuqingkw });
+  if (item.yuqingkw) meta.push({ icon: '&#x1F3F7;', label: '匹配关键�?, val: item.yuqingkw });
 
-  document.getElementById('detailTitle').textContent = item.title || '鏃犳爣棰?;
+  document.getElementById('detailTitle').textContent = item.title || '无标�?;
   document.getElementById('detailMeta').innerHTML = meta.map(function(m) {
     return '<div class="detail-meta-item">' + m.icon + ' ' + m.label + ': <span class="val">' + m.val + '</span></div>';
   }).join('');
@@ -4222,9 +4228,9 @@ function openDetailModal(idx) {
   var url = item.url || '#';
   document.getElementById('detailUrl').innerHTML = url !== '#'
     ? '<a href="' + url + '" target="_blank">' + url + '</a>'
-    : '<span style="color:var(--text-muted);">鏆傛棤鍘熸枃閾炬帴</span>';
-  document.getElementById('detailContent').textContent = item.snippet || item.content || '鏆傛棤璇︾粏鍐呭';
-  document.getElementById('detailIdx').textContent = '绗?' + (idx + 1) + ' / ' + total + ' 鏉?;
+    : '<span style="color:var(--text-muted);">暂无原文链接</span>';
+  document.getElementById('detailContent').textContent = item.snippet || item.content || '暂无详细内容';
+  document.getElementById('detailIdx').textContent = '�?' + (idx + 1) + ' / ' + total + ' �?;
   document.getElementById('detailPrevBtn').disabled = idx === 0;
   document.getElementById('detailNextBtn').disabled = idx === total - 1;
   document.getElementById('detailModal').classList.add('active');
@@ -4293,14 +4299,14 @@ function toggleResultSelect(index, el) {
 
 
 
-// ===== 椤甸潰鍔犺浇鎭㈠浼氳瘽 + 鑷姩娓呯悊缂撳瓨 =====
+// ===== 页面加载恢复会话 + 自动清理缓存 =====
 
-// 鐧诲綍鏃?+ 姣忔鍒锋柊鑷姩娓呯悊娴忚鍣ㄧ紦瀛?function autoCleanCache() {
+// 登录�?+ 每次刷新自动清理浏览器缓�?function autoCleanCache() {
   try {
     var now = Date.now();
     var cleaned = 0;
 
-    // 娓呯悊瓒呰繃30澶╃殑鎼滅储鍘嗗彶
+    // 清理超过30天的搜索历史
     var history = JSON.parse(localStorage.getItem('intel_history') || '[]');
     var histBefore = history.length;
     history = history.filter(function(item) {
@@ -4311,7 +4317,7 @@ function toggleResultSelect(index, el) {
       localStorage.setItem('intel_history', JSON.stringify(history));
     }
 
-    // 娓呯悊瓒呰繃90澶╃殑鎶ュ憡
+    // 清理超过90天的报告
     var reports = JSON.parse(localStorage.getItem('intel_reports') || '[]');
     var repBefore = reports.length;
     reports = reports.filter(function(r) {
@@ -4322,21 +4328,21 @@ function toggleResultSelect(index, el) {
       localStorage.setItem('intel_reports', JSON.stringify(reports));
     }
 
-    // 娓呯悊涓存椂鍒嗘瀽缂撳瓨
+    // 清理临时分析缓存
     if (localStorage.getItem('intel_temp_analysis')) {
       localStorage.removeItem('intel_temp_analysis');
       cleaned++;
     }
 
     if (cleaned > 0) {
-      console.log('[缂撳瓨娓呯悊] 宸茶嚜鍔ㄦ竻鐞?' + cleaned + ' 鏉¤繃鏈熸暟鎹?);
+      console.log('[缓存清理] 已自动清�?' + cleaned + ' 条过期数�?);
     }
   } catch(e) {
-    // 闈欓粯蹇界暐娓呯悊閿欒
+    // 静默忽略清理错误
   }
 }
 
-// 椤甸潰鍔犺浇鏃舵仮澶嶇櫥褰曚細璇?function restoreSession() {
+// 页面加载时恢复登录会�?function restoreSession() {
   var session = localStorage.getItem('intel_session');
   var userStr = localStorage.getItem('intel_current_user');
 
@@ -4345,7 +4351,7 @@ function toggleResultSelect(index, el) {
       var user = JSON.parse(userStr);
       var users = JSON.parse(localStorage.getItem('intel_users') || '[]');
 
-      // 纭繚鐢ㄦ埛浠嶅瓨鍦ㄤ簬鐢ㄦ埛鍒楄〃锛坅dmin榛樿鐢ㄦ埛锛?      var userExists = users.some(function(u) { return u.username === user.username; });
+      // 确保用户仍存在于用户列表（admin默认用户�?      var userExists = users.some(function(u) { return u.username === user.username; });
       if (!userExists) {
         if (user.username === 'admin') {
           var hasAdmin = users.some(function(u) { return u.username === 'admin'; });
@@ -4353,25 +4359,25 @@ function toggleResultSelect(index, el) {
             users.unshift({
               username: 'admin',
               password: 'Aa112233*-',
-              role: '绠＄悊鍛?,
+              role: '管理�?,
               perms: ['dashboard','search','analysis','report','history','settings'],
               created: new Date().toISOString()
             });
             localStorage.setItem('intel_users', JSON.stringify(users));
           }
         } else {
-          // 鐢ㄦ埛宸茶鍒犻櫎锛屾竻闄や細璇?          localStorage.removeItem('intel_session');
+          // 用户已被删除，清除会�?          localStorage.removeItem('intel_session');
           localStorage.removeItem('intel_current_user');
           return;
         }
       }
 
-      // 鏄剧ず涓荤晫闈?      document.getElementById('loginPage').style.display = 'none';
+      // 显示主界�?      document.getElementById('loginPage').style.display = 'none';
       document.getElementById('mainApp').style.display = 'block';
       loadStorageData();
       updateStats();
       applyUserPermissions();
-      showToast('馃敁 浼氳瘽宸叉仮澶嶏紝娆㈣繋鍥炴潵 ' + (user.username || '') + '锛?, 'info');
+      showToast('🔓 会话已恢复，欢迎回来 ' + (user.username || '') + '�?, 'info');
     } catch(e) {
       localStorage.removeItem('intel_session');
       localStorage.removeItem('intel_current_user');
@@ -4379,7 +4385,7 @@ function toggleResultSelect(index, el) {
   }
 }
 
-// 椤甸潰鍔犺浇瀹屾垚鍚庢仮澶嶄細璇?window.addEventListener('DOMContentLoaded', function() {
+// 页面加载完成后恢复会�?window.addEventListener('DOMContentLoaded', function() {
   autoCleanCache();
   restoreSession();
 });
