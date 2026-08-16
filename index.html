@@ -2366,21 +2366,29 @@
             </button>
           </div>
 
+          <div class="analysis-input-section" style="margin:20px 0;">
+            <label style="display:block; margin-bottom:8px; color:var(--text-dim); font-size:13px;">
+              📋 分析内容（可选，支持从秘塔搜索导入）
+            </label>
+            <textarea id="analysisInput" placeholder="在此粘贴或输入需要分析的内容，或从秘塔搜索一键导入..." 
+              style="width:100%; min-height:120px; padding:12px; background:var(--bg-dark); border:1px solid var(--border); border-radius:8px; color:var(--text); font-family:inherit; font-size:13px; resize:vertical;"></textarea>
+          </div>
+
           <div class="analysis-options">
             <label class="option-chip selected" onclick="toggleOption(this)">
-              <input type="checkbox" checked> 📰 整合搜索结果
+              <input type="checkbox" value="integrate" checked> 📰 整合搜索结果
             </label>
             <label class="option-chip selected" onclick="toggleOption(this)">
-              <input type="checkbox" checked> 🔍 实时补充搜索
+              <input type="checkbox" value="search" checked> 🔍 实时补充搜索
             </label>
             <label class="option-chip selected" onclick="toggleOption(this)">
-              <input type="checkbox" checked> 📊 SWOT分析
+              <input type="checkbox" value="swot" checked> 📊 SWOT分析
             </label>
             <label class="option-chip selected" onclick="toggleOption(this)">
-              <input type="checkbox" checked> 💡 趋势预测
+              <input type="checkbox" value="trend" checked> 💡 趋势预测
             </label>
             <label class="option-chip" onclick="toggleOption(this)">
-              <input type="checkbox"> 📈 数据可视化建议
+              <input type="checkbox" value="visual"> 📈 数据可视化建议
             </label>
           </div>
 
