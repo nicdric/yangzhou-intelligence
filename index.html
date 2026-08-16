@@ -1970,6 +1970,43 @@
     color: #fbbf24;
     font-size: 13px;
   }
+
+  .api-error-modal {
+    display: none;
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,0.7);
+    align-items: center; justify-content: center;
+  }
+  .api-error-modal.active { display: flex; }
+  .api-error-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 480px;
+    width: 90%;
+    box-shadow: 0 25px 80px rgba(0,0,0,0.6);
+  }
+  .api-error-icon { font-size: 48px; text-align: center; margin-bottom: 16px; }
+  .api-error-title { font-size: 18px; font-weight: 700; color: var(--red); text-align: center; margin-bottom: 12px; }
+  .api-error-reason { font-size: 13px; color: var(--text-dim); background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); border-radius: 10px; padding: 12px 16px; margin-bottom: 16px; line-height: 1.7; }
+  .api-error-reason b { color: #fca5a5; }
+  .api-error-causes { font-size: 12px; color: var(--text-muted); margin-bottom: 20px; }
+  .api-error-causes li { margin: 5px 0; padding-left: 4px; }
+  .api-error-actions { display: flex; gap: 10px; }
+  .api-error-btn {
+    flex: 1; padding: 12px; border-radius: 10px; font-size: 14px; font-weight: 600;
+    cursor: pointer; font-family: inherit; transition: all 0.2s; border: 1px solid;
+  }
+  .api-error-btn.mock {
+    background: rgba(245,158,11,0.15); border-color: rgba(245,158,11,0.4); color: #fbbf24;
+  }
+  .api-error-btn.mock:hover { background: rgba(245,158,11,0.25); }
+  .api-error-btn.retry {
+    background: rgba(99,102,241,0.15); border-color: rgba(99,102,241,0.4); color: var(--accent2);
+  }
+  .api-error-btn.retry:hover { background: rgba(99,102,241,0.25); }
+
 </style>
 </head>
 <body>
@@ -2016,7 +2053,26 @@
 </div>
 
 <!-- ========== 主应用 ========== -->
-<div id="mainApp">
+
+    <div class="api-error-modal" id="apiErrorModal">
+      <div class="api-error-box">
+        <div class="api-error-icon">&#9888;</div>
+        <div class="api-error-title" id="apiErrorTitle">秘塔搜索 API 调用失败</div>
+        <div class="api-error-reason" id="apiErrorReason"></div>
+        <ul class="api-error-causes">
+          <li>&#9702; API Key 无效或已过期</li>
+          <li>&#9702; 网络连接异常（公司内网/防火墙拦截）</li>
+          <li>&#9702; 跨域(CORS)限制（本工具不支持本地 file:// 打开）</li>
+          <li>&#9702; 秘塔服务暂时不可用</li>
+        </ul>
+        <div class="api-error-actions">
+          <button class="api-error-btn mock" id="apiErrorMockBtn" onclick="apiErrorUseMock()">&#9889; 使用模拟数据</button>
+          <button class="api-error-btn retry" onclick="apiErrorRetry()">&#8635; 重试</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="mainApp">
 
   <!-- 顶部栏 -->
   <div class="topbar">
@@ -2866,21 +2922,22 @@ async function startSearch() {
     const data = await response.json();
     processSearchResults(data, query, false);
   } catch(e) {
-    // API 失败，显示错误并询问是否使用模拟数据
     clearInterval(progressInterval);
     btn.disabled = false;
     btn.innerHTML = '<span>🚀</span> 开始搜索';
     progressWrap.style.display = 'none';
     statusEl.style.display = 'none';
+    resultsSection.style.display = 'none';
 
-    const useMock = confirm('秘塔搜索 API 调用失败（' + (e.message || '网络错误') + '）\n\n可能原因：\n• API Key 无效或过期\n• 网络连接问题\n• 跨域(CORS)限制（本地文件直接打开时常见）\n\n是否使用「模拟数据」继续演示？（点击取消则返回重试）');
-    if (useMock) {
-      processSearchResults(generateMockResults(query), query, true);
-      resultsSection.style.display = 'block';
-      showToast('当前显示的是模拟数据，非真实搜索结果', 'warning');
-    } else {
-      showToast('搜索已取消，请检查网络或 API 配置后重试', 'info');
-    }
+    const reason = '<b>错误信息：</b>' + (e.message || '未知错误') + '<br><b>状态：</b>网络请求未成功到达秘塔服务器';
+    showApiErrorModal('秘塔搜索 API 调用失败', reason,
+      () => {
+        processSearchResults(generateMockResults(query), query, true);
+        resultsSection.style.display = 'block';
+        showToast('当前显示的是模拟数据，非真实搜索结果', 'warning');
+      },
+      () => startSearch()
+    );
     return;
   }
 
@@ -2895,6 +2952,25 @@ async function startSearch() {
     btn.innerHTML = '<span>🚀</span> 开始搜索';
   }, 800);
 }
+
+let _apiErrorContext = null; // {query, type, resultsSection, yqSection}
+function showApiErrorModal(title, reason, mockCallback, retryCallback) {
+  _apiErrorContext = { mockCallback, retryCallback };
+  document.getElementById('apiErrorTitle').textContent = title;
+  document.getElementById('apiErrorReason').innerHTML = reason;
+  document.getElementById('apiErrorModal').classList.add('active');
+}
+function apiErrorUseMock() {
+  document.getElementById('apiErrorModal').classList.remove('active');
+  if (_apiErrorContext && _apiErrorContext.mockCallback) _apiErrorContext.mockCallback();
+  _apiErrorContext = null;
+}
+function apiErrorRetry() {
+  document.getElementById('apiErrorModal').classList.remove('active');
+  if (_apiErrorContext && _apiErrorContext.retryCallback) _apiErrorContext.retryCallback();
+  _apiErrorContext = null;
+}
+
 
 function processSearchResults(data, query, isMock) {
   const isMockData = !!isMock || !(data.results || data.items);
@@ -3674,25 +3750,31 @@ async function startYuqingSearch() {
         });
         allYuqing = allYuqing.concat(results);
       }
-    } catch(e) { /* 单个关键词失败，继续下一个 */ }
+    } catch(e) { /* 静默继续下一个关键词 */ }
   }
 
-  // 如果全部关键词都失败，询问是否使用模拟数据
+  // 如果全部关键词都失败，显示错误弹窗
   if (allYuqing.length === 0) {
     clearInterval(progressInterval);
     btn.disabled = false;
     btn.innerHTML = '<span>📡</span> 舆情搜索';
     statusEl.style.display = 'none';
     progressWrap.style.display = 'none';
+    yuqingSection.style.display = 'none';
 
-    const useMock = confirm('秘塔搜索 API 调用失败（无有效结果）\n\n可能原因：\n• API Key 无效或过期\n• 网络连接问题\n• 跨域(CORS)限制（本地文件直接打开时常见）\n\n是否使用「模拟数据」继续演示？（点击取消则返回重试）');
-    if (useMock) {
-      allYuqing = generateMockYuqing();
-      showToast('当前显示的是模拟数据，非真实搜索结果', 'warning');
-    } else {
-      showToast('搜索已取消，请检查网络或 API 配置后重试', 'info');
-      return;
-    }
+    const reason = '<b>10个关键词全部未返回有效结果</b><br>请检查：API Key 是否有效、网络是否正常、秘塔服务是否可用';
+    showApiErrorModal('舆情搜索 API 调用失败', reason,
+      () => {
+        allYuqing = generateMockYuqing();
+        yuqingDetailItems = allYuqing;
+        renderYuqingResults(allYuqing);
+        document.getElementById('yuqingCount').textContent = allYuqing.length;
+        yuqingSection.style.display = 'block';
+        showToast('当前显示的是模拟数据，非真实搜索结果', 'warning');
+      },
+      () => startYuqingSearch()
+    );
+    return;
   }
 
   clearInterval(progressInterval);
