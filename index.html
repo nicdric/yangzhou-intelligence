@@ -2265,18 +2265,9 @@
             <button class="action-btn" style="background:linear-gradient(135deg,#f59e0b,#d97706);" id="yulanBtn" onclick="startYuqingSearch()">
               <span>📡</span> 舆情搜索
             </button>
-            <button class="action-btn" style="background:linear-gradient(135deg,#10b981,#059669);" onclick="openMetasoEmbed()">
+            <button class="action-btn" style="background:linear-gradient(135deg,#10b981,#059669);" onclick="openMetasoSearch()">
               <span>🔎</span> 秘塔搜索
             </button>
-          </div>
-
-          <!-- 秘塔搜索嵌入区域 -->
-          <div id="metasoEmbedSection" style="display:none; margin-top:20px; border:1px solid var(--border); border-radius:12px; overflow:hidden;">
-            <div style="display:flex; align-items:center; justify-content:space-between; padding:12px 16px; background:var(--bg-card); border-bottom:1px solid var(--border);">
-              <span style="font-weight:600; color:var(--accent2);">🔎 秘塔 AI 搜索</span>
-              <button onclick="closeMetasoEmbed()" style="background:none; border:none; color:var(--text-dim); cursor:pointer; font-size:18px;">✕</button>
-            </div>
-            <iframe id="metasoIframe" src="" style="width:100%; height:600px; border:none; background:var(--bg-dark);" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
           </div>
 
           <div class="smart-tips">
@@ -2891,11 +2882,9 @@ function updateStats() {
   document.getElementById('stat-searches').textContent = searches;
 }
 
-// ===== 秘塔嵌入搜索 =====
-function openMetasoEmbed() {
+// ===== 秘塔搜索（新标签页打开）=====
+function openMetasoSearch() {
   const query = document.getElementById('searchQuery').value.trim();
-  const embedSection = document.getElementById('metasoEmbedSection');
-  const iframe = document.getElementById('metasoIframe');
 
   // 构建秘塔搜索 URL
   let metasoUrl = 'https://metaso.cn/';
@@ -2903,18 +2892,8 @@ function openMetasoEmbed() {
     metasoUrl = `https://metaso.cn/?q=${encodeURIComponent(query)}`;
   }
 
-  iframe.src = metasoUrl;
-  embedSection.style.display = 'block';
-
-  // 滚动到嵌入区域
-  embedSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-function closeMetasoEmbed() {
-  const embedSection = document.getElementById('metasoEmbedSection');
-  const iframe = document.getElementById('metasoIframe');
-  iframe.src = '';
-  embedSection.style.display = 'none';
+  // 在新标签页打开
+  window.open(metasoUrl, '_blank');
 }
 
 // ===== 秘塔搜索 =====
