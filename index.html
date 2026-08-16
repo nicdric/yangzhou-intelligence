@@ -2759,15 +2759,19 @@ const API_CONFIG = {
   metascout: {
     key: 'mk-76195083A4A0554DA3289BF7A05EB654',
     endpoint: 'https://api.metasearch.cloud/search',
-    // CORS代理备选（当直接调用失败时使用）
-    useProxy: false,
-    proxyEndpoint: 'https://corsproxy.io/?https://api.metasearch.cloud/search'
+    // 多个CORS代理备选
+    proxyEndpoints: [
+      'https://api.allorigins.win/raw?url=https://api.metasearch.cloud/search',
+      'https://corsproxy.io/?https://api.metasearch.cloud/search'
+    ]
   },
   deepseek: {
     key: 'sk-49c02b5d16c64e9e97d7848b651a641b',
     endpoint: 'https://api.deepseek.com/chat/completions',
-    useProxy: false,
-    proxyEndpoint: 'https://corsproxy.io/?https://api.deepseek.com/chat/completions'
+    proxyEndpoints: [
+      'https://api.allorigins.win/raw?url=https://api.deepseek.com/chat/completions',
+      'https://corsproxy.io/?https://api.deepseek.com/chat/completions'
+    ]
   }
 };
 
@@ -2919,7 +2923,7 @@ async function startSearch() {
   }, 300);
 
   try {
-    const endpoint = _useCorsProxy ? API_CONFIG.metascout.proxyEndpoint : API_CONFIG.metascout.endpoint;
+    const endpoint = _useCorsProxy ? API_CONFIG.metascout.proxyEndpoints[_currentProxyIndex] : API_CONFIG.metascout.endpoint;
     const response = await fetch(endpoint, {
       method: 'POST',
       headers: {
@@ -2945,8 +2949,10 @@ async function startSearch() {
     statusEl.style.display = 'none';
     resultsSection.style.display = 'none';
 
-    const isCorsError = e.message && (e.message.includes('CORS') || e.message.includes('Failed to fetch') || e.message.includes('NetworkError'));
-    const reason = '<b>错误信息：</b>' + (e.message || '未知错误') + '<br><b>状态：</b>网络请求未成功到达秘塔服务器' + (isCorsError ? '<br><b>提示：</b>可能是跨域(CORS)限制，可尝试使用代理' : '');
+    const isNetworkError = e.message && (e.message.includes('CORS') || e.message.includes('Failed to fetch') || e.message.includes('NetworkError'));
+    const isCorsError = isNetworkError || _useCorsProxy; // 如果使用了代理仍然失败，也显示代理选项
+    const proxyHint = _useCorsProxy ? '<br><b>提示：</b>当前代理可能不可用，可尝试切换代理' : (isNetworkError ? '<br><b>提示：</b>可能是跨域(CORS)限制，可尝试使用代理' : '');
+    const reason = '<b>错误信息：</b>' + (e.message || '未知错误') + '<br><b>状态：</b>网络请求未成功到达秘塔服务器' + proxyHint;
     showApiErrorModal('秘塔搜索 API 调用失败', reason,
       () => {
         processSearchResults(generateMockResults(query), query, true);
@@ -2973,14 +2979,22 @@ async function startSearch() {
 
 let _apiErrorContext = null; // {query, type, resultsSection, yqSection, isCorsError}
 let _useCorsProxy = false; // 全局代理开关
+let _currentProxyIndex = 0; // 当前使用的代理索引
 function showApiErrorModal(title, reason, mockCallback, retryCallback, isCorsError) {
   _apiErrorContext = { mockCallback, retryCallback, isCorsError };
   document.getElementById('apiErrorTitle').textContent = title;
   document.getElementById('apiErrorReason').innerHTML = reason;
-  // 显示/隐藏代理按钮
+  // 显示/隐藏代理按钮（如果已经尝试过代理，继续显示；如果是CORS错误，显示）
   const proxyBtn = document.getElementById('apiErrorProxyBtn');
   if (proxyBtn) {
-    proxyBtn.style.display = isCorsError ? 'inline-block' : 'none';
+    const shouldShowProxy = isCorsError || _useCorsProxy;
+    proxyBtn.style.display = shouldShowProxy ? 'inline-block' : 'none';
+    // 更新按钮文字
+    if (_useCorsProxy && _currentProxyIndex < API_CONFIG.metascout.proxyEndpoints.length - 1) {
+      proxyBtn.innerHTML = '🌐 切换代理服务器';
+    } else {
+      proxyBtn.innerHTML = '🌐 使用CORS代理';
+    }
   }
   document.getElementById('apiErrorModal').classList.add('active');
 }
@@ -2996,6 +3010,11 @@ function apiErrorRetry() {
 }
 function apiErrorRetryWithProxy() {
   _useCorsProxy = true;
+  // 如果当前代理失败，尝试下一个代理
+  if (_currentProxyIndex < API_CONFIG.metascout.proxyEndpoints.length - 1) {
+    _currentProxyIndex++;
+    console.log('Switching to proxy', _currentProxyIndex);
+  }
   document.getElementById('apiErrorModal').classList.remove('active');
   if (_apiErrorContext && _apiErrorContext.retryCallback) _apiErrorContext.retryCallback();
   _apiErrorContext = null;
@@ -3142,7 +3161,7 @@ async function startAnalysis() {
   // 获取搜索结果
   let searchData = [];
   const useSearch = document.querySelector('.option-chip:nth-child(2).selected') !== null;
-  const analysisEndpoint = _useCorsProxy ? API_CONFIG.metascout.proxyEndpoint : API_CONFIG.metascout.endpoint;
+  const analysisEndpoint = _useCorsProxy ? API_CONFIG.metascout.proxyEndpoints[_currentProxyIndex] : API_CONFIG.metascout.endpoint;
   if (useSearch) {
     try {
       const response = await fetch(analysisEndpoint, {
@@ -3762,7 +3781,7 @@ async function startYuqingSearch() {
   let allYuqing = [];
 
   // 逐个关键词调用秘塔搜索
-  const yqEndpoint = _useCorsProxy ? API_CONFIG.metascout.proxyEndpoint : API_CONFIG.metascout.endpoint;
+  const yqEndpoint = _useCorsProxy ? API_CONFIG.metascout.proxyEndpoints[_currentProxyIndex] : API_CONFIG.metascout.endpoint;
   for (let i = 0; i < YUQING_KEYWORDS.length; i++) {
     const keyword = YUQING_KEYWORDS[i];
     try {
