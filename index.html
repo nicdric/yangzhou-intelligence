@@ -2751,8 +2751,8 @@ const CREDENTIALS = {
 
 const API_CONFIG = {
   metascout: {
-    key: 'mk-76195083A4A0554DA3289BF7A05EB654',
-    endpoint: 'https://api.metasearch.cloud/search'
+    key: 'mk-9E7DB49B3163F3A59A6E7814055EBD7D',
+    endpoint: 'https://metaso-proxy.348988892.workers.dev/v1/chat/completions'
   },
   deepseek: {
     key: 'sk-49c02b5d16c64e9e97d7848b651a641b',
@@ -2915,9 +2915,8 @@ async function startSearch() {
         'Authorization': 'Bearer ' + API_CONFIG.metascout.key
       },
       body: JSON.stringify({
-        query: query,
-        numResults: 10,
-        source: document.getElementById('searchType').value
+        model: 'concise',
+        messages: [{ role: 'user', content: query }]
       })
     });
 
@@ -2979,8 +2978,24 @@ function apiErrorRetryDirect() {
 }
 
 function processSearchResults(data, query, isMock) {
-  const isMockData = !!isMock || !(data.results || data.items);
-  currentSearchResults = data.results || data.items || generateMockResults(query).results;
+  // 处理 OpenAI 格式响应
+  let results = [];
+  if (data.choices && data.choices[0] && data.choices[0].message) {
+    // OpenAI 格式 - 将回答内容作为单个结果
+    const answer = data.choices[0].message.content;
+    results = [{
+      title: '搜索结果摘要',
+      snippet: answer,
+      content: answer,
+      source: '秘塔搜索',
+      url: '#',
+      date: new Date().toLocaleDateString('zh-CN')
+    }];
+  } else {
+    results = data.results || data.items || generateMockResults(query).results;
+  }
+  const isMockData = !!isMock || !(results.length > 0);
+  currentSearchResults = results;
   selectedResults.clear();
 
   const historyEntry = {
