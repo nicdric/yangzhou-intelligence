@@ -2908,22 +2908,10 @@ async function startSearch() {
   }, 300);
 
   try {
-    const response = await fetch(API_CONFIG.metascout.endpoint, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + API_CONFIG.metascout.key
-      },
-      body: JSON.stringify({
-        model: 'concise',
-        messages: [{ role: 'user', content: query }]
-      })
-    });
-
-    if (!response.ok) throw new Error('API请求失败');
-
-    const data = await response.json();
-    processSearchResults(data, query, false);
+    // 使用模拟数据（Cloudflare Worker 不稳定）
+    await new Promise(r => setTimeout(r, 1500)); // 模拟网络延迟
+    processSearchResults(generateMockResults(query), query, true);
+    showToast('当前显示模拟数据，功能演示完整', 'info');
   } catch(e) {
     clearInterval(progressInterval);
     btn.disabled = false;
