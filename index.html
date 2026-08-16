@@ -2079,6 +2079,12 @@
           <button class="api-error-btn retry" onclick="apiErrorRetryWithProxy()" id="apiErrorProxyBtn" style="display:none;">&#127760; 浣跨敤CORS浠ｇ悊</button>
           <button class="api-error-btn retry" onclick="apiErrorRetry()">&#8635; 閲嶈瘯</button>
         </div>
+  <div style="margin-top:16px;padding:12px;background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.2);border-radius:10px;font-size:12px;color:var(--text-dim);">
+    <b>💡 解决方案：</b><br>
+    1. 安装浏览器 CORS 插件（如 "CORS Unblock" 或 "Allow CORS"）<br>
+    2. 点击「直接连接」按钮尝试直连<br>
+    3. 或使用「模拟数据」进行功能演示
+  </div>
       </div>
     </div>
 
@@ -2914,7 +2920,14 @@ async function startSearch() {
   }, 300);
 
   try {
-    const endpoint = _useCorsProxy ? API_CONFIG.metascout.proxyEndpoints[_currentProxyIndex] : API_CONFIG.metascout.endpoint;
+    let endpoint;
+    if (_tryDirectConnection) {
+      endpoint = API_CONFIG.metascout.endpoint; // 直接连接，需要浏览器CORS插件
+    } else if (_useCorsProxy) {
+      endpoint = API_CONFIG.metascout.proxyEndpoints[_currentProxyIndex];
+    } else {
+      endpoint = API_CONFIG.metascout.endpoint;
+    }
     const response = await fetch(endpoint, {
       method: 'POST',
       headers: {
@@ -3003,6 +3016,13 @@ function apiErrorRetryWithProxy() {
     _currentProxyIndex++;
     console.log('Switching to proxy', _currentProxyIndex);
   }
+  document.getElementById('apiErrorModal').classList.remove('active');
+  if (_apiErrorContext && _apiErrorContext.retryCallback) _apiErrorContext.retryCallback();
+  _apiErrorContext = null;
+}
+function apiErrorRetryDirect() {
+  _tryDirectConnection = true;
+  _useCorsProxy = false;
   document.getElementById('apiErrorModal').classList.remove('active');
   if (_apiErrorContext && _apiErrorContext.retryCallback) _apiErrorContext.retryCallback();
   _apiErrorContext = null;
