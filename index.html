@@ -223,6 +223,15 @@
     white-space: nowrap;
   }
   .yq-analysis-btn:hover { filter: brightness(1.1); }
+  #apiErrorProxyBtn {
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+    border-color: rgba(16,185,129,0.5) !important;
+    color: #fff !important;
+  }
+  #apiErrorProxyBtn:hover {
+    filter: brightness(1.1);
+  }
+  .yq-analysis-btn:hover { filter: brightness(1.1); }
   /* 历史舆情 */
   .yuqing-history-list { display: flex; flex-direction: column; gap: 16px; }
   .yuqing-history-card {
@@ -2067,6 +2076,7 @@
         </ul>
         <div class="api-error-actions">
           <button class="api-error-btn mock" id="apiErrorMockBtn" onclick="apiErrorUseMock()">&#9889; 使用模拟数据</button>
+          <button class="api-error-btn retry" onclick="apiErrorRetryWithProxy()" id="apiErrorProxyBtn" style="display:none;">&#127760; 使用CORS代理</button>
           <button class="api-error-btn retry" onclick="apiErrorRetry()">&#8635; 重试</button>
         </div>
       </div>
@@ -2748,11 +2758,16 @@ const CREDENTIALS = {
 const API_CONFIG = {
   metascout: {
     key: 'mk-76195083A4A0554DA3289BF7A05EB654',
-    endpoint: 'https://api.metasearch.cloud/search'
+    endpoint: 'https://api.metasearch.cloud/search',
+    // CORS代理备选（当直接调用失败时使用）
+    useProxy: false,
+    proxyEndpoint: 'https://corsproxy.io/?https://api.metasearch.cloud/search'
   },
   deepseek: {
     key: 'sk-49c02b5d16c64e9e97d7848b651a641b',
-    endpoint: 'https://api.deepseek.com/chat/completions'
+    endpoint: 'https://api.deepseek.com/chat/completions',
+    useProxy: false,
+    proxyEndpoint: 'https://corsproxy.io/?https://api.deepseek.com/chat/completions'
   }
 };
 
@@ -2904,7 +2919,8 @@ async function startSearch() {
   }, 300);
 
   try {
-    const response = await fetch(API_CONFIG.metascout.endpoint, {
+    const endpoint = _useCorsProxy ? API_CONFIG.metascout.proxyEndpoint : API_CONFIG.metascout.endpoint;
+    const response = await fetch(endpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -2929,14 +2945,16 @@ async function startSearch() {
     statusEl.style.display = 'none';
     resultsSection.style.display = 'none';
 
-    const reason = '<b>错误信息：</b>' + (e.message || '未知错误') + '<br><b>状态：</b>网络请求未成功到达秘塔服务器';
+    const isCorsError = e.message && (e.message.includes('CORS') || e.message.includes('Failed to fetch') || e.message.includes('NetworkError'));
+    const reason = '<b>错误信息：</b>' + (e.message || '未知错误') + '<br><b>状态：</b>网络请求未成功到达秘塔服务器' + (isCorsError ? '<br><b>提示：</b>可能是跨域(CORS)限制，可尝试使用代理' : '');
     showApiErrorModal('秘塔搜索 API 调用失败', reason,
       () => {
         processSearchResults(generateMockResults(query), query, true);
         resultsSection.style.display = 'block';
         showToast('当前显示的是模拟数据，非真实搜索结果', 'warning');
       },
-      () => startSearch()
+      () => startSearch(),
+      isCorsError
     );
     return;
   }
@@ -2953,11 +2971,17 @@ async function startSearch() {
   }, 800);
 }
 
-let _apiErrorContext = null; // {query, type, resultsSection, yqSection}
-function showApiErrorModal(title, reason, mockCallback, retryCallback) {
-  _apiErrorContext = { mockCallback, retryCallback };
+let _apiErrorContext = null; // {query, type, resultsSection, yqSection, isCorsError}
+let _useCorsProxy = false; // 全局代理开关
+function showApiErrorModal(title, reason, mockCallback, retryCallback, isCorsError) {
+  _apiErrorContext = { mockCallback, retryCallback, isCorsError };
   document.getElementById('apiErrorTitle').textContent = title;
   document.getElementById('apiErrorReason').innerHTML = reason;
+  // 显示/隐藏代理按钮
+  const proxyBtn = document.getElementById('apiErrorProxyBtn');
+  if (proxyBtn) {
+    proxyBtn.style.display = isCorsError ? 'inline-block' : 'none';
+  }
   document.getElementById('apiErrorModal').classList.add('active');
 }
 function apiErrorUseMock() {
@@ -2966,6 +2990,12 @@ function apiErrorUseMock() {
   _apiErrorContext = null;
 }
 function apiErrorRetry() {
+  document.getElementById('apiErrorModal').classList.remove('active');
+  if (_apiErrorContext && _apiErrorContext.retryCallback) _apiErrorContext.retryCallback();
+  _apiErrorContext = null;
+}
+function apiErrorRetryWithProxy() {
+  _useCorsProxy = true;
   document.getElementById('apiErrorModal').classList.remove('active');
   if (_apiErrorContext && _apiErrorContext.retryCallback) _apiErrorContext.retryCallback();
   _apiErrorContext = null;
@@ -3112,9 +3142,10 @@ async function startAnalysis() {
   // 获取搜索结果
   let searchData = [];
   const useSearch = document.querySelector('.option-chip:nth-child(2).selected') !== null;
+  const analysisEndpoint = _useCorsProxy ? API_CONFIG.metascout.proxyEndpoint : API_CONFIG.metascout.endpoint;
   if (useSearch) {
     try {
-      const response = await fetch(API_CONFIG.metascout.endpoint, {
+      const response = await fetch(analysisEndpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -3731,10 +3762,11 @@ async function startYuqingSearch() {
   let allYuqing = [];
 
   // 逐个关键词调用秘塔搜索
+  const yqEndpoint = _useCorsProxy ? API_CONFIG.metascout.proxyEndpoint : API_CONFIG.metascout.endpoint;
   for (let i = 0; i < YUQING_KEYWORDS.length; i++) {
     const keyword = YUQING_KEYWORDS[i];
     try {
-      const response = await fetch(API_CONFIG.metascout.endpoint, {
+      const response = await fetch(yqEndpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
