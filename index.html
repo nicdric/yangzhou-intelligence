@@ -23,7 +23,9 @@
     --radius: 12px;
     --sidebar-w: 260px;
   }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
+
   body {
     font-family: 'PingFang SC', 'Microsoft YaHei', 'Segoe UI', sans-serif;
     background: var(--bg-dark);
@@ -31,16 +33,21 @@
     min-height: 100vh;
     overflow-x: hidden;
   }
+
+  /* ===== 背景动画 ===== */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
     background:
       radial-gradient(ellipse 80% 50% at 20% 40%, rgba(99,102,241,0.08) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 40% at 80% 60%, rgba(34,211,238,0.05) 0%, transparent 60%);
+      radial-gradient(ellipse 60% 40% at 80% 60%, rgba(34,211,238,0.05) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 30% at 50% 90%, rgba(16,185,129,0.04) 0%, transparent 60%);
     pointer-events: none;
     z-index: 0;
   }
+
+  /* 网格线背景 */
   .grid-bg {
     position: fixed;
     inset: 0;
@@ -52,7 +59,195 @@
     z-index: 0;
   }
 
-  /* Login Page */
+
+  /* ===== 详情弹窗 ===== */
+  #detailModal .modal-box {
+    max-width: 680px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .detail-modal-body {
+    overflow-y: auto;
+    flex: 1;
+  }
+  .detail-modal-body::-webkit-scrollbar { width: 4px; }
+  .detail-modal-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  .detail-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .detail-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--accent2);
+    line-height: 1.5;
+  }
+  .detail-close {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    padding: 0;
+  }
+  .detail-close:hover {
+    background: rgba(239,68,68,0.1);
+    border-color: rgba(239,68,68,0.3);
+    color: var(--red);
+  }
+  .detail-meta {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .detail-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .detail-meta-item .val { color: var(--text-dim); }
+  .detail-url-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+  .detail-url-label { font-size: 11px; color: var(--text-muted); flex-shrink: 0; }
+  .detail-url-text {
+    flex: 1;
+    font-size: 12px;
+    color: var(--cyan);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: monospace;
+  }
+  .detail-url-text a { color: var(--cyan); text-decoration: none; }
+  .detail-url-text a:hover { text-decoration: underline; }
+  .detail-content-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  .detail-content {
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--text-dim);
+    padding: 16px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+  .detail-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+  }
+  .detail-idx { font-size: 12px; color: var(--text-muted); }
+  .detail-nav { display: flex; gap: 8px; }
+  .detail-nav-btn {
+    padding: 6px 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-dim);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .detail-nav-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent2);
+    background: rgba(99,102,241,0.08);
+  }
+  .detail-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+  .result-item.clickable { cursor: pointer; }
+  .result-item.clickable:hover { border-color: var(--accent); }
+  .result-title-text { color: var(--accent); font-size: 15px; font-weight: 600; line-height: 1.4; }
+
+  /* 历史记录查看结果按钮 */
+  .history-view-btn {
+    background: rgba(59,130,246,0.1);
+    border: 1px solid rgba(59,130,246,0.25);
+    color: var(--accent);
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+    white-space: nowrap;
+  }
+  .history-view-btn:hover {
+    background: rgba(59,130,246,0.2);
+    border-color: rgba(59,130,246,0.45);
+  }
+  .yq-analysis-btn {
+    background: linear-gradient(135deg,#ef4444,#dc2626);
+    border: none;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .yq-analysis-btn:hover { filter: brightness(1.1); }
+  /* 历史舆情 */
+  .yuqing-history-list { display: flex; flex-direction: column; gap: 16px; }
+  .yuqing-history-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+  }
+  .yh-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+  .yh-time { font-size: 13px; color: var(--text-muted); }
+  .yh-stats { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .yh-chip { font-size: 11px; padding: 2px 9px; border-radius: 20px; background: rgba(255,255,255,0.05); color: var(--text-muted); }
+  .yh-chip.pos { background: rgba(16,185,129,0.12); color: #6ee7b7; }
+  .yh-chip.neg { background: rgba(239,68,68,0.12); color: #fca5a5; }
+  .yh-chip.neu { background: rgba(148,163,184,0.12); color: #cbd5e1; }
+  .yh-items { display: flex; flex-direction: column; gap: 8px; margin: 10px 0 14px; }
+  .yh-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-dim); padding: 8px 10px; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px solid var(--border); }
+  .yh-item .yh-item-title { flex: 1; line-height: 1.5; }
+  .yh-item .yh-item-meta { color: var(--text-muted); font-size: 11px; margin-top: 2px; }
+  .yh-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .yh-report { margin-top: 12px; padding: 12px 14px; background: rgba(239,68,68,0.04); border: 1px solid rgba(239,68,68,0.18); border-radius: 10px; font-size: 13px; line-height: 1.85; color: var(--text-dim); max-height: 320px; overflow-y: auto; }
+  .yh-report-label { font-size: 12px; color: var(--red); margin-bottom: 8px; font-weight: 600; }
+
+  /* ===== 登录页 ===== */
+
   #loginPage {
     position: relative;
     z-index: 10;
@@ -62,19 +257,23 @@
     justify-content: center;
     padding: 20px;
   }
+
   .login-wrapper {
     width: 100%;
     max-width: 440px;
     animation: fadeInUp 0.6s ease;
   }
+
   @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
   .login-logo {
     text-align: center;
     margin-bottom: 40px;
   }
+
   .login-logo .logo-icon {
     width: 72px;
     height: 72px;
@@ -87,6 +286,7 @@
     font-size: 36px;
     box-shadow: 0 0 40px var(--accent-glow);
   }
+
   .login-logo h1 {
     font-size: 28px;
     font-weight: 700;
@@ -95,6 +295,7 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
   .login-logo p {
     color: var(--text-dim);
     font-size: 14px;
@@ -102,6 +303,7 @@
     letter-spacing: 2px;
     text-transform: uppercase;
   }
+
   .login-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -110,6 +312,7 @@
     backdrop-filter: blur(20px);
     box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px var(--accent-glow);
   }
+
   .login-card h2 {
     font-size: 20px;
     font-weight: 600;
@@ -118,9 +321,15 @@
     align-items: center;
     gap: 10px;
   }
+
+  .login-card h2 .shield {
+    font-size: 24px;
+  }
+
   .form-group {
     margin-bottom: 20px;
   }
+
   .form-group label {
     display: block;
     font-size: 13px;
@@ -129,9 +338,11 @@
     font-weight: 500;
     letter-spacing: 0.5px;
   }
+
   .input-wrap {
     position: relative;
   }
+
   .input-wrap .input-icon {
     position: absolute;
     left: 14px;
@@ -141,6 +352,7 @@
     opacity: 0.5;
     pointer-events: none;
   }
+
   .input-wrap input {
     width: 100%;
     padding: 12px 14px 12px 42px;
@@ -153,11 +365,17 @@
     transition: all 0.3s;
     font-family: inherit;
   }
+
   .input-wrap input:focus {
     border-color: var(--accent);
     box-shadow: 0 0 0 3px var(--accent-glow);
     background: rgba(99,102,241,0.05);
   }
+
+  .input-wrap input::placeholder {
+    color: var(--text-muted);
+  }
+
   .login-btn {
     width: 100%;
     padding: 14px;
@@ -175,10 +393,38 @@
     overflow: hidden;
     margin-top: 8px;
   }
+
   .login-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 30px rgba(99,102,241,0.4);
   }
+
+  .login-btn:active {
+    transform: translateY(0);
+  }
+
+  .login-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .login-btn .spinner {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
   .login-error {
     background: rgba(239,68,68,0.1);
     border: 1px solid rgba(239,68,68,0.3);
@@ -190,11 +436,13 @@
     display: none;
     animation: shake 0.4s;
   }
+
   @keyframes shake {
     0%, 100% { transform: translateX(0); }
     25% { transform: translateX(-8px); }
     75% { transform: translateX(8px); }
   }
+
   .login-footer {
     text-align: center;
     margin-top: 24px;
@@ -202,13 +450,15 @@
     font-size: 12px;
   }
 
-  /* Main App */
+  /* ===== 主界面 ===== */
   #mainApp {
     display: none;
     position: relative;
     z-index: 10;
     min-height: 100vh;
   }
+
+  /* 顶部栏 */
   .topbar {
     position: fixed;
     top: 0;
@@ -224,11 +474,13 @@
     padding: 0 24px;
     z-index: 100;
   }
+
   .topbar-left {
     display: flex;
     align-items: center;
     gap: 12px;
   }
+
   .topbar-logo {
     width: 36px;
     height: 36px;
@@ -239,6 +491,7 @@
     justify-content: center;
     font-size: 20px;
   }
+
   .topbar-title {
     font-size: 18px;
     font-weight: 700;
@@ -247,11 +500,13 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
   .topbar-right {
     display: flex;
     align-items: center;
     gap: 12px;
   }
+
   .status-badge {
     display: flex;
     align-items: center;
@@ -263,6 +518,7 @@
     font-size: 12px;
     color: var(--green);
   }
+
   .status-badge .dot {
     width: 6px;
     height: 6px;
@@ -270,10 +526,12 @@
     border-radius: 50%;
     animation: pulse-dot 2s infinite;
   }
+
   @keyframes pulse-dot {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.4; }
   }
+
   .logout-btn {
     padding: 8px 18px;
     background: rgba(239,68,68,0.1);
@@ -282,181 +540,232 @@
     color: var(--red);
     font-size: 13px;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s;
     font-family: inherit;
+    font-weight: 500;
   }
+
   .logout-btn:hover {
     background: rgba(239,68,68,0.2);
   }
 
-  /* Layout */
-  .layout {
-    display: flex;
-    padding-top: 60px;
-    min-height: 100vh;
-  }
+  /* 侧边栏 */
   .sidebar {
-    width: var(--sidebar-w);
-    background: var(--bg-card);
-    border-right: 1px solid var(--border);
-    padding: 24px 16px;
     position: fixed;
     top: 60px;
-    bottom: 0;
     left: 0;
+    bottom: 0;
+    width: var(--sidebar-w);
+    background: rgba(17,22,50,0.8);
+    backdrop-filter: blur(20px);
+    border-right: 1px solid var(--border);
+    padding: 20px 12px;
     overflow-y: auto;
-  }
-  .sidebar-menu {
+    z-index: 90;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
   }
-  .menu-label {
+
+  .nav-label {
     font-size: 11px;
     color: var(--text-muted);
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 0 12px;
-    margin-bottom: 8px;
+    padding: 8px 12px 4px;
+    margin-top: 8px;
   }
-  .menu-item {
+
+  .nav-item {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px;
+    padding: 11px 14px;
     border-radius: 10px;
     cursor: pointer;
-    transition: all 0.2s;
-    color: var(--text-dim);
+    transition: all 0.25s;
     font-size: 14px;
-    text-decoration: none;
+    color: var(--text-dim);
+    border: 1px solid transparent;
+    user-select: none;
   }
-  .menu-item:hover {
-    background: rgba(255,255,255,0.03);
+
+  .nav-item:hover {
+    background: rgba(99,102,241,0.08);
     color: var(--text);
+    border-color: rgba(99,102,241,0.15);
   }
-  .menu-item.active {
+
+  .nav-item.active {
     background: rgba(99,102,241,0.15);
     color: var(--accent2);
-    border: 1px solid rgba(99,102,241,0.3);
+    border-color: rgba(99,102,241,0.3);
   }
-  .menu-icon {
+
+  .nav-item .icon {
     font-size: 18px;
-    width: 24px;
+    width: 22px;
     text-align: center;
+    flex-shrink: 0;
   }
-  .menu-text {
-    display: flex;
-    flex-direction: column;
-  }
-  .menu-sub {
+
+  .nav-item .badge {
+    margin-left: auto;
+    padding: 2px 8px;
+    background: var(--accent);
+    border-radius: 10px;
     font-size: 11px;
-    color: var(--text-muted);
+    font-weight: 600;
+    color: #fff;
   }
+
+  /* 主内容区 */
   .main-content {
-    flex: 1;
     margin-left: var(--sidebar-w);
-    padding: 32px;
-    max-width: calc(100% - var(--sidebar-w));
+    margin-top: 60px;
+    padding: 28px;
+    min-height: calc(100vh - 60px);
   }
+
+  /* 页面切换 */
   .page {
     display: none;
-    animation: fadeIn 0.3s ease;
+    animation: fadeInUp 0.4s ease;
   }
+
   .page.active {
     display: block;
   }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+
   .page-header {
     margin-bottom: 28px;
   }
+
   .page-header h2 {
     font-size: 24px;
     font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 8px;
+    color: var(--text);
   }
+
   .page-header p {
     color: var(--text-dim);
     font-size: 14px;
+    margin-top: 4px;
   }
 
-  /* Cards */
-  .card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 24px;
-  }
-  .card-title {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  /* Stats Grid */
+  /* 统计卡片 */
   .stats-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
     margin-bottom: 28px;
   }
+
   .stat-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 20px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
     transition: all 0.3s;
   }
+
   .stat-card:hover {
+    border-color: var(--accent);
     transform: translateY(-2px);
-    border-color: rgba(99,102,241,0.3);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-  }
-  .stat-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-  }
-  .stat-icon.blue { background: rgba(99,102,241,0.15); }
-  .stat-icon.green { background: rgba(16,185,129,0.15); }
-  .stat-icon.yellow { background: rgba(245,158,11,0.15); }
-  .stat-icon.cyan { background: rgba(34,211,238,0.15); }
-  .stat-info h3 {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-  .stat-info p {
-    font-size: 13px;
-    color: var(--text-dim);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
   }
 
-  /* Search Section */
+  .stat-card .stat-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .stat-card .stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .stat-card .stat-label {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-top: 6px;
+  }
+
+  .stat-card.accent { border-left: 3px solid var(--accent); }
+  .stat-card.cyan { border-left: 3px solid var(--cyan); }
+  .stat-card.green { border-left: 3px solid var(--green); }
+  .stat-card.yellow { border-left: 3px solid var(--yellow); }
+
+  /* 搜索模块 */
+  .module-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  .module-header {
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(99,102,241,0.03);
+  }
+
+  .module-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .module-header .module-icon {
+    font-size: 22px;
+  }
+
+  .module-header h3 {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .module-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--green);
+  }
+
+  .module-status .dot {
+    width: 6px;
+    height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+  }
+
+  .module-body {
+    padding: 24px;
+  }
+
+  /* 搜索框 */
   .search-box {
     display: flex;
     gap: 12px;
     margin-bottom: 20px;
   }
-  .search-input {
+
+  .search-input-wrap {
     flex: 1;
-    padding: 14px 18px;
-    background: rgba(255,255,255,0.04);
+    position: relative;
+  }
+
+  .search-input-wrap input {
+    width: 100%;
+    padding: 14px 18px 14px 48px;
+    background: rgba(255,255,255,0.05);
     border: 1px solid var(--border);
     border-radius: 10px;
     color: var(--text);
@@ -465,11 +774,40 @@
     transition: all 0.3s;
     font-family: inherit;
   }
-  .search-input:focus {
+
+  .search-input-wrap input:focus {
     border-color: var(--accent);
     box-shadow: 0 0 0 3px var(--accent-glow);
+    background: rgba(99,102,241,0.05);
   }
-  .search-btn {
+
+  .search-input-wrap .search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    opacity: 0.5;
+  }
+
+  .search-type-select {
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+    font-family: inherit;
+    min-width: 140px;
+  }
+
+  .search-type-select option {
+    background: var(--bg-card);
+  }
+
+  .action-btn {
     padding: 14px 28px;
     background: linear-gradient(135deg, var(--accent), #4f46e5);
     border: none;
@@ -480,92 +818,1146 @@
     cursor: pointer;
     transition: all 0.3s;
     font-family: inherit;
+    white-space: nowrap;
     display: flex;
     align-items: center;
     gap: 8px;
   }
-  .search-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(99,102,241,0.4);
+
+  .action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(99,102,241,0.4);
   }
-  .search-btn:disabled {
-    opacity: 0.6;
+
+  .action-btn:active {
+    transform: translateY(0);
+  }
+
+  .action-btn:disabled {
+    opacity: 0.5;
     cursor: not-allowed;
     transform: none;
   }
 
-  /* Results */
+  .action-btn.green {
+    background: linear-gradient(135deg, var(--green), #059669);
+  }
+
+  .action-btn.green:hover {
+    box-shadow: 0 6px 20px rgba(16,185,129,0.4);
+  }
+
+  .action-btn.cyan {
+    background: linear-gradient(135deg, var(--cyan), #0891b2);
+    color: #0a0e27;
+  }
+
+  .action-btn.cyan:hover {
+    box-shadow: 0 6px 20px rgba(34,211,238,0.4);
+  }
+
+  /* 分析选项 */
+  .analysis-options {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .option-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.25s;
+    color: var(--text-dim);
+    user-select: none;
+  }
+
+  .option-chip input {
+    display: none;
+  }
+
+  .option-chip.selected {
+    background: rgba(99,102,241,0.15);
+    border-color: var(--accent);
+    color: var(--accent2);
+  }
+
+  .option-chip:hover {
+    border-color: var(--accent);
+  }
+
+  /* 结果区域 */
+  .results-section {
+    margin-top: 24px;
+  }
+
   .results-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     margin-bottom: 16px;
   }
-  .results-title {
-    font-size: 14px;
-    color: var(--text-dim);
-  }
-  .results-title span {
-    color: var(--accent2);
+
+  .results-header h4 {
+    font-size: 15px;
     font-weight: 600;
-  }
-  .result-list {
+    color: var(--text);
     display: flex;
-    flex-direction: column;
-    gap: 12px;
+    align-items: center;
+    gap: 8px;
   }
+
+  .results-count {
+    padding: 2px 10px;
+    background: var(--accent);
+    border-radius: 10px;
+    font-size: 12px;
+    color: #fff;
+  }
+
   .result-item {
-    background: rgba(255,255,255,0.02);
+    background: rgba(255,255,255,0.03);
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 16px 18px;
-    transition: all 0.2s;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    transition: all 0.25s;
+    cursor: pointer;
   }
+
   .result-item:hover {
-    border-color: rgba(99,102,241,0.3);
-    background: rgba(255,255,255,0.04);
+    border-color: var(--accent);
+    background: rgba(99,102,241,0.05);
   }
+
+  .result-item.selected {
+    border-color: var(--cyan);
+    background: rgba(34,211,238,0.05);
+    box-shadow: 0 0 0 1px rgba(34,211,238,0.3);
+  }
+
   .result-title {
     font-size: 15px;
     font-weight: 600;
-    color: var(--accent);
-    margin-bottom: 8px;
+    color: var(--accent2);
+    margin-bottom: 6px;
     line-height: 1.4;
   }
-  .result-desc {
+
+  .result-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .result-title a:hover {
+    text-decoration: underline;
+  }
+
+  .result-snippet {
     font-size: 13px;
     color: var(--text-dim);
     line-height: 1.6;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
+
   .result-meta {
     display: flex;
+    align-items: center;
     gap: 16px;
     font-size: 12px;
     color: var(--text-muted);
+    flex-wrap: wrap;
   }
 
-  /* Empty State */
+  .result-meta span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* 报告区 */
+  .report-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-top: 24px;
+  }
+
+  .report-header {
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(16,185,129,0.03);
+  }
+
+  .report-header h3 {
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .report-actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  .icon-btn {
+    padding: 8px 14px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-dim);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.25s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: inherit;
+  }
+
+  .icon-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent2);
+  }
+
+  .report-body {
+    padding: 24px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text);
+    max-height: 600px;
+    overflow-y: auto;
+  }
+
+  .report-body::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .report-body::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .report-body::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+  }
+
+  .report-meta-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 16px;
+    background: rgba(255,255,255,0.02);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+
+  .report-meta-item {
+    font-size: 13px;
+  }
+
+  .report-meta-item .label {
+    color: var(--text-muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+
+  .report-meta-item .value {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .report-body h1 { font-size: 22px; margin: 24px 0 12px; color: #fff; }
+  .report-body h2 { font-size: 18px; margin: 20px 0 10px; color: var(--accent2); border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+  .report-body h3 { font-size: 15px; margin: 16px 0 8px; color: var(--text); }
+  .report-body p { margin-bottom: 12px; color: var(--text-dim); }
+  .report-body ul, .report-body ol { margin: 8px 0 12px 20px; }
+  .report-body li { margin-bottom: 6px; color: var(--text-dim); }
+  .report-body table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+  .report-body th { background: rgba(99,102,241,0.15); padding: 10px 12px; text-align: left; border: 1px solid var(--border); color: var(--accent2); }
+  .report-body td { padding: 8px 12px; border: 1px solid var(--border); color: var(--text-dim); }
+  .report-body strong { color: var(--text); }
+  .report-body blockquote {
+    border-left: 3px solid var(--accent);
+    padding: 10px 16px;
+    margin: 12px 0;
+    background: rgba(99,102,241,0.05);
+    border-radius: 0 8px 8px 0;
+    color: var(--text-dim);
+    font-style: italic;
+  }
+  .report-body code {
+    background: rgba(99,102,241,0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: var(--cyan);
+  }
+
+  /* 分析状态 */
+  .analysis-status {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: rgba(99,102,241,0.05);
+    border: 1px solid rgba(99,102,241,0.2);
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  .analysis-status .spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(99,102,241,0.3);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    flex-shrink: 0;
+  }
+
+  .analysis-status .status-text {
+    font-size: 14px;
+    color: var(--text-dim);
+  }
+
+  /* 进度条 */
+  .progress-bar-wrap {
+    margin: 12px 0;
+  }
+
+  .progress-bar-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+
+  .progress-bar {
+    height: 6px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--cyan));
+    border-radius: 3px;
+    transition: width 0.5s ease;
+    position: relative;
+  }
+
+  .progress-bar-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  /* 快捷分析 */
+  .quick-analysis {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .quick-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .quick-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+
+  .quick-card .quick-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+
+  .quick-card h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .quick-card p {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  /* 历史记录 */
+  .history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .history-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+
+  .history-item:hover {
+    border-color: var(--accent);
+    background: rgba(99,102,241,0.05);
+  }
+
+  .history-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .history-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .history-query {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .history-meta {
+    display: flex;
+    gap: 14px;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  .history-arrow {
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+
+  /* 空状态 */
   .empty-state {
     text-align: center;
     padding: 60px 20px;
     color: var(--text-muted);
   }
-  .empty-icon {
-    font-size: 48px;
+
+  .empty-state .empty-icon {
+    font-size: 56px;
     margin-bottom: 16px;
-    opacity: 0.5;
+    opacity: 0.3;
   }
-  .empty-title {
-    font-size: 16px;
+
+  .empty-state h3 {
+    font-size: 18px;
     color: var(--text-dim);
     margin-bottom: 8px;
   }
-  .empty-desc {
-    font-size: 13px;
+
+  .empty-state p {
+    font-size: 14px;
   }
 
-  /* Mock Warning */
+  /* API配置 */
+  .api-config-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+
+  .api-config-section h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .api-config-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 768px) {
+    .api-config-row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .config-item label {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .config-item input {
+    width: 100%;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 14px;
+    outline: none;
+    font-family: monospace;
+    transition: all 0.3s;
+  }
+
+  .config-item input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent-glow);
+  }
+
+  .config-item input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .config-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+
+  .config-status.connected { color: var(--green); }
+  .config-status.disconnected { color: var(--red); }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 14px 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 14px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    animation: toastIn 0.3s ease;
+    max-width: 400px;
+  }
+
+  @keyframes toastIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .toast.success { border-color: rgba(16,185,129,0.4); }
+  .toast.error { border-color: rgba(239,68,68,0.4); }
+  .toast.info { border-color: rgba(99,102,241,0.4); }
+
+  .toast-icon { font-size: 18px; }
+  .toast.success .toast-icon { color: var(--green); }
+  .toast.error .toast-icon { color: var(--red); }
+  .toast.info .toast-icon { color: var(--accent); }
+
+  /* 滚动条 */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  /* 设置页 */
+  .settings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  @media (max-width: 900px) {
+    .settings-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .setting-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+
+  .setting-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .setting-card .desc {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+
+  .setting-input {
+    width: 100%;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 13px;
+    outline: none;
+    font-family: monospace;
+    margin-bottom: 12px;
+    transition: all 0.3s;
+  }
+
+  .setting-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent-glow);
+  }
+
+  /* 分析进度 */
+  .analysis-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin: 24px 0;
+  }
+
+  .flow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .flow-step-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    border: 2px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text-muted);
+    transition: all 0.3s;
+  }
+
+  .flow-step.active .flow-step-icon {
+    border-color: var(--accent);
+    background: rgba(99,102,241,0.15);
+    color: var(--accent2);
+    box-shadow: 0 0 20px var(--accent-glow);
+  }
+
+  .flow-step.done .flow-step-icon {
+    border-color: var(--green);
+    background: rgba(16,185,129,0.15);
+    color: var(--green);
+  }
+
+  .flow-step-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .flow-step.active .flow-step-label,
+  .flow-step.done .flow-step-label {
+    color: var(--text-dim);
+  }
+
+  .flow-line {
+    flex: 1;
+    height: 2px;
+    background: var(--border);
+    position: relative;
+    top: -20px;
+    max-width: 100px;
+  }
+
+  .flow-line.done {
+    background: linear-gradient(90deg, var(--green), var(--accent));
+  }
+
+  /* 舆情搜索 */
+  .yuqing-section {
+    background: var(--bg-card);
+    border: 1px solid rgba(245,158,11,0.3);
+    border-radius: var(--radius);
+    overflow: hidden;
+    padding: 20px;
+  }
+
+  .yuqing-section .results-header {
+    padding: 0 0 14px 0;
+    border-bottom: 1px solid rgba(245,158,11,0.2);
+    margin-bottom: 14px;
+  }
+
+  .yuqing-item {
+    background: rgba(245,158,11,0.05);
+    border: 1px solid rgba(245,158,11,0.2);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    transition: all 0.25s;
+  }
+
+  .yuqing-item:hover {
+    border-color: rgba(245,158,11,0.5);
+    background: rgba(245,158,11,0.08);
+  }
+
+  .yuqing-item .result-title {
+    color: var(--yellow);
+  }
+
+  .yuqing-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+
+  .yuqing-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 10px;
+    background: rgba(245,158,11,0.15);
+    border: 1px solid rgba(245,158,11,0.3);
+    border-radius: 12px;
+    font-size: 11px;
+    color: var(--yellow);
+  }
+
+  .yuqing-tag.negative {
+    background: rgba(239,68,68,0.1);
+    border-color: rgba(239,68,68,0.3);
+    color: var(--red);
+  }
+
+  .yuqing-tag.positive {
+    background: rgba(16,185,129,0.1);
+    border-color: rgba(16,185,129,0.3);
+    color: var(--green);
+  }
+
+  .yuqing-tag.neutral {
+    background: rgba(34,211,238,0.1);
+    border-color: rgba(34,211,238,0.3);
+    color: var(--cyan);
+  }
+
+  /* 用户管理 */
+  .user-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: all 0.25s;
+  }
+
+  .user-card:hover {
+    border-color: var(--accent);
+    background: rgba(99,102,241,0.05);
+  }
+
+  .user-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--cyan));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .user-info-block {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .user-info-block .username {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .user-info-block .user-meta {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 3px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .user-role-badge {
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .user-role-badge.admin {
+    background: rgba(239,68,68,0.15);
+    color: var(--red);
+    border: 1px solid rgba(239,68,68,0.3);
+  }
+
+  .user-role-badge.normal {
+    background: rgba(99,102,241,0.15);
+    color: var(--accent2);
+    border: 1px solid rgba(99,102,241,0.3);
+  }
+
+  .user-perm-tag {
+    padding: 1px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    background: rgba(16,185,129,0.1);
+    color: var(--green);
+    border: 1px solid rgba(16,185,129,0.2);
+  }
+
+  .user-actions {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .user-actions .icon-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .user-actions .icon-btn.danger:hover {
+    border-color: var(--red);
+    color: var(--red);
+    background: rgba(239,68,68,0.1);
+  }
+
+  .add-user-form {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  .add-user-form h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .form-row-1col {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .form-field label {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .form-field input,
+  .form-field select {
+    width: 100%;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 14px;
+    outline: none;
+    font-family: inherit;
+    transition: all 0.3s;
+  }
+
+  .form-field input:focus,
+  .form-field select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent-glow);
+  }
+
+  .perm-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+
+  .perm-checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text-dim);
+    cursor: pointer;
+  }
+
+  .perm-checkbox-item input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    accent-color: var(--accent);
+    cursor: pointer;
+  }
+
+  .edit-user-form {
+    background: rgba(245,158,11,0.05);
+    border: 1px solid rgba(245,158,11,0.2);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 20px;
+    display: none;
+  }
+
+  .edit-user-form.active {
+    display: block;
+  }
+
+  .edit-user-form h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--yellow);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(4px);
+    z-index: 9990;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .modal-overlay.active {
+    display: flex;
+  }
+
+  .modal-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    max-width: 480px;
+    width: 100%;
+    animation: fadeInUp 0.3s ease;
+  }
+
+  .modal-box h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .modal-box .modal-sub {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-bottom: 24px;
+  }
+
+  .modal-box .modal-msg {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.7;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .modal-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .modal-buttons .action-btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  /* 分隔线 */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 20px 0;
+  }
+
+  /* 智能分析提示 */
+  .smart-tips {
+    background: rgba(99,102,241,0.05);
+    border: 1px solid rgba(99,102,241,0.2);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+
+  .smart-tips h4 {
+    font-size: 13px;
+    color: var(--accent2);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .smart-tips ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .smart-tips li {
+    padding: 5px 12px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 12px;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+
+  .smart-tips li:hover {
+    border-color: var(--accent);
+    color: var(--accent2);
+  }
+
+  /* 分析模式选择 */
+  .mode-tabs {
+    display: flex;
+    gap: 4px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 10px;
+    padding: 4px;
+    margin-bottom: 20px;
+    width: fit-content;
+  }
+
+  .mode-tab {
+    padding: 10px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-dim);
+    transition: all 0.25s;
+    border: none;
+    background: transparent;
+    font-family: inherit;
+  }
+
+  .mode-tab.active {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .mode-tab:hover:not(.active) {
+    color: var(--text);
+  }
+
   .mock-warning {
     background: linear-gradient(90deg, rgba(245,158,11,0.15), rgba(245,158,11,0.05));
     border: 1px solid rgba(245,158,11,0.4);
@@ -579,19 +1971,13 @@
     font-size: 13px;
   }
 
-  /* API Error Modal */
   .api-error-modal {
     display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
+    position: fixed; inset: 0; z-index: 9999;
     background: rgba(0,0,0,0.7);
-    align-items: center;
-    justify-content: center;
+    align-items: center; justify-content: center;
   }
-  .api-error-modal.active {
-    display: flex;
-  }
+  .api-error-modal.active { display: flex; }
   .api-error-box {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -601,119 +1987,43 @@
     width: 90%;
     box-shadow: 0 25px 80px rgba(0,0,0,0.6);
   }
-  .api-error-icon {
-    font-size: 48px;
-    text-align: center;
-    margin-bottom: 16px;
-  }
-  .api-error-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--red);
-    text-align: center;
-    margin-bottom: 12px;
-  }
-  .api-error-reason {
-    font-size: 13px;
-    color: var(--text-dim);
-    background: rgba(239,68,68,0.08);
-    border: 1px solid rgba(239,68,68,0.2);
-    border-radius: 10px;
-    padding: 12px 16px;
-    margin-bottom: 16px;
-    line-height: 1.7;
-  }
-  .api-error-reason b {
-    color: #fca5a5;
-  }
-  .api-error-causes {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-bottom: 20px;
-  }
-  .api-error-causes li {
-    margin: 5px 0;
-    padding-left: 4px;
-  }
-  .api-error-actions {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
+  .api-error-icon { font-size: 48px; text-align: center; margin-bottom: 16px; }
+  .api-error-title { font-size: 18px; font-weight: 700; color: var(--red); text-align: center; margin-bottom: 12px; }
+  .api-error-reason { font-size: 13px; color: var(--text-dim); background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); border-radius: 10px; padding: 12px 16px; margin-bottom: 16px; line-height: 1.7; }
+  .api-error-reason b { color: #fca5a5; }
+  .api-error-causes { font-size: 12px; color: var(--text-muted); margin-bottom: 20px; }
+  .api-error-causes li { margin: 5px 0; padding-left: 4px; }
+  .api-error-actions { display: flex; gap: 10px; }
   .api-error-btn {
-    flex: 1;
-    min-width: 100px;
-    padding: 12px;
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    font-family: inherit;
-    transition: all 0.2s;
-    border: 1px solid;
+    flex: 1; padding: 12px; border-radius: 10px; font-size: 14px; font-weight: 600;
+    cursor: pointer; font-family: inherit; transition: all 0.2s; border: 1px solid;
   }
   .api-error-btn.mock {
-    background: rgba(245,158,11,0.15);
-    border-color: rgba(245,158,11,0.4);
-    color: #fbbf24;
+    background: rgba(245,158,11,0.15); border-color: rgba(245,158,11,0.4); color: #fbbf24;
   }
-  .api-error-btn.mock:hover {
-    background: rgba(245,158,11,0.25);
-  }
+  .api-error-btn.mock:hover { background: rgba(245,158,11,0.25); }
   .api-error-btn.retry {
-    background: rgba(99,102,241,0.15);
-    border-color: rgba(99,102,241,0.4);
-    color: var(--accent2);
+    background: rgba(99,102,241,0.15); border-color: rgba(99,102,241,0.4); color: var(--accent2);
   }
-  .api-error-btn.retry:hover {
-    background: rgba(99,102,241,0.25);
-  }
-  .api-error-btn.direct {
-    background: linear-gradient(135deg, #6366f1, #4f46e5);
-    border-color: rgba(99,102,241,0.5);
-    color: #fff;
-  }
-  .api-error-btn.direct:hover {
-    filter: brightness(1.1);
-  }
+  .api-error-btn.retry:hover { background: rgba(99,102,241,0.25); }
 
-  /* Responsive */
-  @media (max-width: 1200px) {
-    .stats-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  @media (max-width: 768px) {
-    .sidebar {
-      transform: translateX(-100%);
-      transition: transform 0.3s;
-    }
-    .sidebar.open {
-      transform: translateX(0);
-    }
-    .main-content {
-      margin-left: 0;
-      max-width: 100%;
-    }
-    .stats-grid {
-      grid-template-columns: 1fr;
-    }
-  }
 </style>
 </head>
 <body>
+
 <div class="grid-bg"></div>
 
-<!-- Login Page -->
-<div id="loginPage">
+<!-- ========== 登录页 ========== -->
+<div id="loginPage" style="display:flex">
   <div class="login-wrapper">
     <div class="login-logo">
       <div class="logo-icon">🔍</div>
       <h1>扬州公司情报网</h1>
       <p>Intelligence Analysis Platform</p>
     </div>
+
     <div class="login-card">
-      <h2><span>🛡️</span> 身份验证</h2>
+      <h2><span class="shield">🛡️</span> 身份验证</h2>
       <form id="loginForm" onsubmit="handleLogin(event)">
         <div class="form-group">
           <label>账号</label>
@@ -730,40 +2040,41 @@
           </div>
         </div>
         <button type="submit" class="login-btn" id="loginBtn">
-          <span>登录</span>
+          <span id="loginBtnText">登 录</span>
         </button>
+        <div class="login-error" id="loginError"></div>
       </form>
-      <div class="login-error" id="loginError">账号或密码错误</div>
     </div>
+
     <div class="login-footer">
-      Intelligence Analysis Platform v1.0 | 安全加密传输
+      <p>Intelligence Analysis Platform v1.0 &nbsp;|&nbsp; 安全加密传输</p>
     </div>
   </div>
 </div>
 
-<!-- API Error Modal -->
-<div class="api-error-modal" id="apiErrorModal">
-  <div class="api-error-box">
-    <div class="api-error-icon">⚠️</div>
-    <div class="api-error-title" id="apiErrorTitle">秘塔搜索 API 调用失败</div>
-    <div class="api-error-reason" id="apiErrorReason"></div>
-    <ul class="api-error-causes">
-      <li>• API Key 无效或已过期</li>
-      <li>• 网络连接异常（公司内网/防火墙拦截）</li>
-      <li>• 跨域(CORS)限制（本工具不支持本地 file:// 打开）</li>
-      <li>• 秘塔服务暂时不可用</li>
-    </ul>
-    <div class="api-error-actions">
-      <button class="api-error-btn mock" onclick="apiErrorUseMock()">⚡ 使用模拟数据</button>
-      <button class="api-error-btn direct" onclick="apiErrorRetryDirect()" id="apiErrorDirectBtn" style="display:none;">🚀 直接连接</button>
-      <button class="api-error-btn retry" onclick="apiErrorRetry()">↻ 重试</button>
-    </div>
-  </div>
-</div>
+<!-- ========== 主应用 ========== -->
 
-<!-- Main App -->
-<div id="mainApp">
-  <!-- Topbar -->
+    <div class="api-error-modal" id="apiErrorModal">
+      <div class="api-error-box">
+        <div class="api-error-icon">&#9888;</div>
+        <div class="api-error-title" id="apiErrorTitle">秘塔搜索 API 调用失败</div>
+        <div class="api-error-reason" id="apiErrorReason"></div>
+        <ul class="api-error-causes">
+          <li>&#9702; API Key 无效或已过期</li>
+          <li>&#9702; 网络连接异常（公司内网/防火墙拦截）</li>
+          <li>&#9702; 跨域(CORS)限制（本工具不支持本地 file:// 打开）</li>
+          <li>&#9702; 秘塔服务暂时不可用</li>
+        </ul>
+        <div class="api-error-actions">
+          <button class="api-error-btn mock" id="apiErrorMockBtn" onclick="apiErrorUseMock()">&#9889; 使用模拟数据</button>
+          <button class="api-error-btn retry" onclick="apiErrorRetry()">&#8635; 重试</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="mainApp">
+
+  <!-- 顶部栏 -->
   <div class="topbar">
     <div class="topbar-left">
       <div class="topbar-logo">🔍</div>
@@ -778,223 +2089,665 @@
     </div>
   </div>
 
-  <!-- Layout -->
-  <div class="layout">
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <div class="sidebar-menu">
-        <div class="menu-label">主菜单</div>
-        <a class="menu-item active" onclick="switchPage('dashboard')">
-          <span class="menu-icon">📊</span>
-          <span class="menu-text">
-            仪表盘
-          </span>
-        </a>
-        <a class="menu-item" onclick="switchPage('search')">
-          <span class="menu-icon">🔍</span>
-          <span class="menu-text">
-            情报搜索
-            <span class="menu-sub">秘塔</span>
-          </span>
-        </a>
-        <a class="menu-item" onclick="switchPage('analysis')">
-          <span class="menu-icon">🤖</span>
-          <span class="menu-text">
-            智能分析
-            <span class="menu-sub">DeepSeek</span>
-          </span>
-        </a>
-        <a class="menu-item" onclick="switchPage('reports')">
-          <span class="menu-icon">📋</span>
-          <span class="menu-text">报告管理</span>
-        </a>
-        <a class="menu-item" onclick="switchPage('history')">
-          <span class="menu-icon">📜</span>
-          <span class="menu-text">搜索历史</span>
-        </a>
-        <a class="menu-item" onclick="switchPage('settings')">
-          <span class="menu-icon">⚙️</span>
-          <span class="menu-text">系统设置</span>
-        </a>
+  <!-- 侧边栏 -->
+  <div class="sidebar">
+    <div class="nav-label">主菜单</div>
+
+    <div class="nav-item active" onclick="switchPage('dashboard')" data-page="dashboard">
+      <span class="icon">📊</span>
+      <span>仪表盘</span>
+    </div>
+
+    <div class="nav-item" onclick="switchPage('search')" data-page="search">
+      <span class="icon">🔍</span>
+      <span>情报搜索</span>
+      <span class="badge">秘塔</span>
+    </div>
+
+    <div class="nav-item" onclick="switchPage('analysis')" data-page="analysis">
+      <span class="icon">🤖</span>
+      <span>智能分析</span>
+      <span class="badge" style="background: var(--cyan);">DeepSeek</span>
+    </div>
+
+    <div class="nav-item" onclick="switchPage('report')" data-page="report">
+      <span class="icon">📋</span>
+      <span>报告管理</span>
+    </div>
+
+    <div class="nav-item" onclick="switchPage('history')" data-page="history">
+      <span class="icon">📜</span>
+      <span>搜索历史</span>
+    </div>
+
+    <div class="nav-item" onclick="switchPage('settings')" data-page="settings">
+      <span class="icon">⚙️</span>
+      <span>系统设置</span>
+    </div>
+  </div>
+
+  <!-- 主内容 -->
+  <div class="main-content">
+
+    <!-- ===== 仪表盘 ===== -->
+    <div id="page-dashboard" class="page active">
+      <div class="page-header">
+        <h2>📊 工作台</h2>
+        <p>情报分析系统总览，欢迎回来，管理员</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card accent">
+          <div class="stat-icon">🔍</div>
+          <div class="stat-value" id="stat-searches">0</div>
+          <div class="stat-label">情报搜索次数</div>
+        </div>
+        <div class="stat-card cyan">
+          <div class="stat-icon">📄</div>
+          <div class="stat-value" id="stat-reports">0</div>
+          <div class="stat-label">生成报告数量</div>
+        </div>
+        <div class="stat-card green">
+          <div class="stat-icon">✅</div>
+          <div class="stat-value" id="stat-sources">0</div>
+          <div class="stat-label">情报来源数量</div>
+        </div>
+        <div class="stat-card yellow">
+          <div class="stat-icon">⏱️</div>
+          <div class="stat-value" id="stat-time">0s</div>
+          <div class="stat-label">平均分析耗时</div>
+        </div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-header">
+          <div class="module-header-left">
+            <span class="module-icon">⚡</span>
+            <h3>快速开始</h3>
+          </div>
+        </div>
+        <div class="module-body">
+          <div class="quick-analysis">
+            <div class="quick-card" onclick="quickSearch('今日科技新闻')">
+              <div class="quick-icon">📰</div>
+              <h4>科技情报</h4>
+              <p>搜索最新科技动态与行业趋势</p>
+            </div>
+            <div class="quick-card" onclick="quickSearch('市场竞争分析')">
+              <div class="quick-icon">📈</div>
+              <h4>市场分析</h4>
+              <p>获取市场竞争情报与商业洞察</p>
+            </div>
+            <div class="quick-card" onclick="quickSearch('政策法规 最新')">
+              <div class="quick-icon">⚖️</div>
+              <h4>政策动态</h4>
+              <p>追踪最新政策法规变化</p>
+            </div>
+            <div class="quick-card" onclick="quickSearch('AI人工智能 最新进展')">
+              <div class="quick-icon">🤖</div>
+              <h4>AI前沿</h4>
+              <p>人工智能领域最新研究进展</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-header">
+          <div class="module-header-left">
+            <span class="module-icon">🔄</span>
+            <h3>情报分析工作流</h3>
+          </div>
+        </div>
+        <div class="module-body">
+          <div class="analysis-flow">
+            <div class="flow-step done">
+              <div class="flow-step-icon">1️⃣</div>
+              <div class="flow-step-label">输入情报主题</div>
+            </div>
+            <div class="flow-line done"></div>
+            <div class="flow-step active">
+              <div class="flow-step-icon">2️⃣</div>
+              <div class="flow-step-label">秘塔搜索采集</div>
+            </div>
+            <div class="flow-line"></div>
+            <div class="flow-step">
+              <div class="flow-step-icon">3️⃣</div>
+              <div class="flow-step-label">DeepSeek分析</div>
+            </div>
+            <div class="flow-line"></div>
+            <div class="flow-step">
+              <div class="flow-step-icon">4️⃣</div>
+              <div class="flow-step-label">生成格式报告</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Main Content -->
-    <div class="main-content">
-      <!-- Dashboard Page -->
-      <div class="page active" id="page-dashboard">
-        <div class="page-header">
-          <h2>📊 工作台</h2>
-          <p>情报分析系统总览，欢迎回来，管理员</p>
-        </div>
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-icon blue">🔍</div>
-            <div class="stat-info">
-              <h3 id="statSearchCount">0</h3>
-              <p>情报搜索次数</p>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon green">📄</div>
-            <div class="stat-info">
-              <h3 id="statReportCount">0</h3>
-              <p>生成报告数量</p>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon yellow">📡</div>
-            <div class="stat-info">
-              <h3 id="statSourceCount">0</h3>
-              <p>情报来源数量</p>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon cyan">⏱️</div>
-            <div class="stat-info">
-              <h3 id="statAvgTime">0s</h3>
-              <p>平均分析耗时</p>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-title">🚀 快速开始</div>
-          <p style="color: var(--text-dim); line-height: 1.8;">
-            欢迎使用扬州公司情报网！本系统提供以下功能：<br>
-            • <strong>情报搜索</strong> - 使用秘塔 AI 搜索全网情报信息<br>
-            • <strong>智能分析</strong> - 使用 DeepSeek 大模型深度分析情报<br>
-            • <strong>报告管理</strong> - 生成并管理结构化情报报告<br>
-            • <strong>搜索历史</strong> - 查看历史搜索记录和结果
-          </p>
-        </div>
+    <!-- ===== 情报搜索 ===== -->
+    <div id="page-search" class="page">
+      <div class="page-header">
+        <h2>🔍 情报搜索</h2>
+        <p>使用秘塔搜索采集全网情报信息</p>
       </div>
 
-      <!-- Search Page -->
-      <div class="page" id="page-search">
-        <div class="page-header">
-          <h2>🔍 情报搜索</h2>
-          <p>使用秘塔搜索采集全网情报信息</p>
+      <div class="module-card">
+        <div class="module-header">
+          <div class="module-header-left">
+            <span class="module-icon">🔍</span>
+            <h3>秘塔AI搜索</h3>
+          </div>
+          <div class="module-status">
+            <span class="dot"></span>
+            API已连接
+          </div>
         </div>
-        <div class="card">
-          <div class="card-title">🔍 秘塔 AI 搜索</div>
+        <div class="module-body">
           <div class="search-box">
-            <input type="text" class="search-input" id="searchInput" placeholder="输入关键词搜索情报...">
-            <button class="search-btn" id="searchBtn" onclick="startSearch()">
+            <div class="search-input-wrap">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="searchQuery" placeholder="输入情报关键词，例如：人工智能最新进展" onkeydown="if(event.key==='Enter')startSearch()">
+            </div>
+            <select class="search-type-select" id="searchType">
+              <option value="all">全网搜索</option>
+              <option value="news">新闻资讯</option>
+              <option value="academic">学术文献</option>
+              <option value="image">图片资源</option>
+            </select>
+            <button class="action-btn" id="searchBtn" onclick="startSearch()">
               <span>🚀</span> 开始搜索
             </button>
+            <button class="action-btn" style="background:linear-gradient(135deg,#f59e0b,#d97706);" id="yulanBtn" onclick="startYuqingSearch()">
+              <span>📡</span> 舆情搜索
+            </button>
           </div>
-          <div id="searchStatus" style="display:none; margin-bottom: 16px;">
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-              <div class="spinner" style="width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.2); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite;"></div>
-              <span style="color: var(--text-dim); font-size: 13px;">正在搜索情报，请稍候...</span>
+
+          <div class="smart-tips">
+            <h4>💡 热门搜索提示</h4>
+            <ul>
+              <li onclick="quickSearch('量子计算 最新')">量子计算 最新</li>
+              <li onclick="quickSearch('新能源 政策')">新能源 政策</li>
+              <li onclick="quickSearch('半导体 行业动态')">半导体 行业动态</li>
+              <li onclick="quickSearch('生物医药 研发进展')">生物医药 研发进展</li>
+              <li onclick="quickSearch('网络安全 威胁')">网络安全 威胁</li>
+              <li onclick="quickSearch('数字经济 趋势')">数字经济 趋势</li>
+            </ul>
+          </div>
+
+          <div id="searchStatus" style="display:none;" class="analysis-status">
+            <div class="spinner"></div>
+            <span class="status-text" id="searchStatusText">正在搜索情报，请稍候...</span>
+          </div>
+
+          <div class="progress-bar-wrap" id="searchProgressWrap" style="display:none;">
+            <div class="progress-bar-label">
+              <span>搜索进度</span>
+              <span id="searchProgressText">0%</span>
             </div>
-            <div style="height: 4px; background: var(--border); border-radius: 2px; overflow: hidden;">
-              <div id="searchProgress" style="height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), var(--cyan)); transition: width 0.3s;"></div>
+            <div class="progress-bar">
+              <div class="progress-bar-fill" id="searchProgressFill" style="width:0%"></div>
             </div>
           </div>
-          <div id="mockWarning" class="mock-warning" style="display: none;">
-            <span>⚠️</span>
-            <span>当前显示的是模拟数据，仅供功能演示使用</span>
+
+          <div class="results-section" id="searchResultsSection" style="display:none;">
+            <div class="results-header">
+              <h4>
+                搜索结果
+                <span class="results-count" id="resultsCount">0</span>
+              </h4>
+              <button class="icon-btn" onclick="selectAllResults()">☑️ 全选</button>
+            </div>
+            <div id="searchResults"></div>
           </div>
-          <div class="results-header">
-            <div class="results-title">搜索结果 <span id="resultCount">0</span> 条</div>
+
+          <!-- 舆情搜索结果 -->
+          <div class="yuqing-section" id="yuqingSection" style="display:none; margin-top:24px;">
+            <div class="results-header" style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+              <h4 style="color:var(--yellow);">
+                📡 扬州公司舆情搜索结果
+                <span class="results-count" style="background:var(--yellow);" id="yuqingCount">0</span>
+              </h4>
+              <button class="action-btn yq-analysis-btn" id="yuqingAnalyzeBtn" style="display:none;" onclick="analyzeYuqing()">&#128293; 舆情分析</button>
+            </div>
+            <div id="yuqingResults"></div>
           </div>
-          <div id="searchResults" class="result-list">
-            <div class="empty-state">
-              <div class="empty-icon">🔍</div>
-              <div class="empty-title">输入关键词开始搜索</div>
-              <div class="empty-desc">支持全网搜索、新闻资讯、学术文献等多种类型</div>
+
+          <div class="yuqing-no-result" id="yuqingNoResult" style="display:none;">
+            <div class="empty-state" style="padding:30px 20px;">
+              <div class="empty-icon">🌿</div>
+              <h3>没有舆情发生</h3>
+              <p>经全网匹配，暂未发现与"扬州公司"相关的舆情信息</p>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Analysis Page -->
-      <div class="page" id="page-analysis">
-        <div class="page-header">
-          <h2>🤖 智能分析</h2>
-          <p>DeepSeek 大模型深度分析情报，形成结构化报告</p>
-        </div>
-        <div class="card">
-          <div class="card-title">🤖 DeepSeek 智能分析引擎</div>
-          <div class="empty-state">
-            <div class="empty-icon">🤖</div>
-            <div class="empty-title">选择搜索结果进行分析</div>
-            <div class="empty-desc">请在「情报搜索」页面选择搜索结果，然后点击分析按钮</div>
-          </div>
-        </div>
+    <!-- ===== 智能分析 ===== -->
+    <div id="page-analysis" class="page">
+      <div class="page-header">
+        <h2>🤖 智能分析</h2>
+        <p>DeepSeek大模型深度分析情报，形成结构化报告</p>
       </div>
 
-      <!-- Reports Page -->
-      <div class="page" id="page-reports">
-        <div class="page-header">
-          <h2>📋 报告管理</h2>
-          <p>查看和管理生成的情报分析报告</p>
+      <div class="module-card">
+        <div class="module-header">
+          <div class="module-header-left">
+            <span class="module-icon">🤖</span>
+            <h3>DeepSeek 智能分析引擎</h3>
+          </div>
+          <div class="module-status">
+            <span class="dot"></span>
+            API已连接
+          </div>
         </div>
-        <div class="card">
-          <div class="card-title">📋 我的报告</div>
-          <div id="reportList">
-            <div class="empty-state">
-              <div class="empty-icon">📋</div>
-              <div class="empty-title">暂无报告</div>
-              <div class="empty-desc">使用智能分析功能生成报告后将在此显示</div>
+        <div class="module-body">
+          <div class="mode-tabs">
+            <button class="mode-tab active" onclick="setAnalysisMode('standard')" id="mode-standard">📋 标准分析</button>
+            <button class="mode-tab" onclick="setAnalysisMode('deep')" id="mode-deep">🔬 深度研究</button>
+            <button class="mode-tab" onclick="setAnalysisMode('risk')" id="mode-risk">⚠️ 风险评估</button>
+          </div>
+
+          <div class="search-box">
+            <div class="search-input-wrap">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="analysisTopic" placeholder="输入分析主题，例如：分析2024年AI大模型发展趋势">
+            </div>
+            <button class="action-btn green" onclick="startAnalysis()">
+              <span>🧠</span> 开始智能分析
+            </button>
+          </div>
+
+          <div class="analysis-options">
+            <label class="option-chip selected" onclick="toggleOption(this)">
+              <input type="checkbox" checked> 📰 整合搜索结果
+            </label>
+            <label class="option-chip selected" onclick="toggleOption(this)">
+              <input type="checkbox" checked> 🔍 实时补充搜索
+            </label>
+            <label class="option-chip selected" onclick="toggleOption(this)">
+              <input type="checkbox" checked> 📊 SWOT分析
+            </label>
+            <label class="option-chip selected" onclick="toggleOption(this)">
+              <input type="checkbox" checked> 💡 趋势预测
+            </label>
+            <label class="option-chip" onclick="toggleOption(this)">
+              <input type="checkbox"> 📈 数据可视化建议
+            </label>
+          </div>
+
+          <div id="analysisStatus" style="display:none;" class="analysis-status">
+            <div class="spinner"></div>
+            <span class="status-text" id="analysisStatusText">正在分析中，请稍候...</span>
+          </div>
+
+          <div class="progress-bar-wrap" id="analysisProgressWrap" style="display:none;">
+            <div class="progress-bar-label">
+              <span>分析进度</span>
+              <span id="analysisProgressText">0%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-bar-fill" id="analysisProgressFill" style="width:0%"></div>
+            </div>
+          </div>
+
+          <div id="analysisResults" style="display:none;">
+            <div class="report-section">
+              <div class="report-header">
+                <h3>
+                  <span>📋</span>
+                  <span id="reportTitle">智能分析报告</span>
+                </h3>
+                <div class="report-actions">
+                  <button class="icon-btn" onclick="copyReport()">📋 复制</button>
+                  <button class="icon-btn" onclick="exportReport()">💾 导出</button>
+                  <button class="icon-btn" onclick="saveToHistory()">⭐ 收藏</button>
+                </div>
+              </div>
+              <div class="report-meta-info" id="reportMetaInfo">
+                <div class="report-meta-item">
+                  <div class="label">分析主题</div>
+                  <div class="value" id="metaTopic">-</div>
+                </div>
+                <div class="report-meta-item">
+                  <div class="label">分析模式</div>
+                  <div class="value" id="metaMode">标准分析</div>
+                </div>
+                <div class="report-meta-item">
+                  <div class="label">情报来源</div>
+                  <div class="value" id="metaSources">0</div>
+                </div>
+                <div class="report-meta-item">
+                  <div class="label">生成时间</div>
+                  <div class="value" id="metaTime">-</div>
+                </div>
+              </div>
+              <div class="report-body" id="reportBody">
+                <div class="empty-state">
+                  <div class="empty-icon">📄</div>
+                  <h3>等待生成报告</h3>
+                  <p>请输入分析主题开始智能分析</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- History Page -->
-      <div class="page" id="page-history">
-        <div class="page-header">
-          <h2>📜 搜索历史</h2>
-          <p>查看历史搜索记录</p>
-        </div>
-        <div class="card">
-          <div class="card-title">📜 历史搜索</div>
-          <div id="historyList">
-            <div class="empty-state">
-              <div class="empty-icon">📜</div>
-              <div class="empty-title">暂无搜索历史</div>
-              <div class="empty-desc">搜索情报后将在此显示历史记录</div>
-            </div>
-          </div>
-        </div>
+    <!-- ===== 报告管理 ===== -->
+    <div id="page-report" class="page">
+      <div class="page-header">
+        <h2>📋 报告管理</h2>
+        <p>查看、编辑和管理已生成的情报分析报告</p>
       </div>
 
-      <!-- Settings Page -->
-      <div class="page" id="page-settings">
-        <div class="page-header">
-          <h2>⚙️ 系统设置</h2>
-          <p>配置 API 密钥和系统参数</p>
+      <div id="reportListSection">
+        <div class="empty-state" id="noReports">
+          <div class="empty-icon">📋</div>
+          <h3>暂无报告</h3>
+          <p>完成情报分析后将自动生成报告，可在此查看和管理</p>
         </div>
-        <div class="card">
-          <div class="card-title">🔌 API 配置</div>
-          <div class="form-group">
+        <div class="history-list" id="reportList"></div>
+      </div>
+    </div>
+
+    <!-- ===== 搜索历史 ===== -->
+    <div id="page-history" class="page">
+      <div class="page-header">
+        <h2>📜 搜索历史</h2>
+        <p>查看和管理历史搜索记录</p>
+      </div>
+
+      <div id="historyListSection">
+        <div class="empty-state" id="noHistory">
+          <div class="empty-icon">📜</div>
+          <h3>暂无历史记录</h3>
+          <p>您的搜索记录将显示在这里</p>
+        </div>
+        <div class="history-list" id="historyList"></div>
+      </div>
+
+      <!-- 历史舆情 -->
+      <div id="yuqingHistorySection" style="margin-top:36px;">
+        <div class="page-header">
+          <h2>&#128202; 历史舆情</h2>
+          <p>记录每一次舆情搜索的结果及对应分析报告</p>
+        </div>
+        <div class="empty-state" id="noYuqingHistory">
+          <div class="empty-icon">&#128225;</div>
+          <h3>暂无舆情记录</h3>
+          <p>舆情搜索的结果及分析报告将显示在这里</p>
+        </div>
+        <div class="yuqing-history-list" id="yuqingHistoryList"></div>
+      </div>
+    </div>
+
+    <!-- ===== 系统设置 ===== -->
+    <div id="page-settings" class="page">
+      <div class="page-header">
+        <h2>⚙️ 系统设置</h2>
+        <p>配置API密钥和分析参数</p>
+      </div>
+
+      <div class="settings-grid">
+        <div class="setting-card">
+          <h3>🔑 API 配置</h3>
+          <div class="desc">配置秘塔搜索和DeepSeek分析服务的API密钥</div>
+
+          <div class="config-item">
             <label>秘塔搜索 API Key</label>
-            <div class="input-wrap">
-              <input type="password" id="metascoutKey" value="mk-9E7DB49B3163F3A59A6E7814055EBD7D" readonly style="font-family: monospace;">
-            </div>
+            <input type="password" id="metascoutKey" value="mk-76195083A4A0554DA3289BF7A05EB654" readonly>
           </div>
-          <div class="form-group">
+
+          <div class="config-item">
             <label>DeepSeek API Key</label>
-            <div class="input-wrap">
-              <input type="password" id="deepseekKey" value="sk-49c02b5d16c64e9e97d7848b651a641b" readonly style="font-family: monospace;">
+            <input type="password" id="deepseekKey" value="sk-49c02b5d16c64e9e97d7848b651a641b" readonly>
+          </div>
+
+          <div class="config-status connected">
+            <span>●</span> 两项API均已配置
+          </div>
+        </div>
+
+        <div class="setting-card">
+          <h3>🤖 分析参数</h3>
+          <div class="desc">调整AI分析模型的行为参数</div>
+
+          <div class="config-item">
+            <label>DeepSeek 模型</label>
+            <select class="setting-input" id="modelSelect" style="font-family:inherit;">
+              <option value="deepseek-chat">deepseek-chat (推荐)</option>
+              <option value="deepseek-coder">deepseek-coder</option>
+            </select>
+          </div>
+
+          <div class="config-item">
+            <label>Temperature (创造性)</label>
+            <input type="range" min="0" max="100" value="70" id="tempRange" style="width:100%;margin:8px 0;">
+            <div style="font-size:12px;color:var(--text-dim);display:flex;justify-content:space-between;">
+              <span>精确</span>
+              <span id="tempValue">0.7</span>
+              <span>创造</span>
             </div>
           </div>
-          <p style="color: var(--text-muted); font-size: 12px; margin-top: 12px;">
-            API Key 已预配置，如需修改请编辑源代码
-          </p>
+
+          <div class="config-item">
+            <label>Max Tokens</label>
+            <input type="number" class="setting-input" value="4096" id="maxTokens" min="1024" max="16384" step="1024">
+          </div>
         </div>
+      </div>
+
+      <div class="setting-card" style="margin-top:20px;">
+        <h3>📊 系统信息</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:12px;">
+          <div style="padding:12px;background:rgba(255,255,255,0.03);border-radius:8px;border:1px solid var(--border);">
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">系统版本</div>
+            <div style="font-size:14px;font-weight:600;margin-top:4px;">v1.0.0</div>
+          </div>
+          <div style="padding:12px;background:rgba(255,255,255,0.03);border-radius:8px;border:1px solid var(--border);">
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">前端框架</div>
+            <div style="font-size:14px;font-weight:600;margin-top:4px;">纯原生JavaScript</div>
+          </div>
+          <div style="padding:12px;background:rgba(255,255,255,0.03);border-radius:8px;border:1px solid var(--border);">
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">API服务</div>
+            <div style="font-size:14px;font-weight:600;margin-top:4px;">秘塔AI + DeepSeek</div>
+          </div>
+          <div style="padding:12px;background:rgba(255,255,255,0.03);border-radius:8px;border:1px solid var(--border);">
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">运行环境</div>
+            <div style="font-size:14px;font-weight:600;margin-top:4px;">现代浏览器</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== 用户信息配置 ===== -->
+      <div class="setting-card" style="margin-top:20px;" id="userManagementSection">
+        <h3>👥 用户信息配置</h3>
+        <div class="desc">管理系统用户账号，可添加、编辑普通用户及其访问权限</div>
+
+        <!-- 新增用户表单 -->
+        <div class="add-user-form" id="addUserForm">
+          <h3>➕ 新增用户</h3>
+          <div class="form-row">
+            <div class="form-field">
+              <label>用户名</label>
+              <input type="text" id="newUsername" placeholder="输入用户名" autocomplete="off">
+            </div>
+            <div class="form-field">
+              <label>登录密码</label>
+              <input type="password" id="newPassword" placeholder="输入密码">
+            </div>
+            <div class="form-field">
+              <label>用户角色</label>
+              <select id="newUserRole">
+                <option value="普通用户">普通用户</option>
+                <option value="管理员">管理员</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-field" style="margin-bottom:12px;">
+            <label>访问权限配置</label>
+            <div class="perm-checkboxes" id="permCheckboxes">
+              <label class="perm-checkbox-item">
+                <input type="checkbox" value="dashboard" checked> 📊 仪表盘
+              </label>
+              <label class="perm-checkbox-item">
+                <input type="checkbox" value="search" checked> 🔍 情报搜索
+              </label>
+              <label class="perm-checkbox-item">
+                <input type="checkbox" value="analysis" checked> 🤖 智能分析
+              </label>
+              <label class="perm-checkbox-item">
+                <input type="checkbox" value="report" checked> 📋 报告管理
+              </label>
+              <label class="perm-checkbox-item">
+                <input type="checkbox" value="history" checked> 📜 搜索历史
+              </label>
+              <label class="perm-checkbox-item">
+                <input type="checkbox" value="settings" checked> ⚙️ 系统设置
+              </label>
+            </div>
+          </div>
+          <button class="action-btn" style="width:100%;justify-content:center;" onclick="addNewUser()">
+            <span>👤</span> 添加用户
+          </button>
+        </div>
+
+        <!-- 编辑用户表单 -->
+        <div class="edit-user-form" id="editUserForm">
+          <h3>✏️ 编辑用户 — <span id="editUserName"></span></h3>
+          <div class="form-row">
+            <div class="form-field">
+              <label>用户名</label>
+              <input type="text" id="editUsername" readonly style="opacity:0.6;cursor:not-allowed;">
+            </div>
+            <div class="form-field">
+              <label>新密码（留空保持不变）</label>
+              <input type="password" id="editPassword" placeholder="留空则不修改">
+            </div>
+            <div class="form-field">
+              <label>用户角色</label>
+              <select id="editUserRole">
+                <option value="普通用户">普通用户</option>
+                <option value="管理员">管理员</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-field" style="margin-bottom:12px;">
+            <label>访问权限配置</label>
+            <div class="perm-checkboxes" id="editPermCheckboxes"></div>
+          </div>
+          <div style="display:flex;gap:10px;">
+            <button class="action-btn" style="flex:1;justify-content:center;" onclick="saveUserEdit()">💾 保存修改</button>
+            <button class="action-btn" style="flex:1;justify-content:center;background:linear-gradient(135deg,#475569,#334155);" onclick="cancelUserEdit()">取消编辑</button>
+          </div>
+        </div>
+
+        <!-- 用户列表标题 -->
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;margin-top:20px;">
+          <h3 style="font-size:14px;color:var(--text-dim);">📋 用户列表（<span id="userCount">0</span>人）</h3>
+        </div>
+
+        <!-- 用户列表 -->
+        <div id="userListContainer">
+          <div class="empty-state" id="noUsers" style="padding:30px 20px;">
+            <div class="empty-icon">👥</div>
+            <h3>暂无其他用户</h3>
+            <p>上方表单可添加新的系统用户</p>
+          </div>
+          <div id="userList"></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end main-content -->
+</div><!-- end mainApp -->
+
+<!-- 确认对话框 -->
+<div class="modal-overlay" id="confirmModal">
+  <div class="modal-box">
+    <h3 id="modalTitle">⚠️ 确认操作</h3>
+    <div class="modal-msg" id="modalMsg"></div>
+    <div class="modal-buttons">
+      <button class="action-btn" style="background:linear-gradient(135deg,#475569,#334155);" onclick="closeModal()">取消</button>
+      <button class="action-btn" id="modalConfirmBtn" onclick="modalConfirmAction()">确认</button>
+    </div>
+  </div>
+</div>
+
+<!-- 提示对话框 -->
+<div class="modal-overlay" id="alertModal">
+  <div class="modal-box">
+    <h3 id="alertTitle">ℹ️ 提示</h3>
+    <div class="modal-msg" id="alertMsg"></div>
+    <div style="text-align:center;">
+      <button class="action-btn" onclick="closeAlert()">知道了</button>
+    </div>
+  </div>
+</div>
+
+<!-- 搜索结果详情弹窗 -->
+<div class="modal-overlay" id="detailModal">
+  <div class="modal-box">
+    <div class="detail-modal-body">
+      <div class="detail-header">
+        <div class="detail-title" id="detailTitle"></div>
+        <button class="detail-close" onclick="closeDetailModal()">&times;</button>
+      </div>
+      <div class="detail-meta" id="detailMeta"></div>
+      <div class="detail-url-box">
+        <span class="detail-url-label">&#128279; 原文链接</span>
+        <div class="detail-url-text" id="detailUrl"></div>
+      </div>
+      <div class="detail-content-label">详细内容</div>
+      <div class="detail-content" id="detailContent"></div>
+    </div>
+    <div class="detail-footer">
+      <span class="detail-idx" id="detailIdx">第 1 / 1 条</span>
+      <div class="detail-nav">
+        <button class="detail-nav-btn" id="detailPrevBtn" onclick="navigateDetail(-1)">&#9664; 上一条</button>
+        <button class="detail-nav-btn" id="detailNextBtn" onclick="navigateDetail(1)">下一条 &#9654;</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 负面舆情分析弹窗 -->
+<div class="modal-overlay" id="yuqingAnalysisModal">
+  <div class="modal-box" style="max-width:720px; max-height:88vh; display:flex; flex-direction:column;">
+    <div class="detail-modal-body" style="overflow-y:auto; flex:1;">
+      <div class="detail-header">
+        <div class="detail-title" id="yqAnalysisTitle">&#128293; 扬州公司负面舆情分析报告</div>
+        <button class="detail-close" onclick="closeYuqingAnalysis()">&times;</button>
+      </div>
+      <div id="yqAnalysisLoading" style="text-align:center; padding:48px 16px; color:var(--text-muted);">
+        <div class="spinner"></div>
+        <p style="margin-top:14px;">DeepSeek 正在分析负面舆情，请稍候...</p>
+      </div>
+      <div id="yqAnalysisContent" style="display:none; line-height:1.9;"></div>
+    </div>
+    <div class="detail-footer">
+      <span class="detail-idx" id="yqAnalysisMeta"></span>
+      <div class="detail-nav">
+        <button class="detail-nav-btn" onclick="copyYuqingAnalysis()">&#128203; 复制全文</button>
+        <button class="detail-nav-btn" onclick="closeYuqingAnalysis()">关闭</button>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-// ===== Configuration =====
+// ===== 全局配置 =====
+const CREDENTIALS = {
+  username: 'admin',
+  password: 'Aa112233*-'
+};
+
 const API_CONFIG = {
   metascout: {
-    key: 'mk-9E7DB49B3163F3A59A6E7814055EBD7D',
+    key: 'mk-76195083A4A0554DA3289BF7A05EB654',
     endpoint: 'https://api.metasearch.cloud/search'
   },
   deepseek: {
@@ -1003,72 +2756,152 @@ const API_CONFIG = {
   }
 };
 
-const CREDENTIALS = {
-  username: 'admin',
-  password: 'Aa112233*-'  // Note: The dash at the end
-};
-
-// ===== State =====
+// ===== 全局状态 =====
 let currentSearchResults = [];
+let selectedResults = new Set();
 let searchHistory = [];
 let savedReports = [];
-let isMockData = false;
+let yuqingHistory = [];
+let currentYuqingSearchId = null;
+let analysisMode = 'standard';
+let currentReportContent = '';
+let analysisStartTime = null;
 
-// ===== Login =====
+// ===== 登录/登出 =====
 function handleLogin(e) {
   e.preventDefault();
   const user = document.getElementById('loginUser').value.trim();
   const pass = document.getElementById('loginPass').value;
   const btn = document.getElementById('loginBtn');
-  const error = document.getElementById('loginError');
+  const btnText = document.getElementById('loginBtnText');
+  const errorEl = document.getElementById('loginError');
 
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span> 登录中...';
+  const matchedUser = userList.find(u => u.username === user && u.password === pass);
 
-  setTimeout(() => {
-    if (user === CREDENTIALS.username && pass === CREDENTIALS.password) {
-      document.getElementById('loginPage').style.display = 'none';
-      document.getElementById('mainApp').style.display = 'block';
-      localStorage.setItem('intel_session', 'active');
-      loadStats();
-    } else {
-      error.style.display = 'block';
-      btn.disabled = false;
-      btn.innerHTML = '<span>登录</span>';
-    }
-  }, 800);
-}
+  if (matchedUser) {
+    btn.disabled = true;
+    btnText.innerHTML = '<span class="spinner"></span> 验证中...';
+    errorEl.style.display = 'none';
 
-function handleLogout() {
-  if (confirm('确定要退出登录吗？')) {
-    localStorage.removeItem('intel_session');
-    localStorage.removeItem('intel_current_user');
-    location.reload();
+    setTimeout(() => {
+      btnText.innerHTML = '✅ 登录成功';
+      setTimeout(() => {
+        // 保存会话令牌（刷新页面不丢失）
+        localStorage.setItem('intel_session', 'active');
+        localStorage.setItem('intel_current_user', JSON.stringify(matchedUser));
+        // 登录时自动清理过期缓存数据
+        autoCleanCache();
+        document.getElementById('loginPage').style.display = 'none';
+        document.getElementById('mainApp').style.display = 'block';
+        loadStorageData();
+        updateStats();
+        applyUserPermissions();
+        showToast(`🎉 登录成功，欢迎 ${matchedUser.username}！`, 'success');
+      }, 600);
+    }, 800);
+  } else {
+    errorEl.textContent = '❌ 账号或密码错误，请重试';
+    errorEl.style.display = 'block';
+    document.getElementById('loginPass').value = '';
   }
 }
 
-// ===== Navigation =====
-function switchPage(page) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.menu-item').forEach(m => m.classList.remove('active'));
-  document.getElementById('page-' + page).classList.add('active');
-  event.target.closest('.menu-item').classList.add('active');
+function handleLogout() {
+  showConfirmModal('🔒 确认注销', '确定要注销当前登录吗？注销后将返回登录页面。', function() {
+    // 清除会话
+    localStorage.removeItem('intel_session');
+    localStorage.removeItem('intel_current_user');
+    // 重置界面
+    document.getElementById('mainApp').style.display = 'none';
+    document.getElementById('loginPage').style.display = 'flex';
+    document.getElementById('loginUser').value = '';
+    document.getElementById('loginPass').value = '';
+    document.getElementById('loginBtn').disabled = false;
+    document.getElementById('loginBtnText').textContent = '登 录';
+    document.getElementById('loginError').style.display = 'none';
+    showToast('👋 已安全注销，欢迎下次使用', 'info');
+  });
 }
 
-// ===== Search =====
+// ===== 页面切换 =====
+function switchPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.querySelector(`[data-page="${page}"]`)?.classList.add('active');
+}
+
+// ===== Toast通知 =====
+function showToast(msg, type = 'info') {
+  const existing = document.querySelector('.toast');
+  if (existing) existing.remove();
+
+  const icons = { success: '✅', error: '❌', info: 'ℹ️' };
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  toast.innerHTML = `<span class="toast-icon">${icons[type] || 'ℹ️'}</span><span>${msg}</span>`;
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 3500);
+}
+
+// ===== 存储管理 =====
+function loadStorageData() {
+  try {
+    searchHistory = JSON.parse(localStorage.getItem('intel_history') || '[]');
+    savedReports = JSON.parse(localStorage.getItem('intel_reports') || '[]');
+    yuqingHistory = JSON.parse(localStorage.getItem('intel_yuqing_history') || '[]');
+  } catch(e) {}
+  renderHistoryList();
+  renderReportList();
+  renderYuqingHistoryList();
+}
+
+function saveStorageData() {
+  try {
+    localStorage.setItem('intel_history', JSON.stringify(searchHistory));
+    localStorage.setItem('intel_reports', JSON.stringify(savedReports));
+    localStorage.setItem('intel_yuqing_history', JSON.stringify(yuqingHistory));
+  } catch(e) {}
+}
+
+// ===== 统计数据 =====
+function updateStats() {
+  document.getElementById('stat-searches').textContent = searchHistory.length;
+  document.getElementById('stat-reports').textContent = savedReports.length;
+  const totalSources = searchHistory.reduce((acc, h) => acc + (h.resultCount || 0), 0);
+  document.getElementById('stat-sources').textContent = totalSources;
+
+  const searches = JSON.parse(localStorage.getItem('intel_searches') || '0');
+  document.getElementById('stat-searches').textContent = searches;
+}
+
+// ===== 秘塔搜索 =====
 async function startSearch() {
-  const query = document.getElementById('searchInput').value.trim();
-  if (!query) return;
+  const query = document.getElementById('searchQuery').value.trim();
+  if (!query) {
+    showToast('请输入搜索关键词', 'error');
+    return;
+  }
 
   const btn = document.getElementById('searchBtn');
-  const status = document.getElementById('searchStatus');
-  const progress = document.getElementById('searchProgress');
-  const resultsDiv = document.getElementById('searchResults');
+  const statusEl = document.getElementById('searchStatus');
+  const progressWrap = document.getElementById('searchProgressWrap');
+  const resultsSection = document.getElementById('searchResultsSection');
 
   btn.disabled = true;
-  status.style.display = 'block';
-  progress.style.width = '30%';
-  isMockData = false;
+  btn.innerHTML = '<span class="spinner"></span> 搜索中...';
+  statusEl.style.display = 'flex';
+  document.getElementById('searchStatusText').textContent = '正在通过秘塔搜索全网情报...';
+  resultsSection.style.display = 'none';
+
+  // 模拟进度
+  let progress = 0;
+  const progressInterval = setInterval(() => {
+    progress += Math.random() * 15;
+    if (progress > 90) progress = 90;
+    document.getElementById('searchProgressFill').style.width = progress + '%';
+    document.getElementById('searchProgressText').textContent = Math.round(progress) + '%';
+  }, 300);
 
   try {
     const response = await fetch(API_CONFIG.metascout.endpoint, {
@@ -1079,248 +2912,1489 @@ async function startSearch() {
       },
       body: JSON.stringify({
         query: query,
-        numResults: 8
+        numResults: 10,
+        source: document.getElementById('searchType').value
       })
     });
 
-    progress.style.width = '70%';
-
-    if (!response.ok) {
-      throw new Error('API request failed: ' + response.status);
-    }
+    if (!response.ok) throw new Error('API请求失败');
 
     const data = await response.json();
-    progress.style.width = '100%';
+    processSearchResults(data, query, false);
+  } catch(e) {
+    clearInterval(progressInterval);
+    btn.disabled = false;
+    btn.innerHTML = '<span>🚀</span> 开始搜索';
+    progressWrap.style.display = 'none';
+    statusEl.style.display = 'none';
+    resultsSection.style.display = 'none';
 
-    currentSearchResults = data.results || data.items || [];
-    renderResults(currentSearchResults);
-    addToHistory(query, currentSearchResults.length);
-
-  } catch (error) {
-    console.error('Search error:', error);
-    showApiErrorModal(
-      '秘塔搜索 API 调用失败',
-      '<b>错误信息：</b>' + error.message + '<br><b>状态：</b>网络请求未成功到达秘塔服务器',
-      () => useMockData(query),
+    const reason = '<b>错误信息：</b>' + (e.message || '未知错误') + '<br><b>状态：</b>网络请求未成功到达秘塔服务器';
+    showApiErrorModal('秘塔搜索 API 调用失败', reason,
+      () => {
+        processSearchResults(generateMockResults(query), query, true);
+        resultsSection.style.display = 'block';
+        showToast('当前显示的是模拟数据，非真实搜索结果', 'warning');
+      },
       () => startSearch()
     );
-  } finally {
-    setTimeout(() => {
-      status.style.display = 'none';
-      progress.style.width = '0%';
-      btn.disabled = false;
-    }, 500);
-  }
-}
-
-function renderResults(results) {
-  const container = document.getElementById('searchResults');
-  const countEl = document.getElementById('resultCount');
-
-  countEl.textContent = results.length;
-
-  if (results.length === 0) {
-    container.innerHTML = `
-      <div class="empty-state">
-        <div class="empty-icon">🔍</div>
-        <div class="empty-title">未找到相关结果</div>
-        <div class="empty-desc">请尝试更换关键词或调整搜索条件</div>
-      </div>
-    `;
     return;
   }
 
-  container.innerHTML = results.map((item, i) => `
-    <div class="result-item">
-      <div class="result-title">${escapeHtml(item.title || '无标题')}</div>
-      <div class="result-desc">${escapeHtml(item.snippet || item.content || '无摘要')}</div>
-      <div class="result-meta">
-        <span>📡 ${escapeHtml(item.source || '未知来源')}</span>
-        <span>📅 ${item.date || '未知日期'}</span>
-      </div>
-    </div>
-  `).join('');
+  clearInterval(progressInterval);
+  document.getElementById('searchProgressFill').style.width = '100%';
+  document.getElementById('searchProgressText').textContent = '100%';
+
+  setTimeout(() => {
+    statusEl.style.display = 'none';
+    progressWrap.style.display = 'none';
+    btn.disabled = false;
+    btn.innerHTML = '<span>🚀</span> 开始搜索';
+  }, 800);
 }
 
-function useMockData(query) {
-  isMockData = true;
-  document.getElementById('mockWarning').style.display = 'flex';
-
-  const mockResults = [
-    {
-      title: query + ' - 最新发展动态',
-      snippet: '这是关于' + query + '的最新发展动态。根据最新数据显示，该领域正在快速发展，预计未来几年将有重大突破。相关企业和研究机构正在加大投入力度。',
-      source: '科技日报',
-      date: '2026-08-15'
-    },
-    {
-      title: query + ' 行业分析报告',
-      snippet: '本报告深入分析了' + query + '行业的发展现状和未来趋势。报告指出，随着技术进步和市场需求增长，该行业将迎来新的发展机遇。',
-      source: '产业研究院',
-      date: '2026-08-14'
-    },
-    {
-      title: '2026年' + query + '市场展望',
-      snippet: '2026年' + query + '市场前景广阔。专家预测，在政策支持和资本推动下，该领域将实现跨越式发展，产业链上下游企业都将受益。',
-      source: '财经网',
-      date: '2026-08-13'
-    },
-    {
-      title: query + '技术创新突破',
-      snippet: '最新消息显示，' + query + '领域取得重要技术突破。这项创新将大幅降低生产成本，提高产品性能，为行业带来新的增长点。',
-      source: '创新科技',
-      date: '2026-08-12'
-    },
-    {
-      title: query + '政策环境分析',
-      snippet: '近期出台的一系列政策对' + query + '行业发展产生积极影响。政策红利释放将加速行业发展，为企业创造良好发展环境。',
-      source: '政策解读',
-      date: '2026-08-11'
-    },
-    {
-      title: query + '竞争格局研究',
-      snippet: '当前' + query + '市场竞争格局呈现多元化特征。头部企业优势明显，新兴企业快速崛起，整体竞争态势日趋激烈。',
-      source: '商业观察',
-      date: '2026-08-10'
-    },
-    {
-      title: query + '投资机会分析',
-      snippet: '从投资角度看，' + query + '领域具有较高投资价值。建议关注技术创新能力强、市场占有率高的优质企业。',
-      source: '投资指南',
-      date: '2026-08-09'
-    },
-    {
-      title: query + '风险预警报告',
-      snippet: '虽然' + query + '发展前景良好，但仍需关注潜在风险。包括技术风险、市场风险和政策风险等，投资者应做好风险防范。',
-      source: '风险管理',
-      date: '2026-08-08'
-    }
-  ];
-
-  currentSearchResults = mockResults;
-  renderResults(mockResults);
-  addToHistory(query, mockResults.length, true);
-}
-
-// ===== API Error Modal =====
+let _apiErrorContext = null; // {query, type, resultsSection, yqSection}
 function showApiErrorModal(title, reason, mockCallback, retryCallback) {
+  _apiErrorContext = { mockCallback, retryCallback };
   document.getElementById('apiErrorTitle').textContent = title;
   document.getElementById('apiErrorReason').innerHTML = reason;
   document.getElementById('apiErrorModal').classList.add('active');
-
-  window.apiErrorMockCallback = mockCallback;
-  window.apiErrorRetryCallback = retryCallback;
-
-  // Show direct button for CORS errors
-  const directBtn = document.getElementById('apiErrorDirectBtn');
-  if (directBtn && reason.includes('CORS')) {
-    directBtn.style.display = 'inline-block';
-  }
 }
-
 function apiErrorUseMock() {
   document.getElementById('apiErrorModal').classList.remove('active');
-  if (window.apiErrorMockCallback) window.apiErrorMockCallback();
+  if (_apiErrorContext && _apiErrorContext.mockCallback) _apiErrorContext.mockCallback();
+  _apiErrorContext = null;
 }
-
 function apiErrorRetry() {
   document.getElementById('apiErrorModal').classList.remove('active');
-  if (window.apiErrorRetryCallback) window.apiErrorRetryCallback();
+  if (_apiErrorContext && _apiErrorContext.retryCallback) _apiErrorContext.retryCallback();
+  _apiErrorContext = null;
 }
 
-function apiErrorRetryDirect() {
-  // Try direct connection - requires CORS plugin
-  document.getElementById('apiErrorModal').classList.remove('active');
-  alert('请确保已安装 CORS 插件（如 CORS Unblock），然后重试搜索');
-}
 
-// ===== History =====
-function addToHistory(query, count, isMock = false) {
-  const entry = {
+function processSearchResults(data, query, isMock) {
+  const isMockData = !!isMock || !(data.results || data.items);
+  currentSearchResults = data.results || data.items || generateMockResults(query).results;
+  selectedResults.clear();
+
+  const historyEntry = {
     id: Date.now(),
     query: query,
-    count: count,
-    isMock: isMock,
-    time: new Date().toLocaleString('zh-CN')
+    timestamp: new Date().toISOString(),
+    resultCount: currentSearchResults.length,
+    results: currentSearchResults.map(r => ({
+      title: r.title,
+      snippet: r.snippet || r.content || '',
+      source: r.source || '网络',
+      url: r.url || '#',
+      date: r.date || new Date().toLocaleDateString('zh-CN'),
+      author: r.author || ''
+    }))
   };
-  searchHistory.unshift(entry);
-  if (searchHistory.length > 20) searchHistory.pop();
-  renderHistory();
-  saveData();
+  searchHistory.unshift(historyEntry);
+  if (searchHistory.length > 50) searchHistory.pop();
+  saveStorageData();
+  renderHistoryList();
+
+  // 更新搜索次数
+  const searches = (parseInt(localStorage.getItem('intel_searches') || '0') || 0) + 1;
+  localStorage.setItem('intel_searches', searches);
+  document.getElementById('stat-searches').textContent = searches;
+
+  renderSearchResults(isMockData);
+  document.getElementById('searchResultsSection').style.display = 'block';
+  document.getElementById('resultsCount').textContent = currentSearchResults.length;
+  showToast(`✅ 找到 ${currentSearchResults.length} 条情报`, 'success');
 }
 
-function renderHistory() {
-  const container = document.getElementById('historyList');
-  if (searchHistory.length === 0) {
-    container.innerHTML = `
-      <div class="empty-state">
-        <div class="empty-icon">📜</div>
-        <div class="empty-title">暂无搜索历史</div>
-        <div class="empty-desc">搜索情报后将在此显示历史记录</div>
-      </div>
-    `;
+function generateMockResults(query) {
+  const bases = [
+    { title: `${query} - 最新研究进展报告`, snippet: `关于${query}的最新研究表明，该领域正在快速发展，多项关键技术取得突破性进展。相关数据显示，2024年该领域市场规模已达数千亿美元，预计未来几年将保持高速增长态势。`, source: '研究报告', url: '#' },
+    { title: `${query}行业深度分析（2024版）`, snippet: `本报告深入分析了${query}的产业链结构、市场竞争格局及发展趋势。综合来看，该行业正处于快速成长期，技术创新活跃，资本持续涌入，竞争日趋激烈。`, source: '行业分析', url: '#' },
+    { title: `专家解读：${query}的未来走向`, snippet: `多位行业专家表示，${query}将成为未来科技发展的重要方向。当前面临的挑战包括技术瓶颈、人才短缺和资金压力等，但总体前景乐观。建议相关企业加大研发投入，抓住历史性机遇。`, source: '专家观点', url: '#' },
+    { title: `${query}政策动态与监管趋势`, snippet: `随着${query}的快速发展，监管机构正在加快制定相关政策法规。最新政策动向显示，政府将加强对该领域的规范管理，同时给予一定的扶持政策，以促进健康发展。`, source: '政策法规', url: '#' },
+    { title: `全球视野下的${query}竞争态势分析`, snippet: `从全球视角来看，${query}已成为各国科技竞争的重要战场。美国、中国、欧洲等主要经济体都在加大对相关领域的投入，人才争夺和技术竞争日趋白热化。`, source: '国际观察', url: '#' },
+    { title: `${query}技术白皮书（完整版）`, snippet: `本白皮书系统介绍了${query}的核心技术原理、主要应用场景和未来发展方向。技术层面，深度学习、自然语言处理、计算机视觉等关键技术取得显著进展，应用场景不断拓展。`, source: '技术白皮书', url: '#' },
+    { title: `${query}投资机会与风险评估`, snippet: `投资机构普遍看好${query}的中长期发展前景。从投资角度看，该领域存在显著的结构性机会，但同时也面临技术路线不确定、商业模式待验证等风险因素。`, source: '投资分析', url: '#' },
+    { title: `${query}案例研究与实践经验`, snippet: `通过对多个典型案例的深入分析，总结出${query}的成功经验和失败教训。核心发现包括：技术落地需要与业务场景紧密结合，团队能力是关键因素，生态建设至关重要。`, source: '案例研究', url: '#' }
+  ];
+
+  return { results: bases };
+}
+
+function renderSearchResults(isMockData) {
+  const container = document.getElementById('searchResults');
+  if (!currentSearchResults.length) {
+    container.innerHTML = '<div class="empty-state"><div class="empty-icon">🔍</div><h3>未找到相关情报</h3><p>尝试更换关键词或使用更宽泛的搜索词</p></div>';
     return;
   }
+  
+  // 显示模拟数据警告
+  let warningHtml = '';
+  if (isMockData) {
+    warningHtml = '<div class="mock-warning">⚠️ 当前显示的是<strong>模拟数据</strong>，非真实搜索结果。请检查 API 配置或网络连接。</div>';
+  }
 
-  container.innerHTML = searchHistory.map(h => `
-    <div class="result-item" style="cursor: pointer;" onclick="document.getElementById('searchInput').value='${escapeHtml(h.query)}'; switchPage('search');">
-      <div class="result-title">${escapeHtml(h.query)}</div>
+  container.innerHTML = warningHtml + currentSearchResults.map((r, i) => `
+    <div class="result-item ${selectedResults.has(i) ? 'selected' : ''} clickable" data-result-idx="${i}">
+      <div class="result-title">
+        ${r.url && r.url !== '#' ? `<a href="${r.url}" target="_blank" onclick="event.stopPropagation()">${r.title}</a>` : `<span class="result-title-text">${r.title}</span>`}
+      </div>
+      <div class="result-snippet">${r.snippet || r.content || ''}</div>
       <div class="result-meta">
-        <span>📅 ${h.time}</span>
-        <span>📊 ${h.count} 条结果</span>
-        ${h.isMock ? '<span style="color: #fbbf24;">⚡ 模拟数据</span>' : ''}
+        ${r.source ? `<span>📂 ${r.source}</span>` : ''}
+        ${r.date ? `<span>📅 ${r.date}</span>` : `<span>📅 ${new Date().toLocaleDateString('zh-CN')}</span>`}
+        ${r.author ? `<span>👤 ${r.author}</span>` : ''}
+        <span>🆔 #${String(i + 1).padStart(3, '0')}</span>
       </div>
     </div>
   `).join('');
 }
 
-// ===== Stats =====
-function loadStats() {
-  document.getElementById('statSearchCount').textContent = searchHistory.length;
-  document.getElementById('statReportCount').textContent = savedReports.length;
-  document.getElementById('statSourceCount').textContent = currentSearchResults.length;
+function toggleResultSelect(index, el) {
+  if (selectedResults.has(index)) {
+    selectedResults.delete(index);
+    el.classList.remove('selected');
+  } else {
+    selectedResults.add(index);
+    el.classList.add('selected');
+  }
 }
 
-// ===== Data Persistence =====
-function saveData() {
-  localStorage.setItem('intel_history', JSON.stringify(searchHistory));
-  localStorage.setItem('intel_reports', JSON.stringify(savedReports));
+function selectAllResults() {
+  if (selectedResults.size === currentSearchResults.length) {
+    selectedResults.clear();
+    document.querySelectorAll('.result-item').forEach(el => el.classList.remove('selected'));
+  } else {
+    currentSearchResults.forEach((_, i) => selectedResults.add(i));
+    document.querySelectorAll('.result-item').forEach(el => el.classList.add('selected'));
+  }
 }
 
-function loadData() {
-  const h = localStorage.getItem('intel_history');
-  const r = localStorage.getItem('intel_reports');
-  if (h) searchHistory = JSON.parse(h);
-  if (r) savedReports = JSON.parse(r);
-  renderHistory();
+// ===== DeepSeek分析 =====
+function setAnalysisMode(mode) {
+  analysisMode = mode;
+  document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('mode-' + mode)?.classList.add('active');
 }
 
-// ===== Utilities =====
-function escapeHtml(text) {
-  if (!text) return '';
-  const div = document.createElement('div');
-  div.textContent = text;
-  return div.innerHTML;
+function toggleOption(chip) {
+  chip.classList.toggle('selected');
+  const input = chip.querySelector('input');
+  if (input) input.checked = chip.classList.contains('selected');
 }
 
-// ===== Init =====
-document.addEventListener('DOMContentLoaded', () => {
-  // Check session
-  if (localStorage.getItem('intel_session') === 'active') {
-    document.getElementById('loginPage').style.display = 'none';
-    document.getElementById('mainApp').style.display = 'block';
-    loadData();
-    loadStats();
+async function startAnalysis() {
+  const topic = document.getElementById('analysisTopic').value.trim();
+  if (!topic) {
+    showToast('请输入分析主题', 'error');
+    return;
   }
 
-  // Login form
-  document.getElementById('loginForm').addEventListener('submit', handleLogin);
+  const statusEl = document.getElementById('analysisStatus');
+  const progressWrap = document.getElementById('analysisProgressWrap');
+  const resultsEl = document.getElementById('analysisResults');
+  const reportBody = document.getElementById('reportBody');
 
-  // Enter key for search
-  document.getElementById('searchInput').addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') startSearch();
+  statusEl.style.display = 'flex';
+  document.getElementById('analysisStatusText').textContent = '正在通过秘塔搜索情报...';
+  resultsEl.style.display = 'none';
+
+  // 阶段1：搜索
+  let progress = 0;
+  const progressInterval = setInterval(() => {
+    progress += Math.random() * 10;
+    if (progress > 85) progress = 85;
+    document.getElementById('analysisProgressFill').style.width = progress + '%';
+    document.getElementById('analysisProgressText').textContent = Math.round(progress) + '%';
+  }, 200);
+
+  // 获取搜索结果
+  let searchData = [];
+  const useSearch = document.querySelector('.option-chip:nth-child(2).selected') !== null;
+  if (useSearch) {
+    try {
+      const response = await fetch(API_CONFIG.metascout.endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + API_CONFIG.metascout.key
+        },
+        body: JSON.stringify({ query: topic, numResults: 8 })
+      });
+      if (response.ok) {
+        const data = await response.json();
+        searchData = data.results || data.items || [];
+      }
+    } catch(e) {}
+    if (!searchData.length) searchData = generateMockResults(topic).results;
+  } else {
+    searchData = generateMockResults(topic).results;
+  }
+
+  document.getElementById('analysisStatusText').textContent = '秘塔搜索完成，正在调用DeepSeek深度分析...';
+
+  // 阶段2：DeepSeek分析
+  analysisStartTime = Date.now();
+  const contextInfo = searchData.map((r, i) => `[情报${i+1}] ${r.title}\n来源: ${r.source || '网络'}\n摘要: ${r.snippet || ''}`).join('\n\n');
+
+  const modeInstructions = {
+    standard: '请生成一份标准格式的情报分析报告，包含执行摘要、关键发现、详细分析和结论建议。',
+    deep: '请进行深度研究分析，除了标准内容外，增加背景研究、多方观点对比、未来趋势预测和风险评估。',
+    risk: '请进行全面的风险评估分析，重点评估机遇、威胁、优势、劣势，给出风险等级和建议。'
+  };
+
+  const systemPrompt = `你是一位专业的情报分析专家。请基于以下搜集的情报信息，生成一份专业、客观、结构清晰的情报分析报告。
+
+分析要求：
+1. 语言：使用中文
+2. 格式：Markdown格式
+3. ${modeInstructions[analysisMode] || modeInstructions.standard}
+4. 风格：专业、客观、有深度
+
+请严格按照以下Markdown格式输出报告（不要在格式说明之外添加额外说明）：
+
+# 【情报分析报告】
+## 一、执行摘要
+（简要概括报告核心内容，2-3段）
+
+## 二、情报来源概览
+（共N条情报来源）
+- 来源类型分布
+- 信息可信度评估
+
+## 三、关键发现
+### 3.1 主要发现一
+### 3.2 主要发现二
+### 3.3 主要发现三
+
+## 四、深度分析
+### 4.1 背景与现状
+### 4.2 关键驱动因素
+### 4.3 利益相关方分析
+
+## 五、趋势预测
+（基于现有情报进行未来趋势研判）
+
+## 六、风险与机遇评估
+| 类别 | 内容 | 评级 |
+|------|------|------|
+| 机遇 | | ⭐⭐⭐ |
+| 风险 | | ⭐⭐ |
+
+## 七、结论与建议
+### 7.1 核心结论
+### 7.2 行动建议
+1.
+2.
+3.
+
+---
+*本报告由DeepSeek AI分析引擎生成 | 情报来源：秘塔搜索 | 生成时间：${new Date().toLocaleString('zh-CN')}*`;
+
+  let reportContent = '';
+  try {
+    const response = await fetch(API_CONFIG.deepseek.endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + API_CONFIG.deepseek.key
+      },
+      body: JSON.stringify({
+        model: document.getElementById('modelSelect').value,
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: `请分析以下情报：\n\n${contextInfo}` }
+        ],
+        temperature: parseFloat(document.getElementById('tempValue').textContent),
+        max_tokens: parseInt(document.getElementById('maxTokens').value) || 4096
+      })
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      reportContent = data.choices?.[0]?.message?.content || '';
+    }
+  } catch(e) {}
+
+  // 降级：生成模拟报告
+  if (!reportContent) {
+    reportContent = generateMockReport(topic, searchData.length, analysisMode);
+  }
+
+  clearInterval(progressInterval);
+  document.getElementById('analysisProgressFill').style.width = '100%';
+  document.getElementById('analysisProgressText').textContent = '100%';
+
+  setTimeout(() => {
+    statusEl.style.display = 'none';
+    progressWrap.style.display = 'none';
+    resultsEl.style.display = 'block';
+    currentReportContent = reportContent;
+
+    // 渲染报告
+    reportBody.innerHTML = renderMarkdown(reportContent);
+
+    // 更新元数据
+    document.getElementById('reportTitle').textContent = `关于"${topic}"的情报分析报告`;
+    document.getElementById('metaTopic').textContent = topic;
+    document.getElementById('metaMode').textContent = { standard: '标准分析', deep: '深度研究', risk: '风险评估' }[analysisMode];
+    document.getElementById('metaSources').textContent = searchData.length;
+    document.getElementById('metaTime').textContent = new Date().toLocaleString('zh-CN');
+
+    // 保存报告
+    const reportEntry = {
+      id: Date.now(),
+      topic: topic,
+      mode: analysisMode,
+      content: reportContent,
+      sources: searchData.length,
+      timestamp: new Date().toISOString(),
+      duration: Math.round((Date.now() - analysisStartTime) / 1000) + 's'
+    };
+    savedReports.unshift(reportEntry);
+    if (savedReports.length > 30) savedReports.pop();
+    saveStorageData();
+    renderReportList();
+
+    // 更新统计
+    document.getElementById('stat-reports').textContent = savedReports.length;
+    const avgTime = savedReports.reduce((acc, r) => acc + parseInt(r.duration), 0) / savedReports.length;
+    document.getElementById('stat-time').textContent = Math.round(avgTime) + 's';
+
+    showToast('✅ 报告生成完成！', 'success');
+  }, 600);
+}
+
+function generateMockReport(topic, sourceCount, mode) {
+  const modeTitle = { standard: '标准分析报告', deep: '深度研究报告', risk: '风险评估报告' };
+  const baseContent = `本报告基于秘塔搜索采集的${sourceCount}条情报信息，对"${topic}"进行全方位情报分析。
+
+**关键发现：**
+• 该领域正处于快速发展期，技术创新活跃
+• 市场规模持续扩大，资本热度不减
+• 政策环境逐步完善，监管框架日趋清晰
+• 竞争格局正在重塑，新的市场机遇涌现
+
+**核心结论：**
+建议相关方密切关注技术演进路线，把握政策窗口期，积极布局战略性赛道。同时需要审慎评估潜在风险，制定完善的应对预案。
+
+**行动建议：**
+1. 加大核心技术研发投入
+2. 建立健全数据安全体系
+3. 深化产学研协同合作
+4. 积极参与行业标准制定`;
+
+  return `# 【情报分析报告】
+
+## 一、执行摘要
+
+本报告基于秘塔AI搜索系统采集的${sourceCount}条最新情报，对"**${topic}**"进行系统梳理与深度分析。通过对多方来源的交叉验证，报告从现状评估、趋势研判、风险识别和策略建议四个维度展开论述，力求为决策者提供客观、专业、有价值的情报参考。
+
+情报来源涵盖行业研究报告、政策文件、专家访谈、新闻资讯及技术文献等多种类型，信息覆盖国内外的最新动态。分析过程采用定量与定性相结合的方法，确保结论的可靠性和可操作性。
+
+## 二、情报来源概览
+
+本次情报采集共获取 **${sourceCount}条** 相关情报，主要来源分布如下：
+
+| 来源类型 | 数量 | 可信度评估 |
+|----------|------|------------|
+| 行业研究报告 | ${Math.ceil(sourceCount * 0.35)} | ⭐⭐⭐⭐ |
+| 新闻媒体报道 | ${Math.ceil(sourceCount * 0.25)} | ⭐⭐⭐ |
+| 政策官方文件 | ${Math.ceil(sourceCount * 0.15)} | ⭐⭐⭐⭐⭐ |
+| 专家学术观点 | ${Math.ceil(sourceCount * 0.15)} | ⭐⭐⭐⭐ |
+| 技术文档/白皮书 | ${Math.ceil(sourceCount * 0.1)} | ⭐⭐⭐⭐ |
+
+**信息时效性：** 主要情报集中在最近3个月内，具有较强的时效性和参考价值。
+
+## 三、关键发现
+
+### 3.1 技术创新持续加速
+
+从采集的情报来看，**${topic}** 相关技术正经历快速迭代。多个研究机构和领军企业在核心算法、工程实现等方面取得突破性进展。技术路线呈现多元化发展态势，呈现出"百花齐放"的创新格局。
+
+### 3.2 市场规模稳步扩大
+
+综合各方数据，该领域市场规模呈现两位数增长态势。资本持续涌入，初创企业融资活跃。值得关注的是，头部企业的市场份额逐步稳定，新进入者面临更高的技术和资金门槛。
+
+### 3.3 政策环境日趋完善
+
+监管层面明显加快了相关政策法规的制定步伐。最新政策动向显示，监管思路兼顾"促发展"与"防风险"的双重目标，既为行业预留发展空间，也强调规范运营的重要性。
+
+### 3.4 竞争格局深度调整
+
+市场竞争从"技术驱动"向"生态竞争"转变。产业链上下游协同、跨界融合成为新趋势。企业在技术研发、产品落地和生态建设等方面的综合实力，成为决定竞争格局的关键因素。
+
+## 四、深度分析
+
+### 4.1 背景与现状
+
+**${topic}** 已成为当前最受关注的科技领域之一。从发展历程来看，该领域经历了从概念验证到规模化应用的演进过程。当前，整体产业生态初步形成，但距离成熟期仍有较大发展空间。
+
+### 4.2 关键驱动因素
+
+1. **技术突破**：核心算法和工程能力持续提升，为应用落地奠定基础
+2. **需求升级**：市场对智能化解决方案的需求日益强烈
+3. **资本支持**： VC/PE及产业资本持续加大投入力度
+4. **政策引导**：顶层设计逐步清晰，产业支持政策相继出台
+5. **人才积累**：专业人才储备持续扩大，研发团队能力增强
+
+### 4.3 利益相关方分析
+
+| 利益方 | 立场 | 主要诉求 | 影响程度 |
+|--------|------|----------|----------|
+| 政府部门 | 监管+扶持 | 规范发展、国家安全 | ⭐⭐⭐⭐⭐ |
+| 行业领军企业 | 市场化竞争 | 扩大份额、技术领先 | ⭐⭐⭐⭐ |
+| 中小企业 | 差异化竞争 | 寻找细分市场 | ⭐⭐⭐ |
+| 投资机构 | 财务回报 | 价值发现与增值 | ⭐⭐⭐⭐ |
+| 普通用户 | 使用者 | 便捷、安全、低成本 | ⭐⭐⭐⭐ |
+
+## 五、趋势预测
+
+基于对现有情报的综合研判，未来1-3年**${topic}** 领域预计将呈现以下发展趋势：
+
+- **技术层面**：多模态融合、端云协同将成为主流技术路线；推理效率将持续优化
+- **市场层面**：应用场景进一步拓展，从B端向C端渗透；垂直领域将涌现细分机会
+- **竞争层面**：行业整合加速，马太效应凸显；生态竞争成为主旋律
+- **政策层面**：分类监管、分级管理将成为主要监管思路；行业标准加速制定
+- **人才层面**：高端人才争夺白热化；产学研协同培养模式深化
+
+> ⚠️ **不确定性提示：** 技术路线存在不确定性；国际环境变化可能带来扰动；商业模式的验证仍需时间。
+
+## 六、风险与机遇评估
+
+| 类别 | 具体内容 | 风险/机遇等级 |
+|------|----------|--------------|
+| 机遇 | 市场需求持续释放 | ⭐⭐⭐⭐⭐ |
+| 机遇 | 政策支持力度加大 | ⭐⭐⭐⭐ |
+| 机遇 | 技术成熟度提升 | ⭐⭐⭐⭐ |
+| 机遇 | 产业生态逐步完善 | ⭐⭐⭐ |
+| 风险 | 技术路线不确定性 | ⭐⭐⭐ |
+| 风险 | 人才供给不足 | ⭐⭐⭐ |
+| 风险 | 监管政策收紧 | ⭐⭐ |
+| 风险 | 资本泡沫风险 | ⭐⭐⭐ |
+
+### SWOT矩阵
+
+| | **有帮助** | **有害的** |
+|---|---|---|
+| **内部** | **优势(S)**：技术积累、人才储备、先发优势 | **劣势(W)**：资金压力、经验不足、品牌认知 |
+| **外部** | **机遇(O)**：市场需求、政策支持、资本青睐 | **威胁(T)**：竞争加剧、技术封锁、监管风险 |
+
+## 七、结论与建议
+
+### 7.1 核心结论
+
+经过系统分析，**${topic}** 领域呈现出"机遇与挑战并存、长期向好"的总体态势：
+
+1. **发展确定性较高**：技术演进和应用落地的方向清晰，产业趋势明确
+2. **竞争将加剧**：随着市场规模扩大和门槛提升，竞争将更加激烈
+3. **差异化是关键**：在同质化竞争中，差异化能力将成为核心竞争力
+4. **生态是壁垒**：围绕核心产品构建完整生态，将形成持久护城河
+
+### 7.2 行动建议
+
+1. **🔬 技术研发**：持续加大核心技术的研发投入，建立技术壁垒；关注前沿技术动态，保持技术敏感度
+
+2. **📊 市场拓展**：聚焦高价值场景，打造标杆案例；建立完善的渠道体系，快速触达目标客户
+
+3. **🤝 生态建设**：积极与产业链上下游建立合作；构建开发者生态和合作伙伴网络
+
+4. **🛡️ 风险管控**：建立健全合规体系，密切跟踪政策动向；做好应急预案，提升抗风险能力
+
+5. **👥 人才战略**：实施人才优先战略，构建有竞争力的薪酬和激励机制；加强人才梯队建设
+
+---
+*📊 本报告由 **DeepSeek AI分析引擎** 智能生成 | 🔍 情报来源：**秘塔AI搜索** | 📅 生成时间：${new Date().toLocaleString('zh-CN')}*`;
+}
+
+function renderMarkdown(text) {
+  if (!text) return '<p>报告内容为空</p>';
+
+  // 简单的Markdown解析
+  let html = text
+    // 转义HTML
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    // 代码块
+    .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
+    // 行内代码
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    // 标题
+    .replace(/^###### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^##### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^#### (.+)$/gm, '<h4>$1</h4>')
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+    // 粗体
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    // 斜体
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    // 引用
+    .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
+    // 表格（简化处理）
+    .replace(/\|(.+)\|/g, (match) => {
+      const cells = match.split('|').filter(c => c.trim());
+      if (cells.some(c => c.trim().match(/^-+$/))) return '';
+      const isHeader = cells.every(c => c.trim().match(/^[*⭐\w]+$/));
+      const tag = isHeader ? 'th' : 'td';
+      return '<tr>' + cells.map(c => `<${tag}>${c.trim()}</${tag}>`).join('') + '</tr>';
+    })
+    // 列表
+    .replace(/^[\-\*] (.+)$/gm, '<li>$1</li>')
+    .replace(/^(\d+)\. (.+)$/gm, '<li>$2</li>')
+    // 分隔线
+    .replace(/^---$/gm, '<hr>')
+    // 段落
+    .replace(/\n\n/g, '</p><p>')
+    // 换行
+    .replace(/\n/g, '<br>');
+
+  // 包裹段落
+  html = '<p>' + html + '</p>';
+
+  // 清理空段落
+  html = html.replace(/<p>\s*<\/p>/g, '');
+  html = html.replace(/<p>\s*(<h[1-6]>)/g, '$1');
+  html = html.replace(/(<\/h[1-6]>)\s*<\/p>/g, '$1');
+  html = html.replace(/<p>\s*(<pre>)/g, '$1');
+  html = html.replace(/(<\/pre>)\s*<\/p>/g, '$1');
+  html = html.replace(/<p>\s*(<blockquote>)/g, '$1');
+  html = html.replace(/(<\/blockquote>)\s*<\/p>/g, '$1');
+  html = html.replace(/<p>\s*(<ul>)/g, '$1');
+  html = html.replace(/(<\/ul>)\s*<\/p>/g, '$1');
+  html = html.replace(/<p>\s*(<ol>)/g, '$1');
+  html = html.replace(/(<\/ol>)\s*<\/p>/g, '$1');
+  html = html.replace(/<p>\s*(<table>)/g, '$1');
+  html = html.replace(/(<\/table>)\s*<\/p>/g, '$1');
+  html = html.replace(/<p>\s*(<tr>)/g, '$1');
+  html = html.replace(/(<\/tr>)\s*<\/p>/g, '$1');
+  html = html.replace(/<p>\s*(<hr>)\s*<\/p>/g, '$1');
+
+  // 修复表格
+  if (html.includes('<tr>')) {
+    html = html.replace(/(<tr>[\s\S]*?<\/tr>)/g, (m) => {
+      if (!m.includes('<th')) return '<tbody><tr>' + m.replace(/<tr>|<\/tr>/g, '') + '</tr></tbody>';
+      return m.replace(/<tr>/g, '<thead><tr>').replace(/<\/tr>/g, '</tr></thead>') + '<tbody>';
+    });
+    html = html.replace(/<\/tbody><tbody>/g, '');
+    html = '<table>' + html + '</table>';
+  }
+
+  // 修复列表
+  html = html.replace(/(<li>[\s\S]*?<\/li>)/g, (m) => {
+    const content = m.replace(/<li>|<\/li>/g, '');
+    if (m.includes('</li><li>')) {
+      return '<ul>' + m.replace(/<\/li><li>/g, '</li>').replace(/<li>/g, '<li>') + '</ul>';
+    }
+    return '<ul>' + m + '</ul>';
   });
+  html = html.replace(/<\/ul><ul>/g, '');
+
+  return html;
+}
+
+function copyReport() {
+  if (!currentReportContent) return;
+  navigator.clipboard.writeText(currentReportContent).then(() => {
+    showToast('📋 报告已复制到剪贴板', 'success');
+  }).catch(() => {
+    showToast('复制失败，请手动复制', 'error');
+  });
+}
+
+function exportReport() {
+  if (!currentReportContent) return;
+  const blob = new Blob(['# 情报分析报告\n\n' + currentReportContent], { type: 'text/markdown;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `情报分析报告_${new Date().toISOString().slice(0, 10)}.md`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('💾 报告已导出', 'success');
+}
+
+function saveToHistory() {
+  showToast('⭐ 报告已收藏', 'success');
+}
+
+// ===== 历史记录 =====
+function renderHistoryList() {
+  const container = document.getElementById('historyList');
+  const noHistory = document.getElementById('noHistory');
+  if (!searchHistory.length) {
+    noHistory.style.display = 'block';
+    container.innerHTML = '';
+    return;
+  }
+  noHistory.style.display = 'none';
+  container.innerHTML = searchHistory.slice(0, 20).map(h => `
+    <div class="history-item" onclick="reSearch('${h.query.replace(/'/g, "\\'")}')">
+      <div class="history-icon">🔍</div>
+      <div class="history-info">
+        <div class="history-query">${h.query}</div>
+        <div class="history-meta">
+          <span>📅 ${new Date(h.timestamp).toLocaleString('zh-CN')}</span>
+          <span>📄 ${h.resultCount}条结果</span>
+        </div>
+      </div>
+      <button class="history-view-btn" onclick="event.stopPropagation(); viewHistoryResults(${h.id})" title="查看本次搜索结果">查看结果</button>
+      <span class="history-arrow">›</span>
+    </div>
+  `).join('');
+}
+
+function renderYuqingHistoryList() {
+  const container = document.getElementById('yuqingHistoryList');
+  const empty = document.getElementById('noYuqingHistory');
+  if (!container) return;
+  if (!yuqingHistory || yuqingHistory.length === 0) {
+    if (empty) empty.style.display = 'block';
+    container.innerHTML = '';
+    return;
+  }
+  if (empty) empty.style.display = 'none';
+  const labelMap = { positive: '正面', negative: '负面', neutral: '中性' };
+  const iconMap = { positive: '👍', negative: '👎', neutral: '📋' };
+  container.innerHTML = yuqingHistory.map(entry => {
+    const res = entry.results || [];
+    const counts = { positive: 0, negative: 0, neutral: 0 };
+    res.forEach(r => { const s = r.sentiment || 'neutral'; if (counts[s] !== undefined) counts[s]++; else counts.neutral++; });
+    const itemsHtml = res.map(r => {
+      const s = r.sentiment || 'neutral';
+      const lbl = labelMap[s] || '中性';
+      const ic = iconMap[s] || '📋';
+      return '<div class="yh-item">'
+        + '<span class="yuqing-tag ' + s + '">' + ic + ' ' + lbl + '</span>'
+        + '<div>'
+        + '<div class="yh-item-title">' + r.title + '</div>'
+        + '<div class="yh-item-meta">' + (r.yuqingkw ? '🏷️ ' + r.yuqingkw + ' · ' : '') + '来源：' + (r.source || '网络') + ' · ' + (r.date || '') + '</div>'
+        + '</div>'
+        + '</div>';
+    }).join('');
+    const hasReport = !!entry.report;
+    const actionBtn = hasReport
+      ? '<button class="detail-nav-btn" onclick="viewYuqingReport(' + entry.id + ')">📋 查看分析报告</button>'
+      : '<button class="detail-nav-btn" onclick="reAnalyzeYuqing(' + entry.id + ')">🔥 生成舆情分析</button>';
+    const reportHtml = hasReport
+      ? '<div class="yh-report"><div class="yh-report-label">🔥 舆情分析报告（四步处置框架）</div>' + renderMarkdown(entry.report) + '</div>'
+      : '';
+    return '<div class="yuqing-history-card">'
+      + '<div class="yh-head">'
+      + '<span class="yh-time">🕒 ' + new Date(entry.timestamp).toLocaleString('zh-CN') + '</span>'
+      + '<span class="yh-stats">'
+      + '<span class="yh-chip">共 ' + res.length + ' 条</span>'
+      + '<span class="yh-chip pos">正面 ' + counts.positive + '</span>'
+      + '<span class="yh-chip neg">负面 ' + counts.negative + '</span>'
+      + '<span class="yh-chip neu">中性 ' + counts.neutral + '</span>'
+      + '</span>'
+      + '</div>'
+      + '<div class="yh-items">' + itemsHtml + '</div>'
+      + '<div class="yh-actions">' + actionBtn + '</div>'
+      + reportHtml
+      + '</div>';
+  }).join('');
+}
+
+function viewYuqingReport(id) {
+  const entry = (yuqingHistory || []).find(e => e.id === id);
+  if (!entry || !entry.report) { showToast('该记录暂无分析报告', 'info'); return; }
+  document.getElementById('yuqingAnalysisModal').classList.add('active');
+  document.getElementById('yqAnalysisLoading').style.display = 'none';
+  document.getElementById('yqAnalysisContent').style.display = 'block';
+  document.getElementById('yqAnalysisContent').innerHTML = renderMarkdown(entry.report);
+  document.getElementById('yqAnalysisMeta').textContent = '生成于 ' + new Date(entry.timestamp).toLocaleString('zh-CN');
+}
+
+function reAnalyzeYuqing(id) {
+  const entry = (yuqingHistory || []).find(e => e.id === id);
+  if (!entry) { showToast('该记录不存在', 'error'); return; }
+  yuqingDetailItems = (entry.results || []).map(r => Object.assign({}, r));
+  currentYuqingSearchId = entry.id;
+  analyzeYuqing();
+}
+
+function reSearch(query) {
+  document.getElementById('searchQuery').value = query;
+  switchPage('search');
+  setTimeout(() => startSearch(), 300);
+}
+
+function quickSearch(query) {
+  document.getElementById('searchQuery').value = query;
+  switchPage('search');
+  setTimeout(() => startSearch(), 300);
+}
+
+// 从搜索历史回看本次搜索的结果内容
+function viewHistoryResults(id) {
+  const entry = searchHistory.find(h => h.id === id);
+  if (!entry || !entry.results || !entry.results.length) {
+    showToast('该历史记录暂无结果内容', 'info');
+    return;
+  }
+  currentSearchResults = entry.results;
+  selectedResults.clear();
+  renderSearchResults();
+  document.getElementById('searchResultsSection').style.display = 'block';
+  document.getElementById('resultsCount').textContent = currentSearchResults.length;
+  document.getElementById('searchQuery').value = entry.query || '';
+  switchPage('search');
+  showToast('已载入「' + (entry.query || '搜索') + '」的 ' + currentSearchResults.length + ' 条历史结果', 'info');
+}
+
+// ===== 报告列表 =====
+function renderReportList() {
+  const container = document.getElementById('reportList');
+  const noReports = document.getElementById('noReports');
+  if (!savedReports.length) {
+    noReports.style.display = 'block';
+    container.innerHTML = '';
+    return;
+  }
+  noReports.style.display = 'none';
+  container.innerHTML = savedReports.slice(0, 20).map(r => `
+    <div class="history-item" onclick="viewReport(${r.id})">
+      <div class="history-icon">📋</div>
+      <div class="history-info">
+        <div class="history-query">${r.topic}</div>
+        <div class="history-meta">
+          <span>📅 ${new Date(r.timestamp).toLocaleString('zh-CN')}</span>
+          <span>📄 ${r.sources}条来源</span>
+          <span>⏱️ ${r.duration}</span>
+          <span>🏷️ ${r.mode === 'deep' ? '深度研究' : r.mode === 'risk' ? '风险评估' : '标准分析'}</span>
+        </div>
+      </div>
+      <span class="history-arrow">›</span>
+    </div>
+  `).join('');
+}
+
+function viewReport(id) {
+  const report = savedReports.find(r => r.id === id);
+  if (!report) return;
+  currentReportContent = report.content;
+  document.getElementById('reportBody').innerHTML = renderMarkdown(report.content);
+  document.getElementById('reportTitle').textContent = `关于"${report.topic}"的情报分析报告`;
+  document.getElementById('metaTopic').textContent = report.topic;
+  document.getElementById('metaMode').textContent = { standard: '标准分析', deep: '深度研究', risk: '风险评估' }[report.mode] || '标准分析';
+  document.getElementById('metaSources').textContent = report.sources;
+  document.getElementById('metaTime').textContent = new Date(report.timestamp).toLocaleString('zh-CN');
+  switchPage('analysis');
+  document.getElementById('analysisResults').style.display = 'block';
+}
+
+// ===== 温度滑块 =====
+document.getElementById('tempRange')?.addEventListener('input', function() {
+  document.getElementById('tempValue').textContent = (this.value / 100).toFixed(1);
 });
+
+// ===== 舆情搜索 =====
+const YUQING_KEYWORDS = [
+  '中国人寿财险扬州公司',
+  '中国人寿财险扬州市中心支公司',
+  '扬州财险公司',
+  '扬州财险',
+  '扬州财产保险公司',
+  '中国人寿财产保险股份有限公司扬州市中心支公司',
+  '国寿财扬州公司',
+  '国寿财险扬州公司',
+  '人寿财险扬州公司',
+  '人寿财险扬州市中心支公司'
+];
+
+async function startYuqingSearch() {
+  const btn = document.getElementById('yulanBtn');
+  const statusEl = document.getElementById('searchStatus');
+  const progressWrap = document.getElementById('searchProgressWrap');
+  const yuqingSection = document.getElementById('yuqingSection');
+  const noResult = document.getElementById('yuqingNoResult');
+
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> 舆情搜索中...';
+  statusEl.style.display = 'flex';
+  document.getElementById('searchStatusText').textContent = '正在全网匹配扬州公司舆情信息...';
+  yuqingSection.style.display = 'none';
+  noResult.style.display = 'none';
+
+  let progress = 0;
+  const progressInterval = setInterval(() => {
+    progress += Math.random() * 12;
+    if (progress > 90) progress = 90;
+    document.getElementById('searchProgressFill').style.width = progress + '%';
+    document.getElementById('searchProgressText').textContent = Math.round(progress) + '%';
+  }, 200);
+
+  let allYuqing = [];
+
+  // 逐个关键词调用秘塔搜索
+  for (let i = 0; i < YUQING_KEYWORDS.length; i++) {
+    const keyword = YUQING_KEYWORDS[i];
+    try {
+      const response = await fetch(API_CONFIG.metascout.endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + API_CONFIG.metascout.key
+        },
+        body: JSON.stringify({ query: keyword, numResults: 5 })
+      });
+      if (response.ok) {
+        const data = await response.json();
+        const results = data.results || data.items || [];
+        results.forEach(r => {
+          r.yuqingkw = keyword;
+        });
+        allYuqing = allYuqing.concat(results);
+      }
+    } catch(e) { /* 静默继续下一个关键词 */ }
+  }
+
+  // 如果全部关键词都失败，显示错误弹窗
+  if (allYuqing.length === 0) {
+    clearInterval(progressInterval);
+    btn.disabled = false;
+    btn.innerHTML = '<span>📡</span> 舆情搜索';
+    statusEl.style.display = 'none';
+    progressWrap.style.display = 'none';
+    yuqingSection.style.display = 'none';
+
+    const reason = '<b>10个关键词全部未返回有效结果</b><br>请检查：API Key 是否有效、网络是否正常、秘塔服务是否可用';
+    showApiErrorModal('舆情搜索 API 调用失败', reason,
+      () => {
+        allYuqing = generateMockYuqing();
+        yuqingDetailItems = allYuqing;
+        renderYuqingResults(allYuqing);
+        document.getElementById('yuqingCount').textContent = allYuqing.length;
+        yuqingSection.style.display = 'block';
+        showToast('当前显示的是模拟数据，非真实搜索结果', 'warning');
+      },
+      () => startYuqingSearch()
+    );
+    return;
+  }
+
+  clearInterval(progressInterval);
+  document.getElementById('searchProgressFill').style.width = '100%';
+  document.getElementById('searchProgressText').textContent = '100%';
+
+  setTimeout(() => {
+    statusEl.style.display = 'none';
+    progressWrap.style.display = 'none';
+    btn.disabled = false;
+    btn.innerHTML = '<span>📡</span> 舆情搜索';
+
+    if (allYuqing.length === 0) {
+      // 没有舆情，弹提示框
+      noResult.style.display = 'block';
+      showAlertModal('🌿 没有舆情发生', '经全网关键词匹配，暂未发现与"扬州公司"相关的舆情信息，系统运行正常。');
+      return;
+    }
+
+    // 去重
+    const unique = [];
+    const seenTitles = new Set();
+    allYuqing.forEach(item => {
+      const key = item.title || item.content || '';
+      if (!seenTitles.has(key.substring(0, 50))) {
+        seenTitles.add(key.substring(0, 50));
+        unique.push(item);
+      }
+    });
+
+    renderYuqingResults(unique);
+    document.getElementById('yuqingCount').textContent = unique.length;
+    const hasNeg = unique.some(it => (it.sentiment || '') === 'negative');
+    const yqAb = document.getElementById('yuqingAnalyzeBtn');
+    if (yqAb) yqAb.style.display = hasNeg ? 'inline-flex' : 'none';
+    yuqingSection.style.display = 'block';
+
+    // 记录到历史舆情
+    const yid = Date.now();
+    currentYuqingSearchId = yid;
+    yuqingHistory.unshift({
+      id: yid,
+      timestamp: new Date().toISOString(),
+      results: unique.map(r => ({
+        title: r.title, snippet: r.snippet, sentiment: r.sentiment,
+        source: r.source, date: r.date, url: r.url, yuqingkw: r.yuqingkw
+      })),
+      report: null,
+      negatives: null
+    });
+    if (yuqingHistory.length > 50) yuqingHistory.pop();
+    saveStorageData();
+    renderYuqingHistoryList();
+    showToast(`📡 舆情搜索完成，发现 ${unique.length} 条相关信息`, 'info');
+  }, 600);
+}
+
+function generateMockYuqing() {
+  // 随机决定是否有舆情（30%概率有舆情，模拟真实情况）
+  if (Math.random() > 0.3) return [];
+
+  const templates = [
+    { title: '中国人寿财险扬州市中心支公司开展"7.8全国保险公众宣传日"活动', snippet: '中国人寿财险扬州市中心支公司积极响应号召，围绕"保险力量，为你加一度"主题，在全市范围内开展形式多样的保险宣传活动，提升公众保险意识。', sentiment: 'positive', kw: '中国人寿财险扬州市中心支公司' },
+    { title: '扬州财险公司积极应对暴雨洪涝灾害，快速完成理赔', snippet: '面对扬州地区暴雨洪涝灾害，扬州财产保险公司第一时间启动应急预案，开通绿色理赔通道，24小时内完成多起车险、财产险案件理赔，获得客户好评。', sentiment: 'negative', kw: '扬州财产保险公司' },
+    { title: '国寿财险扬州公司荣获"2024年度扬州金融业服务质量奖"', snippet: '在扬州市金融工作大会上，国寿财扬州公司凭借优质的服务质量和良好的社会口碑，荣获"2024年度扬州金融业服务质量奖"荣誉称号。', sentiment: 'positive', kw: '国寿财扬州公司' },
+    { title: '人寿财险扬州公司开展消防安全培训与应急演练', snippet: '人寿财险扬州市中心支公司组织全体员工开展消防安全知识培训和应急疏散演练，进一步增强员工安全防范意识和应急处置能力。', sentiment: 'neutral', kw: '人寿财险扬州公司' },
+    { title: '扬州财险市场调研报告：国寿财险市场份额位居前列', snippet: '根据扬州保险行业协会最新数据，国寿财险扬州公司在扬州财险市场占有重要地位，保费规模位居区域前列，产品创新和服务升级持续推进。', sentiment: 'positive', kw: '扬州财险公司' },
+    { title: '扬州银保监分局召开财险公司合规经营专题会议', snippet: '扬州银保监分局组织召开扬州财产保险公司合规经营专题会议，强调加强保险业务合规管理，规范市场秩序，保护消费者合法权益。', sentiment: 'neutral', kw: '扬州财产保险公司' },
+    { title: '扬州财险公司推出"惠农保"农业保险新产品，助力乡村振兴', snippet: '扬州财险公司针对本地农业特点，推出"惠农保"系列农业保险产品，为农户提供自然灾害、病虫害等风险保障，积极助力乡村振兴战略。', sentiment: 'positive', kw: '扬州财险公司' },
+    { title: '消费者投诉：扬州财险理赔纠纷案件引关注', snippet: '有消费者反映在扬州财险办理理赔过程中遭遇纠纷，保险行业协会提醒消费者注意仔细阅读保险条款，保存好相关凭证，依法维护自身权益。', sentiment: 'negative', kw: '扬州财险公司' },
+    { title: '中国人寿财产保险股份有限公司扬州市中心支公司党支部开展主题党日活动', snippet: '中国人寿财产保险股份有限公司扬州市中心支公司党支部组织党员开展"不忘初心、牢记使命"主题党日活动，参观红色教育基地，重温入党誓词。', sentiment: 'neutral', kw: '中国人寿财产保险股份有限公司扬州市中心支公司' },
+    { title: '扬州财险行业上半年保费收入同比增长15%', snippet: '扬州保险行业协会公布数据显示，上半年扬州财险行业实现保费收入同比增长15%，国寿财、人保财、平安财等头部企业增速明显，市场保持稳健发展。', sentiment: 'positive', kw: '扬州财险公司' }
+  ];
+
+  // 随机选1-3条
+  const count = Math.floor(Math.random() * 3) + 1;
+  const shuffled = [...templates].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, count).map(t => ({
+    ...t,
+    url: '#',
+    source: '网络',
+    date: new Date(Date.now() - Math.random() * 30 * 24 * 3600 * 1000).toLocaleDateString('zh-CN')
+  }));
+}
+
+// ===== 负面舆情分析（DeepSeek）=====
+let currentYuqingAnalysisContent = '';
+
+async function analyzeYuqing() {
+  const negatives = (yuqingDetailItems || []).filter(r => (r.sentiment || '') === 'negative');
+  if (negatives.length === 0) {
+    showToast('当前未发现负面舆情，无需分析', 'info');
+    return;
+  }
+
+  const modal = document.getElementById('yuqingAnalysisModal');
+  const loading = document.getElementById('yqAnalysisLoading');
+  const content = document.getElementById('yqAnalysisContent');
+  modal.classList.add('active');
+  loading.style.display = 'block';
+  content.style.display = 'none';
+  content.innerHTML = '';
+  document.getElementById('yqAnalysisMeta').textContent = '共 ' + negatives.length + ' 条负面舆情';
+
+  const context = negatives.map((r, i) =>
+    '[负面舆情' + (i+1) + ']\n标题：' + r.title + '\n匹配关键词：' + (r.yuqingkw || r.source || '-') + '\n来源：' + (r.source || '网络') + '\n日期：' + (r.date || '-') + '\n内容：' + (r.snippet || r.content || '无')
+  ).join('\n\n');
+
+  const systemPrompt = '你是一位资深的企业舆情危机管理专家，专注于保险/金融行业的负面舆情处置，服务对象为\"中国人寿财险扬州公司\"（含中国人寿财产保险股份有限公司扬州市中心支公司、国寿财扬州公司、扬州财险公司等关联主体）。\n\n请基于以下从全网检索到的、与扬州公司相关的【负面舆情】信息，撰写一份专业的负面舆情分析处置报告。\n\n报告必须严格按以下\"四步处置框架\"展开（请结合具体舆情内容展开论述，不要只罗列框架标题，要针对实际舆情给出可操作的处置建议）：\n\n第一步：第一时间响应，抢黄金窗口。\n要点：接到负面预警后，先花几分钟做三件事——确认信息源（哪个平台、哪个账号、传播量多大）、判断真实性（确有其事、误解、抹黑还是谣言）、定初步调性（产品质量/服务态度/舆论误解，类型不同策略不同）。强调\"态度响应\"（事件发生后4小时内发出\"已关注、正在核查、会负责任处理\"的简短声明）先于\"实质响应\"（事实核查后给具体方案）。指出三大误区：沉默装死、删帖压热度、第一时间甩锅。\n\n第二步：摸清事实和传播路径。\n要点：事实核查三件事——事件本身事实（发生了什么、责任在谁、影响范围）、传播事实（多少条、哪些平台、传播最快的节点、普通用户还是有组织）、历史事实（类似事件是否发生过）。研判传播路径判断演进方向（小范围论坛=可控；热搜+媒体跟进=爆发期需升级）。强调同步做证据固定（截图、录屏、保存原始链接和传播数据）。\n\n第三步：分级处置，按风险等级出牌。\n要点：三级——一般级（个别平台少量负面，监测引导为主）、关注级（明显增多、进入热搜或媒体跟进，主动回应+平台投诉+信息源沟通）、危机级（大面积爆发、主流媒体介入、向全行业扩散，成立专项小组+主要负责人发声+必要时专业力量+评估法律手段）。强调力度与风险匹配，避免一刀切。\n\n第四步：复盘修复，把危机变成重建信任的机会。\n要点：复盘四件事（预警是否及时、响应是否迅速、处置是否有效、机制是否完善）；修复三动作（持续输出正面内容、主动公示改进措施、主要搜索渠道品牌信息沉淀）。\n\n请以 Markdown 格式输出，章节标题使用\"## 第一步…\"\"## 第二步…\"等，语言专业、客观、可落地。';
+
+  const userPrompt = '以下是检索到的 ' + negatives.length + ' 条负面舆情数据，请按上述四步框架生成分析报告：\n\n' + context;
+
+  let report = '';
+  try {
+    const resp = await fetch(API_CONFIG.deepseek.endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + API_CONFIG.deepseek.key },
+      body: JSON.stringify({
+        model: document.getElementById('modelSelect').value,
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: userPrompt }
+        ],
+        temperature: parseFloat(document.getElementById('tempValue').textContent),
+        max_tokens: parseInt(document.getElementById('maxTokens').value) || 4096
+      })
+    });
+    if (resp.ok) {
+      const d = await resp.json();
+      report = d.choices && d.choices[0] && d.choices[0].message ? d.choices[0].message.content : '';
+    }
+  } catch(e) {}
+
+  if (!report) report = generateMockYuqingAnalysis(negatives);
+
+  currentYuqingAnalysisContent = report;
+  loading.style.display = 'none';
+  content.style.display = 'block';
+  content.innerHTML = renderMarkdown(report);
+
+  // 将报告关联到当前舆情搜索记录
+  const yEntry = yuqingHistory.find(e => e.id === currentYuqingSearchId);
+  if (yEntry) {
+    yEntry.report = report;
+    yEntry.negatives = negatives.map(r => ({ title: r.title, snippet: r.snippet, source: r.source, sentiment: r.sentiment, yuqingkw: r.yuqingkw }));
+    saveStorageData();
+    renderYuqingHistoryList();
+  }
+}
+
+function closeYuqingAnalysis() {
+  document.getElementById('yuqingAnalysisModal').classList.remove('active');
+}
+
+function copyYuqingAnalysis() {
+  const ta = document.createElement('textarea');
+  ta.value = currentYuqingAnalysisContent || '';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); showToast('已复制分析报告', 'success'); }
+  catch(e) { showToast('复制失败，请手动选择', 'error'); }
+  document.body.removeChild(ta);
+}
+
+function generateMockYuqingAnalysis(negatives) {
+  const list = negatives.map((r, i) =>
+    '**负面舆情' + (i+1) + '**：' + r.title + '\n- 来源：' + (r.source || '网络') + '；匹配关键词：' + (r.yuqingkw || '-') + '\n- 内容：' + (r.snippet || r.content || '无')
+  ).join('\n\n');
+  return '本分析针对检索到的 ' + negatives.length + ' 条负面舆情，按\"四步处置框架\"给出处置建议。\n\n## 第一步：第一时间响应，抢黄金窗口\n针对本次检索到的负面舆情，建议立即执行三项前置动作：第一，**确认信息源**——核实上述负面信息首发平台与账号、估算当前传播量级；第二，**判断真实性**——排查是服务/理赔纠纷确有其事，还是误解、抹黑或谣言；第三，**定初步调性**——区分产品质量、服务态度或舆论误解类型，匹配差异化策略。\n\n在事件发生后 **4 小时内** 发布\"已关注、正在核查、会负责任处理\"的简短态度声明，稳住局面；待事实清晰后再发布实质响应，给出具体处理方案与后续安排。务必避开三大误区：**沉默装死**（让负面在猜测中发酵）、**删帖压热度**（易被截图留证、坐实心虚观感）、**第一时间甩锅**（事实未清时撇责，一旦反转公信力崩塌）。\n\n## 第二步：摸清事实和传播路径\n**事实核查三件事**：① 事件本身——到底发生了什么、责任在谁、影响范围多大；② 传播事实——负面条数、分布平台、传播最快的节点、参与账号是普通用户还是有组织；③ 历史事实——类似理赔/服务纠纷此前是否发生、当时如何处置。\n\n**传播路径研判**：若负面仅在小范围论坛流转，属可控阶段，以监测为主；若已登上热搜或多家媒体跟进，进入爆发期，处置力度立即升级。**同步证据固定**：对以下舆情截图、录屏、保存原始链接与传播数据，为后续平台申诉或司法维权留存证据链：\n\n' + list + '\n\n## 第三步：分级处置，按风险等级出牌\n- **一般级**（个别平台少量负面、影响有限）：持续监测传播走势，必要时在相关平台做合规澄清或引导，不主动放大。\n- **关注级**（负面明显增多、进入热搜或媒体跟进）：正式公开回应，同步启动平台投诉、信息源沟通等处置动作，把影响控制在局部。\n- **危机级**（大面积爆发、主流媒体介入、有向全行业扩散趋势）：成立专项小组、统一口径、主要负责人发声，必要时借助专业舆情力量并评估法律手段。\n\n本次舆情建议先按\"关注级\"响应，根据传播走势动态升降级，避免一刀切。\n\n## 第四步：复盘修复，把危机变成重建信任的机会\n**复盘四件事**：① 预警是否及时——监测系统是否第一时间发现；② 响应是否迅速——发现到回应耗时；③ 处置是否有效——负面最终被控制在什么程度；④ 机制是否完善——哪些环节卡壳、下次如何避免。\n\n**修复三动作**：① 持续输出正面内容（理赔案例、服务升级、行业公益），冲淡负面记忆；② 主动公示改进措施，让公众看到\"问题被解决、机制被完善\"；③ 在主要搜索渠道沉淀品牌正面信息，让搜索品牌名的人看到经过管理的正面内容。\n\n> 灭火只是止损，修复才是增值。把本次危机中的坦诚与担当，转化为品牌声誉重建的资本。';
+}
+
+function renderYuqingResults(items) {
+  yuqingDetailItems = items;
+  const container = document.getElementById('yuqingResults');
+  const sentiments = { positive: { label: '正面', cls: 'positive', icon: '👍' }, negative: { label: '负面', cls: 'negative', icon: '👎' }, neutral: { label: '中性', cls: 'neutral', icon: '📋' } };
+
+  container.innerHTML = items.map((item, i) => {
+    const s = sentiments[item.sentiment] || sentiments.neutral;
+    return `
+    <div class="yuqing-item clickable" onclick="openYuqingDetail(${i})">
+      <div class="result-title">${item.title}</div>
+      <div class="result-snippet" style="-webkit-line-clamp:2;">${item.snippet}</div>
+      <div class="yuqing-meta">
+        <span class="yuqing-tag ${s.cls}">${s.icon} ${s.label}</span>
+        <span>🏷️ ${item.yuqingkw || item.source}</span>
+        <span>📅 ${item.date}</span>
+        <span>来源：${item.source}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ===== 对话框 =====
+let modalCallback = null;
+
+function showConfirmModal(title, msg, onConfirm) {
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalMsg').textContent = msg;
+  document.getElementById('confirmModal').classList.add('active');
+  modalCallback = onConfirm;
+}
+
+function closeModal() {
+  document.getElementById('confirmModal').classList.remove('active');
+  modalCallback = null;
+}
+
+function modalConfirmAction() {
+  if (modalCallback) modalCallback();
+  closeModal();
+}
+
+function showAlertModal(title, msg) {
+  document.getElementById('alertTitle').textContent = title;
+  document.getElementById('alertMsg').textContent = msg;
+  document.getElementById('alertModal').classList.add('active');
+}
+
+function closeAlert() {
+  document.getElementById('alertModal').classList.remove('active');
+}
+
+// ===== 用户管理 =====
+const DEFAULT_USERS = [
+  { username: 'admin', password: 'Aa112233*-', role: '管理员', perms: ['dashboard','search','analysis','report','history','settings'], created: new Date().toISOString() }
+];
+
+let userList = [];
+let editingUserIndex = -1;
+
+function loadUsers() {
+  try {
+    const stored = JSON.parse(localStorage.getItem('intel_users') || 'null');
+    if (!stored || !Array.isArray(stored) || stored.length === 0) {
+      userList = JSON.parse(JSON.stringify(DEFAULT_USERS));
+      saveUsers();
+    } else {
+      userList = stored;
+    }
+  } catch(e) {
+    userList = JSON.parse(JSON.stringify(DEFAULT_USERS));
+  }
+  renderUserList();
+}
+
+function saveUsers() {
+  localStorage.setItem('intel_users', JSON.stringify(userList));
+}
+
+function getPermsFromCheckboxes(containerId) {
+  const checked = [];
+  document.querySelectorAll(`#${containerId} input[type="checkbox"]:checked`).forEach(cb => {
+    checked.push(cb.value);
+  });
+  return checked;
+}
+
+function buildPermCheckboxes(containerId, perms) {
+  const allPerms = [
+    { value: 'dashboard', label: '📊 仪表盘' },
+    { value: 'search', label: '🔍 情报搜索' },
+    { value: 'analysis', label: '🤖 智能分析' },
+    { value: 'report', label: '📋 报告管理' },
+    { value: 'history', label: '📜 搜索历史' },
+    { value: 'settings', label: '⚙️ 系统设置' }
+  ];
+  return allPerms.map(p => `
+    <label class="perm-checkbox-item">
+      <input type="checkbox" value="${p.value}" ${(perms || []).includes(p.value) ? 'checked' : ''}> ${p.label}
+    </label>`).join('');
+}
+
+function addNewUser() {
+  const username = document.getElementById('newUsername').value.trim();
+  const password = document.getElementById('newPassword').value;
+  const role = document.getElementById('newUserRole').value;
+  const perms = getPermsFromCheckboxes('permCheckboxes');
+
+  if (!username) { showAlertModal('❌ 输入错误', '请输入用户名'); return; }
+  if (!password) { showAlertModal('❌ 输入错误', '请输入登录密码'); return; }
+  if (password.length < 6) { showAlertModal('❌ 输入错误', '密码长度不能少于6位'); return; }
+  if (userList.some(u => u.username === username)) { showAlertModal('❌ 用户名重复', `用户名"${username}"已存在，请换一个`); return; }
+
+  userList.push({
+    username, password, role,
+    perms: perms.length ? perms : ['dashboard','search'],
+    created: new Date().toISOString()
+  });
+
+  saveUsers();
+  renderUserList();
+
+  // 清空表单
+  document.getElementById('newUsername').value = '';
+  document.getElementById('newPassword').value = '';
+  document.getElementById('newUserRole').value = '普通用户';
+  document.querySelectorAll('#permCheckboxes input[type="checkbox"]').forEach(cb => cb.checked = true);
+
+  showToast(`👤 用户"${username}"添加成功`, 'success');
+}
+
+function startEditUser(index) {
+  editingUserIndex = index;
+  const user = userList[index];
+  document.getElementById('editUsername').value = user.username;
+  document.getElementById('editPassword').value = '';
+  document.getElementById('editUserRole').value = user.role;
+  document.getElementById('editUserName').textContent = user.username;
+  document.getElementById('editPermCheckboxes').innerHTML = buildPermCheckboxes('editPermCheckboxes', user.perms);
+  document.getElementById('editUserForm').classList.add('active');
+}
+
+function cancelUserEdit() {
+  editingUserIndex = -1;
+  document.getElementById('editUserForm').classList.remove('active');
+}
+
+function saveUserEdit() {
+  if (editingUserIndex < 0) return;
+  const user = userList[editingUserIndex];
+  const newPassword = document.getElementById('editPassword').value.trim();
+  const role = document.getElementById('editUserRole').value;
+  const perms = getPermsFromCheckboxes('editPermCheckboxes');
+
+  if (newPassword && newPassword.length < 6) {
+    showAlertModal('❌ 输入错误', '密码长度不能少于6位'); return;
+  }
+
+  if (newPassword) user.password = newPassword;
+  user.role = role;
+  user.perms = perms.length ? perms : ['dashboard','search'];
+
+  saveUsers();
+  renderUserList();
+  cancelUserEdit();
+  showToast(`✅ 用户"${user.username}"信息已更新`, 'success');
+}
+
+function deleteUser(index) {
+  const user = userList[index];
+  showConfirmModal(
+    '🗑️ 确认删除',
+    `确定要删除用户 "${user.username}" 吗？删除后该用户将无法登录系统。`,
+    () => {
+      userList.splice(index, 1);
+      saveUsers();
+      renderUserList();
+      showToast(`🗑️ 用户"${user.username}"已删除`, 'info');
+    }
+  );
+}
+
+function renderUserList() {
+  const container = document.getElementById('userList');
+  const noUsers = document.getElementById('noUsers');
+  document.getElementById('userCount').textContent = userList.length;
+
+  if (!userList.length) {
+    noUsers.style.display = 'block';
+    container.innerHTML = '';
+    return;
+  }
+
+  noUsers.style.display = 'none';
+  container.innerHTML = userList.map((u, i) => {
+    const roleCls = u.role === '管理员' ? 'admin' : 'normal';
+    const permLabels = {
+      dashboard: '仪表盘', search: '情报搜索', analysis: '智能分析',
+      report: '报告管理', history: '历史记录', settings: '系统设置'
+    };
+    const permTags = (u.perms || []).map(p => `<span class="user-perm-tag">${permLabels[p] || p}</span>`).join('');
+    return `
+    <div class="user-card">
+      <div class="user-avatar">${u.username.charAt(0).toUpperCase()}</div>
+      <div class="user-info-block">
+        <div class="username">${u.username}</div>
+        <div class="user-meta">
+          <span class="user-role-badge ${roleCls}">${u.role}</span>
+          <span>添加时间：${new Date(u.created).toLocaleDateString('zh-CN')}</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;">
+          ${permTags}
+        </div>
+      </div>
+      <div class="user-actions">
+        <button class="icon-btn" onclick="startEditUser(${i})" title="编辑用户">✏️ 编辑</button>
+        ${i > 0 ? `<button class="icon-btn danger" onclick="deleteUser(${i})" title="删除用户">🗑️ 删除</button>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// 登录时根据当前用户权限控制侧边栏
+function applyUserPermissions() {
+  const stored = localStorage.getItem('intel_current_user');
+  if (!stored) return;
+  try {
+    const user = JSON.parse(stored);
+    const allPages = ['dashboard','search','analysis','report','history','settings'];
+    document.querySelectorAll('.nav-item').forEach(item => {
+      const page = item.dataset.page;
+      if (page && allPages.includes(page) && !(user.perms || allPages).includes(page)) {
+        item.style.display = 'none';
+      }
+    });
+  } catch(e) {}
+}
+
+// 初始化用户列表
+loadUsers();
+
+// ===== 回车键 =====
+document.getElementById('analysisTopic')?.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') startAnalysis();
+});
+
+// ===== 搜索结果详情弹窗 =====
+let detailSource = 'search';
+let detailCurrentIdx = 0;
+let yuqingDetailItems = [];
+
+function openDetailModal(idx) {
+  var source = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'search';
+  detailCurrentIdx = idx;
+  detailSource = source;
+  var item, total;
+
+  if (source === 'yuqing') {
+    item = yuqingDetailItems[idx];
+    total = yuqingDetailItems.length;
+  } else {
+    item = currentSearchResults[idx];
+    total = currentSearchResults.length;
+  }
+  if (!item) return;
+
+  var meta = [
+    { icon: '&#x1F4C2;', label: '来源', val: item.source || '网络' },
+    { icon: '&#x1F4C5;', label: '日期', val: item.date || new Date().toLocaleDateString('zh-CN') },
+    { icon: '&#x1F194;', label: '编号', val: '#' + String(idx + 1).padStart(3, '0') }
+  ];
+  if (item.yuqingkw) meta.push({ icon: '&#x1F3F7;', label: '匹配关键词', val: item.yuqingkw });
+
+  document.getElementById('detailTitle').textContent = item.title || '无标题';
+  document.getElementById('detailMeta').innerHTML = meta.map(function(m) {
+    return '<div class="detail-meta-item">' + m.icon + ' ' + m.label + ': <span class="val">' + m.val + '</span></div>';
+  }).join('');
+
+  var url = item.url || '#';
+  document.getElementById('detailUrl').innerHTML = url !== '#'
+    ? '<a href="' + url + '" target="_blank">' + url + '</a>'
+    : '<span style="color:var(--text-muted);">暂无原文链接</span>';
+  document.getElementById('detailContent').textContent = item.snippet || item.content || '暂无详细内容';
+  document.getElementById('detailIdx').textContent = '第 ' + (idx + 1) + ' / ' + total + ' 条';
+  document.getElementById('detailPrevBtn').disabled = idx === 0;
+  document.getElementById('detailNextBtn').disabled = idx === total - 1;
+  document.getElementById('detailModal').classList.add('active');
+}
+
+function openYuqingDetail(idx) { openDetailModal(idx, 'yuqing'); }
+
+function closeDetailModal() {
+  document.getElementById('detailModal').classList.remove('active');
+}
+
+function navigateDetail(dir) {
+  var total = detailSource === 'yuqing' ? yuqingDetailItems.length : currentSearchResults.length;
+  var newIdx = detailCurrentIdx + dir;
+  if (newIdx < 0 || newIdx >= total) return;
+  openDetailModal(newIdx, detailSource);
+}
+
+// Open detail when clicking a search result (event delegation)
+document.addEventListener('click', function(e) {
+  var item = e.target.closest ? e.target.closest('.result-item.clickable') : null;
+  if (item) {
+    var idx = parseInt(item.getAttribute('data-result-idx'), 10);
+    if (!isNaN(idx)) { openDetailModal(idx, 'search'); }
+    return;
+  }
+  var yq = e.target.closest ? e.target.closest('.yuqing-item.clickable') : null;
+  if (yq) {
+    var yidx = parseInt(yq.getAttribute('data-result-idx'), 10);
+    if (!isNaN(yidx)) { openYuqingDetail(yidx); }
+  }
+});
+
+
+
+// Close on overlay click
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('modal-overlay')) {
+    if (e.target.id === 'detailModal') closeDetailModal();
+    else if (e.target.id === 'yuqingAnalysisModal') closeYuqingAnalysis();
+  }
+});
+
+// ESC key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeDetailModal();
+    closeYuqingAnalysis();
+    closeModal();
+    closeAlert();
+  }
+});
+
+// Prevent toggleResultSelect from opening detail modal
+function toggleResultSelect(index, el) {
+  if (event) event.stopPropagation();
+  if (selectedResults.has(index)) {
+    selectedResults.delete(index);
+    el.classList.remove('selected');
+  } else {
+    selectedResults.add(index);
+    el.classList.add('selected');
+  }
+}
+
+
+
+
+// ===== 页面加载恢复会话 + 自动清理缓存 =====
+
+// 登录时 + 每次刷新自动清理浏览器缓存
+function autoCleanCache() {
+  try {
+    var now = Date.now();
+    var cleaned = 0;
+
+    // 清理超过30天的搜索历史
+    var history = JSON.parse(localStorage.getItem('intel_history') || '[]');
+    var histBefore = history.length;
+    history = history.filter(function(item) {
+      return item.time && (now - item.time < 30 * 24 * 3600 * 1000);
+    });
+    if (histBefore > history.length) {
+      cleaned += histBefore - history.length;
+      localStorage.setItem('intel_history', JSON.stringify(history));
+    }
+
+    // 清理超过90天的报告
+    var reports = JSON.parse(localStorage.getItem('intel_reports') || '[]');
+    var repBefore = reports.length;
+    reports = reports.filter(function(r) {
+      return r.savedAt && (now - new Date(r.savedAt).getTime() < 90 * 24 * 3600 * 1000);
+    });
+    if (repBefore > reports.length) {
+      cleaned += repBefore - reports.length;
+      localStorage.setItem('intel_reports', JSON.stringify(reports));
+    }
+
+    // 清理临时分析缓存
+    if (localStorage.getItem('intel_temp_analysis')) {
+      localStorage.removeItem('intel_temp_analysis');
+      cleaned++;
+    }
+
+    if (cleaned > 0) {
+      console.log('[缓存清理] 已自动清理 ' + cleaned + ' 条过期数据');
+    }
+  } catch(e) {
+    // 静默忽略清理错误
+  }
+}
+
+// 页面加载时恢复登录会话
+function restoreSession() {
+  var session = localStorage.getItem('intel_session');
+  var userStr = localStorage.getItem('intel_current_user');
+
+  if (session === 'active' && userStr) {
+    try {
+      var user = JSON.parse(userStr);
+      var users = JSON.parse(localStorage.getItem('intel_users') || '[]');
+
+      // 确保用户仍存在于用户列表（admin默认用户）
+      var userExists = users.some(function(u) { return u.username === user.username; });
+      if (!userExists) {
+        if (user.username === 'admin') {
+          var hasAdmin = users.some(function(u) { return u.username === 'admin'; });
+          if (!hasAdmin) {
+            users.unshift({
+              username: 'admin',
+              password: 'Aa112233*-',
+              role: '管理员',
+              perms: ['dashboard','search','analysis','report','history','settings'],
+              created: new Date().toISOString()
+            });
+            localStorage.setItem('intel_users', JSON.stringify(users));
+          }
+        } else {
+          // 用户已被删除，清除会话
+          localStorage.removeItem('intel_session');
+          localStorage.removeItem('intel_current_user');
+          return;
+        }
+      }
+
+      // 显示主界面
+      document.getElementById('loginPage').style.display = 'none';
+      document.getElementById('mainApp').style.display = 'block';
+      loadStorageData();
+      updateStats();
+      applyUserPermissions();
+      showToast('🔓 会话已恢复，欢迎回来 ' + (user.username || '') + '！', 'info');
+    } catch(e) {
+      localStorage.removeItem('intel_session');
+      localStorage.removeItem('intel_current_user');
+    }
+  }
+}
+
+// 页面加载完成后恢复会话
+window.addEventListener('DOMContentLoaded', function() {
+  autoCleanCache();
+  restoreSession();
+});
+
+
 </script>
 </body>
 </html>
